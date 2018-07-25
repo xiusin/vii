@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Vii/Alias.html">Vii\Alias</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Vii/Alias.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Vii.html">Vii</a>
+        </span>
+                <h1 class="class-name">Alias</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii;
+
+class Alias
+{
+    protected _aliases = [];    //所有别名入口
+    /**
+     * 设置别名变量
+     * @param string name 别名称
+     * @param string value 别名值
+     * @return void
+     */
+    public function set(var name,string! value = "") {
+        var k,v;
+        if typeof name == "array" {
+            for k,v in name {
+                this->set(k,v);
+            }
+        }else{
+            if !starts_with (name,"@") {
+                throw new \Exception("Alias::set 别名必须以 '@' 开始");
+            }
+
+            if this->has(name) {
+                throw new \Exception("别名: ".name." 已经存在");
+            }
+            let this->_aliases[name] = value;
+        }
+    }
+
+    public function has(string! name){
+        if isset this->_aliases[name] {
+            return true;
+        }
+        return false;
+    }
+    //替换别名符号必须以@符号开始
+    public function resolve(string! path){
+        if !starts_with(path,"@") {
+            return path;
+        }
+        let path = strtr(path,"\\","/");
+        var pathinfo,alias;
+        let pathinfo = explode("/",path);
+        let alias = pathinfo[0];
+        if !this->has(alias) {
+            throw new \Exception("Alias::resolve 别名:".alias." 没有被设置");
+        }
+        //递归解析别名替换, 直到全部被解析出来
+        return this->resolve(str_replace(alias,this->_aliases[alias],path));
+    }
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

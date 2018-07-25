@@ -31,17 +31,12 @@ ZEPHIR_INIT_CLASS(Vii_Config_Json) {
 
 PHP_METHOD(Vii_Config_Json, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_0 = NULL;
 	zval *jsonFile_param = NULL, __$true, _1, _2;
 	zval jsonFile;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&jsonFile);
 	ZVAL_BOOL(&__$true, 1);
 	ZVAL_UNDEF(&_1);
@@ -50,11 +45,11 @@ PHP_METHOD(Vii_Config_Json, __construct) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &jsonFile_param);
 
-	if (unlikely(Z_TYPE_P(jsonFile_param) != IS_STRING && Z_TYPE_P(jsonFile_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(jsonFile_param) != IS_STRING && Z_TYPE_P(jsonFile_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'jsonFile' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(jsonFile_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(jsonFile_param) == IS_STRING)) {
 		zephir_get_strval(&jsonFile, jsonFile_param);
 	} else {
 		ZEPHIR_INIT_VAR(&jsonFile);
@@ -70,7 +65,7 @@ PHP_METHOD(Vii_Config_Json, __construct) {
 	ZEPHIR_INIT_VAR(&_2);
 	zephir_file_get_contents(&_2, &jsonFile TSRMLS_CC);
 	zephir_json_decode(&_1, &_2, zephir_get_intval(&__$true) );
-	ZEPHIR_CALL_PARENT(NULL, vii_config_json_ce, this_ptr, "__construct", &_0, 2, &_1);
+	ZEPHIR_CALL_PARENT(NULL, vii_config_json_ce, getThis(), "__construct", &_0, 0, &_1);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 

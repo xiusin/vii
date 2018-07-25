@@ -19,7 +19,7 @@ PHP_METHOD(Vii_Assets_Collection, setLocal);
 PHP_METHOD(Vii_Assets_Collection, join);
 PHP_METHOD(Vii_Assets_Collection, setTargetPath);
 PHP_METHOD(Vii_Assets_Collection, setTatgetUri);
-static zend_object *zephir_init_properties_Vii_Assets_Collection(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_Assets_Collection(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_assets_collection_getinline, 0, 0, 0)
 	ZEND_ARG_INFO(0, type)

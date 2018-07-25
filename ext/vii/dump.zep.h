@@ -17,7 +17,7 @@ PHP_METHOD(Vii_Dump, one);
 PHP_METHOD(Vii_Dump, output);
 PHP_METHOD(Vii_Dump, variable);
 PHP_METHOD(Vii_Dump, vars);
-static zend_object *zephir_init_properties_Vii_Dump(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_Dump(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_dump_setdetailed, 0, 0, 1)
 	ZEND_ARG_INFO(0, detailed)
@@ -34,6 +34,10 @@ ZEND_END_ARG_INFO()
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_dump___construct, 0, 0, 0)
 	ZEND_ARG_INFO(0, detailed)
 	ZEND_ARG_INFO(0, styles)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_dump_all, 0, 0, 1)
+	ZEND_ARG_INFO(0, data)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_dump_getstyle, 0, 0, 1)
@@ -68,7 +72,7 @@ ZEPHIR_INIT_FUNCS(vii_dump_method_entry) {
 	PHP_ME(Vii_Dump, getSkipIoc, NULL, ZEND_ACC_PUBLIC)
 	PHP_ME(Vii_Dump, setSkipIoc, arginfo_vii_dump_setskipioc, ZEND_ACC_PUBLIC)
 	PHP_ME(Vii_Dump, __construct, arginfo_vii_dump___construct, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
-	PHP_ME(Vii_Dump, all, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(Vii_Dump, all, arginfo_vii_dump_all, ZEND_ACC_PUBLIC)
 	PHP_ME(Vii_Dump, getStyle, arginfo_vii_dump_getstyle, ZEND_ACC_PROTECTED)
 	PHP_ME(Vii_Dump, setStyles, arginfo_vii_dump_setstyles, ZEND_ACC_PUBLIC)
 	PHP_ME(Vii_Dump, one, arginfo_vii_dump_one, ZEND_ACC_PUBLIC)

@@ -18,7 +18,6 @@
 #include "kernel/operators.h"
 #include "kernel/concat.h"
 #include "kernel/fcall.h"
-#include "kernel/hash.h"
 
 
 ZEPHIR_INIT_CLASS(vii_1__closure) {
@@ -34,15 +33,10 @@ PHP_METHOD(vii_1__closure, __invoke) {
 	zend_string *_8;
 	zend_ulong _7;
 	zend_bool _2, _9$$4, _16$$7;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *match, match_sub, vars, _func, _var, arrayhtml, _default, func, str, v, size, _0, _1, _5, *_6, _11, _12, _3$$3, _4$$3, _10$$5, _13$$6, _14$$7, _15$$7, _17$$7, _18$$7, _19$$7, _20$$7, _21$$7, _22$$7, _23$$7, _24$$7, _25$$7, _26$$7, _27$$7, _28$$7, _29$$7, _30$$7, _31$$7;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&match_sub);
 	ZVAL_UNDEF(&vars);
 	ZVAL_UNDEF(&_func);
@@ -117,7 +111,7 @@ PHP_METHOD(vii_1__closure, __invoke) {
 	ZEPHIR_INIT_VAR(&size);
 	zephir_fast_explode_str(&size, SL("."), &vars, LONG_MAX TSRMLS_CC);
 	ZEPHIR_MAKE_REF(&size);
-	ZEPHIR_CALL_FUNCTION(&_var, "array_shift", NULL, 119, &size);
+	ZEPHIR_CALL_FUNCTION(&_var, "array_shift", NULL, 116, &size);
 	ZEPHIR_UNREF(&size);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&arrayhtml);
@@ -134,7 +128,7 @@ PHP_METHOD(vii_1__closure, __invoke) {
 		}
 		ZEPHIR_INIT_NVAR(&v);
 		ZVAL_COPY(&v, _6);
-		_9$$4 = (zephir_get_intval(&v)) ? 1 : 0;
+		_9$$4 = ((zephir_get_intval(&v)) ? 1 : 0);
 		if (!(_9$$4)) {
 			_9$$4 = !ZEPHIR_IS_LONG(&v, 0);
 		}
@@ -163,13 +157,13 @@ PHP_METHOD(vii_1__closure, __invoke) {
 	if (!(ZEPHIR_IS_EMPTY(&_func))) {
 		ZEPHIR_INIT_VAR(&_14$$7);
 		ZVAL_STRING(&_14$$7, "=");
-		ZEPHIR_CALL_FUNCTION(&_15$$7, "strrpos", NULL, 45, &_func, &_14$$7);
+		ZEPHIR_CALL_FUNCTION(&_15$$7, "strrpos", NULL, 43, &_func, &_14$$7);
 		zephir_check_call_status();
 		_16$$7 = ZEPHIR_IS_FALSE_IDENTICAL(&_15$$7);
 		if (_16$$7) {
 			ZEPHIR_INIT_NVAR(&_14$$7);
 			ZVAL_STRING(&_14$$7, "(");
-			ZEPHIR_CALL_FUNCTION(&_17$$7, "strrpos", NULL, 45, &_func, &_14$$7);
+			ZEPHIR_CALL_FUNCTION(&_17$$7, "strrpos", NULL, 43, &_func, &_14$$7);
 			zephir_check_call_status();
 			_16$$7 = ZEPHIR_IS_FALSE_IDENTICAL(&_17$$7);
 		}
@@ -182,7 +176,7 @@ PHP_METHOD(vii_1__closure, __invoke) {
 		ZEPHIR_INIT_VAR(&_18$$7);
 		ZEPHIR_INIT_NVAR(&_14$$7);
 		ZVAL_STRING(&_14$$7, "###");
-		ZEPHIR_CALL_FUNCTION(&_19$$7, "strrpos", NULL, 45, &_func, &_14$$7);
+		ZEPHIR_CALL_FUNCTION(&_19$$7, "strrpos", NULL, 43, &_func, &_14$$7);
 		zephir_check_call_status();
 		if (ZEPHIR_IS_FALSE_IDENTICAL(&_19$$7)) {
 			ZEPHIR_INIT_NVAR(&_18$$7);
@@ -212,12 +206,12 @@ PHP_METHOD(vii_1__closure, __invoke) {
 		zephir_array_fetch_long(&_26$$7, &func, 0, PH_NOISY | PH_READONLY, "vii/mvc/view/engine/tiny/compiler.zep", 117 TSRMLS_CC);
 		ZEPHIR_INIT_VAR(&_27$$7);
 		ZVAL_STRING(&_27$$7, "|");
-		ZEPHIR_CALL_FUNCTION(&_28$$7, "substr_count", NULL, 117, &_26$$7, &_27$$7);
+		ZEPHIR_CALL_FUNCTION(&_28$$7, "substr_count", NULL, 114, &_26$$7, &_27$$7);
 		zephir_check_call_status();
 		ZEPHIR_INIT_NVAR(&_27$$7);
 		ZVAL_STRING(&_27$$7, ")");
 		ZVAL_LONG(&_29$$7, (zephir_get_numberval(&_28$$7) + 1));
-		ZEPHIR_CALL_FUNCTION(&_30$$7, "str_repeat", NULL, 53, &_27$$7, &_29$$7);
+		ZEPHIR_CALL_FUNCTION(&_30$$7, "str_repeat", NULL, 50, &_27$$7, &_29$$7);
 		zephir_check_call_status();
 		ZEPHIR_INIT_VAR(&_31$$7);
 		ZEPHIR_CONCAT_VV(&_31$$7, &_23$$7, &_30$$7);

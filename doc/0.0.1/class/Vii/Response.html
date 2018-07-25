@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a >Vii\Response</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+    
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../source/Vii/Response.html">Source</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Vii.html">Vii</a>
+        </span>
+                <h1 class="class-name">Response</h1>
+    </div>
+
+</div>
+
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+<ul class="method-summary-list">
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-__construct">__construct</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setStatusCode">setStatusCode</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$code</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setHeader">setHeader</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$name</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$value</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setRawHeader">setRawHeader</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$header</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-redirect">redirect</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setContent">setContent</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$content</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setJsonContent">setJsonContent</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$content</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$option</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$depth</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-appendContent">appendContent</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$content</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-getContent">getContent</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-resetHeaders">resetHeaders</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-isSend">isSend</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-sendHeaders">sendHeaders</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-sendContent">sendContent</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-send">send</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-hasHeader">hasHeader</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-zephir_init_properties_Vii_Response">zephir_init_properties_Vii_Response</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    </ul>
+
+<div class="hidden-anchor"  id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+<ul class="method-details-list">
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-__construct"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">__construct</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setStatusCode"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setStatusCode</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$code</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setHeader"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setHeader</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$name</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$value</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setRawHeader"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setRawHeader</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$header</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-redirect"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">redirect</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setContent"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setContent</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$content</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setJsonContent"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setJsonContent</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$content</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$option</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$depth</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-appendContent"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">appendContent</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$content</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-getContent"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">getContent</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-resetHeaders"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">resetHeaders</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-isSend"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">isSend</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-sendHeaders"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">sendHeaders</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-sendContent"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">sendContent</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-send"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">send</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-hasHeader"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">hasHeader</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-zephir_init_properties_Vii_Response"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-internal keyword">internal</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">zephir_init_properties_Vii_Response</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    </ul>                </div>
+            </div>
+        </div>
+    </body>
+</html>

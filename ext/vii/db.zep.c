@@ -36,28 +36,18 @@ ZEPHIR_INIT_CLASS(Vii_Db) {
 
 PHP_METHOD(Vii_Db, getDriver) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "driver");
+
+	RETURN_MEMBER(getThis(), "driver");
 
 }
 
 PHP_METHOD(Vii_Db, setDriver) {
 
 	zval *driver, driver_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&driver_sub);
 
 	zephir_fetch_params(0, 1, 0, &driver);
@@ -65,22 +55,18 @@ PHP_METHOD(Vii_Db, setDriver) {
 
 
 	zephir_update_property_zval(this_ptr, SL("driver"), driver);
+	RETURN_THISW();
 
 }
 
 PHP_METHOD(Vii_Db, __construct) {
 
 	zend_bool _0;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval options;
 	zval *driver, driver_sub, *host = NULL, host_sub, *port = NULL, port_sub, *name = NULL, name_sub, *user = NULL, user_sub, *password = NULL, password_sub, *options_param = NULL, __$null, _1$$4, _2$$4;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&driver_sub);
 	ZVAL_UNDEF(&host_sub);
 	ZVAL_UNDEF(&port_sub);
@@ -119,7 +105,7 @@ PHP_METHOD(Vii_Db, __construct) {
 		ZEPHIR_INIT_VAR(&options);
 		array_init(&options);
 	} else {
-	ZVAL_COPY_VALUE(&options, options_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&options, options_param);
 	}
 
 
@@ -134,7 +120,7 @@ PHP_METHOD(Vii_Db, __construct) {
 		object_init_ex(&_1$$4, vii_db_pdo_ce);
 		ZEPHIR_INIT_VAR(&_2$$4);
 		ZEPHIR_CONCAT_VSVSVSV(&_2$$4, driver, ":host=", host, ";port=", port, ";dbname=", name);
-		ZEPHIR_CALL_METHOD(NULL, &_1$$4, "__construct", NULL, 29, &_2$$4, user, password, &options);
+		ZEPHIR_CALL_METHOD(NULL, &_1$$4, "__construct", NULL, 28, &_2$$4, user, password, &options);
 		zephir_check_call_status();
 		zephir_update_property_zval(this_ptr, SL("driver"), &_1$$4);
 	}
@@ -148,14 +134,9 @@ PHP_METHOD(Vii_Db, __construct) {
 PHP_METHOD(Vii_Db, createBuilder) {
 
 	zval _0, _1$$3;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1$$3);
 
@@ -165,11 +146,11 @@ PHP_METHOD(Vii_Db, createBuilder) {
 	if (!(zephir_is_true(&_0))) {
 		ZEPHIR_INIT_VAR(&_1$$3);
 		object_init_ex(&_1$$3, vii_db_querybuilder_ce);
-		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 30);
+		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 29);
 		zephir_check_call_status();
 		zephir_update_property_zval(this_ptr, SL("_queryBuilder"), &_1$$3);
 	}
-	RETURN_MM_MEMBER(this_ptr, "_queryBuilder");
+	RETURN_MM_MEMBER(getThis(), "_queryBuilder");
 
 }
 
@@ -179,14 +160,9 @@ PHP_METHOD(Vii_Db, createBuilder) {
 PHP_METHOD(Vii_Db, begin) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -204,14 +180,9 @@ PHP_METHOD(Vii_Db, begin) {
 PHP_METHOD(Vii_Db, rollback) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -229,14 +200,9 @@ PHP_METHOD(Vii_Db, rollback) {
 PHP_METHOD(Vii_Db, commit) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -251,16 +217,11 @@ PHP_METHOD(Vii_Db, commit) {
 PHP_METHOD(Vii_Db, __call) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *method_param = NULL, *arguments = NULL, arguments_sub, __$null, _1;
 	zval method;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&method);
 	ZVAL_UNDEF(&arguments_sub);
 	ZVAL_NULL(&__$null);

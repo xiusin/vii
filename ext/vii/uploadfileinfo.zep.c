@@ -37,13 +37,8 @@ ZEPHIR_INIT_CLASS(Vii_UploadFileInfo) {
 PHP_METHOD(Vii_UploadFileInfo, __construct) {
 
 	zval *fileinfo, fileinfo_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&fileinfo_sub);
 
 	zephir_fetch_params(0, 1, 0, &fileinfo);
@@ -61,14 +56,9 @@ PHP_METHOD(Vii_UploadFileInfo, __construct) {
 PHP_METHOD(Vii_UploadFileInfo, isUploadFile) {
 
 	zval _0, _1;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 
@@ -76,7 +66,7 @@ PHP_METHOD(Vii_UploadFileInfo, isUploadFile) {
 
 	zephir_read_property(&_0, this_ptr, SL("info"), PH_NOISY_CC | PH_READONLY);
 	zephir_array_fetch_string(&_1, &_0, SL("tmp_name"), PH_NOISY | PH_READONLY, "vii/uploadfileinfo.zep", 20 TSRMLS_CC);
-	ZEPHIR_RETURN_CALL_FUNCTION("is_uploaded_file", NULL, 144, &_1);
+	ZEPHIR_RETURN_CALL_FUNCTION("is_uploaded_file", NULL, 140, &_1);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -85,13 +75,8 @@ PHP_METHOD(Vii_UploadFileInfo, isUploadFile) {
 PHP_METHOD(Vii_UploadFileInfo, hasError) {
 
 	zval _0, _1, _2$$3, _3$$4, _4$$5, _5$$6, _6$$7, _7$$8;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 	ZVAL_UNDEF(&_2$$3);
@@ -159,74 +144,54 @@ PHP_METHOD(Vii_UploadFileInfo, hasError) {
 PHP_METHOD(Vii_UploadFileInfo, getSize) {
 
 	zval _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 
 
 	zephir_read_property(&_0, this_ptr, SL("info"), PH_NOISY_CC | PH_READONLY);
 	zephir_array_fetch_string(&_1, &_0, SL("size"), PH_NOISY | PH_READONLY, "vii/uploadfileinfo.zep", 52 TSRMLS_CC);
-	RETURN_CTORW(_1);
+	RETURN_CTORW(&_1);
 
 }
 
 PHP_METHOD(Vii_UploadFileInfo, getName) {
 
 	zval _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 
 
 	zephir_read_property(&_0, this_ptr, SL("info"), PH_NOISY_CC | PH_READONLY);
 	zephir_array_fetch_string(&_1, &_0, SL("name"), PH_NOISY | PH_READONLY, "vii/uploadfileinfo.zep", 57 TSRMLS_CC);
-	RETURN_CTORW(_1);
+	RETURN_CTORW(&_1);
 
 }
 
 PHP_METHOD(Vii_UploadFileInfo, getType) {
 
 	zval _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 
 
 	zephir_read_property(&_0, this_ptr, SL("info"), PH_NOISY_CC | PH_READONLY);
 	zephir_array_fetch_string(&_1, &_0, SL("type"), PH_NOISY | PH_READONLY, "vii/uploadfileinfo.zep", 62 TSRMLS_CC);
-	RETURN_CTORW(_1);
+	RETURN_CTORW(&_1);
 
 }
 
 PHP_METHOD(Vii_UploadFileInfo, getExt) {
 
 	zval finfo, _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&finfo);
 	ZVAL_UNDEF(&_0);
 
@@ -237,7 +202,7 @@ PHP_METHOD(Vii_UploadFileInfo, getExt) {
 	ZEPHIR_INIT_VAR(&finfo);
 	zephir_fast_explode_str(&finfo, SL("."), &_0, LONG_MAX TSRMLS_CC);
 	ZEPHIR_MAKE_REF(&finfo);
-	ZEPHIR_RETURN_CALL_FUNCTION("end", NULL, 59, &finfo);
+	ZEPHIR_RETURN_CALL_FUNCTION("end", NULL, 56, &finfo);
 	ZEPHIR_UNREF(&finfo);
 	zephir_check_call_status();
 	RETURN_MM();
@@ -247,35 +212,25 @@ PHP_METHOD(Vii_UploadFileInfo, getExt) {
 PHP_METHOD(Vii_UploadFileInfo, getTmpName) {
 
 	zval _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 
 
 	zephir_read_property(&_0, this_ptr, SL("info"), PH_NOISY_CC | PH_READONLY);
 	zephir_array_fetch_string(&_1, &_0, SL("tmp_name"), PH_NOISY | PH_READONLY, "vii/uploadfileinfo.zep", 73 TSRMLS_CC);
-	RETURN_CTORW(_1);
+	RETURN_CTORW(&_1);
 
 }
 
 PHP_METHOD(Vii_UploadFileInfo, moveTo) {
 
 	zend_bool _0;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *destination_file, destination_file_sub, _1, _2, _3, _4, _5, _6;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&destination_file_sub);
 	ZVAL_UNDEF(&_1);
 	ZVAL_UNDEF(&_2);
@@ -291,9 +246,9 @@ PHP_METHOD(Vii_UploadFileInfo, moveTo) {
 
 	_0 = ZEPHIR_IS_EMPTY(destination_file);
 	if (!(_0)) {
-		ZEPHIR_CALL_FUNCTION(&_1, "dirname", NULL, 97, destination_file);
+		ZEPHIR_CALL_FUNCTION(&_1, "dirname", NULL, 94, destination_file);
 		zephir_check_call_status();
-		ZEPHIR_CALL_FUNCTION(&_2, "is_dir", NULL, 76, &_1);
+		ZEPHIR_CALL_FUNCTION(&_2, "is_dir", NULL, 73, &_1);
 		zephir_check_call_status();
 		_0 = !zephir_is_true(&_2);
 	}
@@ -308,7 +263,7 @@ PHP_METHOD(Vii_UploadFileInfo, moveTo) {
 	}
 	ZEPHIR_CALL_METHOD(&_4, this_ptr, "gettmpname", NULL, 0);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&_5, "move_uploaded_file", NULL, 145, &_4, destination_file);
+	ZEPHIR_CALL_FUNCTION(&_5, "move_uploaded_file", NULL, 141, &_4, destination_file);
 	zephir_check_call_status();
 	if (zephir_is_true(&_5)) {
 		RETURN_MM_BOOL(1);
@@ -321,7 +276,7 @@ PHP_METHOD(Vii_UploadFileInfo, moveTo) {
 
 }
 
-static zend_object *zephir_init_properties_Vii_UploadFileInfo(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_UploadFileInfo(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _0, _1$$3;
 		ZVAL_UNDEF(&_0);

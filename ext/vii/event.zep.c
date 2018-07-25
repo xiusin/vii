@@ -31,15 +31,10 @@ ZEPHIR_INIT_CLASS(Vii_Event) {
 
 PHP_METHOD(Vii_Event, __construct) {
 
-	int priority;
+	zend_long priority;
 	zval *handlerFun, handlerFun_sub, *priority_param = NULL, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&handlerFun_sub);
 	ZVAL_UNDEF(&_0);
 

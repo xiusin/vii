@@ -21,7 +21,6 @@
 #include "kernel/concat.h"
 #include "kernel/file.h"
 #include "kernel/require.h"
-#include "kernel/hash.h"
 #include "ext/spl/spl_exceptions.h"
 
 
@@ -63,15 +62,10 @@ ZEPHIR_INIT_CLASS(Vii_I18n) {
 
 PHP_METHOD(Vii_I18n, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *options = NULL, options_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&options_sub);
 	ZVAL_UNDEF(&_0);
 
@@ -95,28 +89,18 @@ PHP_METHOD(Vii_I18n, __construct) {
 
 PHP_METHOD(Vii_I18n, __clone) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 
 
 }
 
 PHP_METHOD(Vii_I18n, getDefault) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *options = NULL, options_sub, _0, _2, _1$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&options_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_2);
@@ -136,12 +120,12 @@ PHP_METHOD(Vii_I18n, getDefault) {
 	if (!(zephir_is_true(&_0))) {
 		ZEPHIR_INIT_VAR(&_1$$3);
 		object_init_ex(&_1$$3, vii_i18n_ce);
-		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 88, options);
+		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 86, options);
 		zephir_check_call_status();
-		zephir_update_static_property_ce(vii_i18n_ce, SL("i18n"), &_1$$3);
+		zend_update_static_property(vii_i18n_ce, ZEND_STRL("i18n"), &_1$$3);
 	}
 	zephir_read_static_property_ce(&_2, vii_i18n_ce, SL("i18n"), PH_NOISY_CC | PH_READONLY);
-	RETURN_CTOR(_2);
+	RETURN_CTOR(&_2);
 
 }
 
@@ -152,14 +136,9 @@ PHP_METHOD(Vii_I18n, getMessage) {
 
 	zend_bool _1;
 	zval file, _0, _2, _3, _4, _5, _6, _7, _10, _11, _8$$4, _9$$4;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&file);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_2);
@@ -179,17 +158,17 @@ PHP_METHOD(Vii_I18n, getMessage) {
 	_1 = !(zephir_array_isset_string(&_0, SL("lang")));
 	if (!(_1)) {
 		zephir_read_property(&_2, this_ptr, SL("_options"), PH_NOISY_CC | PH_READONLY);
-		zephir_array_fetch_string(&_3, &_2, SL("dir"), PH_NOISY | PH_READONLY, "vii/i18n.zep", 44 TSRMLS_CC);
+		zephir_array_fetch_string(&_3, &_2, SL("dir"), PH_NOISY | PH_READONLY, "vii/i18n.zep", 45 TSRMLS_CC);
 		_1 = zephir_is_true(&_3);
 	}
 	if (_1) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "没有i18n对应的参数options[lang] or options[dir]", "vii/i18n.zep", 45);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "没有i18n对应的参数options[lang] or options[dir]", "vii/i18n.zep", 46);
 		return;
 	}
 	zephir_read_property(&_4, this_ptr, SL("_options"), PH_NOISY_CC | PH_READONLY);
-	zephir_array_fetch_string(&_5, &_4, SL("dir"), PH_NOISY | PH_READONLY, "vii/i18n.zep", 47 TSRMLS_CC);
+	zephir_array_fetch_string(&_5, &_4, SL("dir"), PH_NOISY | PH_READONLY, "vii/i18n.zep", 48 TSRMLS_CC);
 	zephir_read_property(&_6, this_ptr, SL("_options"), PH_NOISY_CC | PH_READONLY);
-	zephir_array_fetch_string(&_7, &_6, SL("lang"), PH_NOISY | PH_READONLY, "vii/i18n.zep", 47 TSRMLS_CC);
+	zephir_array_fetch_string(&_7, &_6, SL("lang"), PH_NOISY | PH_READONLY, "vii/i18n.zep", 48 TSRMLS_CC);
 	ZEPHIR_INIT_VAR(&file);
 	ZEPHIR_CONCAT_VVS(&file, &_5, &_7, ".php");
 	if (!((zephir_file_exists(&file TSRMLS_CC) == SUCCESS))) {
@@ -197,9 +176,9 @@ PHP_METHOD(Vii_I18n, getMessage) {
 		object_init_ex(&_8$$4, vii_exceptions_filenotexistsexception_ce);
 		ZEPHIR_INIT_VAR(&_9$$4);
 		ZEPHIR_CONCAT_SVS(&_9$$4, "语言配置文件:", &file, "不存在");
-		ZEPHIR_CALL_METHOD(NULL, &_8$$4, "__construct", NULL, 4, &_9$$4);
+		ZEPHIR_CALL_METHOD(NULL, &_8$$4, "__construct", NULL, 3, &_9$$4);
 		zephir_check_call_status();
-		zephir_throw_exception_debug(&_8$$4, "vii/i18n.zep", 49 TSRMLS_CC);
+		zephir_throw_exception_debug(&_8$$4, "vii/i18n.zep", 50 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
 		return;
 	}
@@ -211,7 +190,7 @@ PHP_METHOD(Vii_I18n, getMessage) {
 	ZEPHIR_OBS_VAR(&_11);
 	zephir_read_property(&_11, this_ptr, SL("_messages"), PH_NOISY_CC);
 	if (Z_TYPE_P(&_11) != IS_ARRAY) {
-		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "语言配置文件必须返回为数组", "vii/i18n.zep", 53);
+		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "语言配置文件必须返回为数组", "vii/i18n.zep", 54);
 		return;
 	}
 	RETURN_THIS();
@@ -224,13 +203,8 @@ PHP_METHOD(Vii_I18n, getMessage) {
 PHP_METHOD(Vii_I18n, setOptions) {
 
 	zval *options = NULL, options_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&options_sub);
 
 	ZEPHIR_MM_GROW();
@@ -253,15 +227,10 @@ PHP_METHOD(Vii_I18n, setOptions) {
  */
 PHP_METHOD(Vii_I18n, getOptions) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_options");
+
+	RETURN_MEMBER(getThis(), "_options");
 
 }
 
@@ -274,17 +243,12 @@ PHP_METHOD(Vii_I18n, translate) {
 
 	zend_string *_4$$5;
 	zend_ulong _3$$5;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval value;
 	zval *strOrId_param = NULL, *value_param = NULL, message, _0, _1$$3, k$$5, v$$5, tmp$$5, *_2$$5, _5$$6;
 	zval strOrId;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&strOrId);
 	ZVAL_UNDEF(&message);
 	ZVAL_UNDEF(&_0);
@@ -298,11 +262,11 @@ PHP_METHOD(Vii_I18n, translate) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 1, &strOrId_param, &value_param);
 
-	if (unlikely(Z_TYPE_P(strOrId_param) != IS_STRING && Z_TYPE_P(strOrId_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(strOrId_param) != IS_STRING && Z_TYPE_P(strOrId_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'strOrId' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(strOrId_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(strOrId_param) == IS_STRING)) {
 		zephir_get_strval(&strOrId, strOrId_param);
 	} else {
 		ZEPHIR_INIT_VAR(&strOrId);
@@ -312,7 +276,7 @@ PHP_METHOD(Vii_I18n, translate) {
 		ZEPHIR_INIT_VAR(&value);
 		array_init(&value);
 	} else {
-	ZVAL_COPY_VALUE(&value, value_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&value, value_param);
 	}
 
 
@@ -320,14 +284,14 @@ PHP_METHOD(Vii_I18n, translate) {
 	if (zephir_array_isset(&_0, &strOrId)) {
 		zephir_read_property(&_1$$3, this_ptr, SL("_messages"), PH_NOISY_CC | PH_READONLY);
 		ZEPHIR_OBS_VAR(&message);
-		zephir_array_fetch(&message, &_1$$3, &strOrId, PH_NOISY, "vii/i18n.zep", 79 TSRMLS_CC);
+		zephir_array_fetch(&message, &_1$$3, &strOrId, PH_NOISY, "vii/i18n.zep", 80 TSRMLS_CC);
 	} else {
 		ZEPHIR_CPY_WRT(&message, &strOrId);
 	}
 	if (zephir_fast_count_int(&value TSRMLS_CC)) {
 		ZEPHIR_INIT_VAR(&tmp$$5);
 		array_init(&tmp$$5);
-		zephir_is_iterable(&value, 0, "vii/i18n.zep", 88);
+		zephir_is_iterable(&value, 0, "vii/i18n.zep", 89);
 		ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(&value), _3$$5, _4$$5, _2$$5)
 		{
 			ZEPHIR_INIT_NVAR(&k$$5);
@@ -344,15 +308,15 @@ PHP_METHOD(Vii_I18n, translate) {
 		} ZEND_HASH_FOREACH_END();
 		ZEPHIR_INIT_NVAR(&v$$5);
 		ZEPHIR_INIT_NVAR(&k$$5);
-		ZEPHIR_RETURN_CALL_FUNCTION("strtr", NULL, 21, &message, &tmp$$5);
+		ZEPHIR_RETURN_CALL_FUNCTION("strtr", NULL, 20, &message, &tmp$$5);
 		zephir_check_call_status();
 		RETURN_MM();
 	}
-	RETURN_CCTOR(message);
+	RETURN_CCTOR(&message);
 
 }
 
-static zend_object *zephir_init_properties_Vii_I18n(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_I18n(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _0, _1$$3;
 		ZVAL_UNDEF(&_0);

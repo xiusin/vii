@@ -20,7 +20,6 @@
 #include "kernel/concat.h"
 #include "kernel/array.h"
 #include "kernel/string.h"
-#include "kernel/hash.h"
 
 
 ZEPHIR_INIT_CLASS(Vii_Assets_Manager) {
@@ -38,15 +37,10 @@ ZEPHIR_INIT_CLASS(Vii_Assets_Manager) {
 
 PHP_METHOD(Vii_Assets_Manager, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *prefix = NULL, prefix_sub, _0, _1, _2, _3, _4;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&prefix_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -90,13 +84,8 @@ PHP_METHOD(Vii_Assets_Manager, setOptions) {
 
 	zval *options_param = NULL;
 	zval options;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&options);
 
 	ZEPHIR_MM_GROW();
@@ -112,29 +101,19 @@ PHP_METHOD(Vii_Assets_Manager, setOptions) {
 
 PHP_METHOD(Vii_Assets_Manager, getOptions) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "options");
+
+	RETURN_MEMBER(getThis(), "options");
 
 }
 
 PHP_METHOD(Vii_Assets_Manager, set) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *id, id_sub, *collection, collection_sub, _0, _1$$3, _2$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&id_sub);
 	ZVAL_UNDEF(&collection_sub);
 	ZVAL_UNDEF(&_0);
@@ -153,7 +132,7 @@ PHP_METHOD(Vii_Assets_Manager, set) {
 		object_init_ex(&_1$$3, vii_exceptions_assetsexception_ce);
 		ZEPHIR_INIT_VAR(&_2$$3);
 		ZEPHIR_CONCAT_SVS(&_2$$3, "the collection key ", id, " is exists");
-		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 4, &_2$$3);
+		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 3, &_2$$3);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(&_1$$3, "vii/assets/manager.zep", 27 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
@@ -166,15 +145,10 @@ PHP_METHOD(Vii_Assets_Manager, set) {
 
 PHP_METHOD(Vii_Assets_Manager, get) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *id, id_sub, _0, _3, _4, _1$$3, _2$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&id_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_3);
@@ -194,7 +168,7 @@ PHP_METHOD(Vii_Assets_Manager, get) {
 		object_init_ex(&_1$$3, vii_exceptions_assetsexception_ce);
 		ZEPHIR_INIT_VAR(&_2$$3);
 		ZEPHIR_CONCAT_SVS(&_2$$3, "the collection key ", id, " is not exists");
-		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 4, &_2$$3);
+		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 3, &_2$$3);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(&_1$$3, "vii/assets/manager.zep", 36 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
@@ -202,21 +176,16 @@ PHP_METHOD(Vii_Assets_Manager, get) {
 	}
 	zephir_read_property(&_3, this_ptr, SL("collection"), PH_NOISY_CC | PH_READONLY);
 	zephir_array_fetch(&_4, &_3, id, PH_NOISY | PH_READONLY, "vii/assets/manager.zep", 38 TSRMLS_CC);
-	RETURN_CTOR(_4);
+	RETURN_CTOR(&_4);
 
 }
 
 PHP_METHOD(Vii_Assets_Manager, addCss) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path, path_sub, *local = NULL, local_sub, __$true, _0, _1, _2, _3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&local_sub);
 	ZVAL_BOOL(&__$true, 1);
@@ -240,7 +209,7 @@ PHP_METHOD(Vii_Assets_Manager, addCss) {
 	object_init_ex(&_2, vii_assets_resources_ce);
 	ZEPHIR_INIT_VAR(&_3);
 	ZVAL_STRING(&_3, "css");
-	ZEPHIR_CALL_METHOD(NULL, &_2, "__construct", NULL, 23, &_3, path, local);
+	ZEPHIR_CALL_METHOD(NULL, &_2, "__construct", NULL, 22, &_3, path, local);
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(NULL, &_1, "add", NULL, 0, &_2);
 	zephir_check_call_status();
@@ -250,15 +219,10 @@ PHP_METHOD(Vii_Assets_Manager, addCss) {
 
 PHP_METHOD(Vii_Assets_Manager, addJs) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path, path_sub, *local = NULL, local_sub, __$true, _0, _1, _2, _3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&local_sub);
 	ZVAL_BOOL(&__$true, 1);
@@ -282,7 +246,7 @@ PHP_METHOD(Vii_Assets_Manager, addJs) {
 	object_init_ex(&_2, vii_assets_resources_ce);
 	ZEPHIR_INIT_VAR(&_3);
 	ZVAL_STRING(&_3, "js");
-	ZEPHIR_CALL_METHOD(NULL, &_2, "__construct", NULL, 23, &_3, path, local);
+	ZEPHIR_CALL_METHOD(NULL, &_2, "__construct", NULL, 22, &_3, path, local);
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(NULL, &_1, "add", NULL, 0, &_2);
 	zephir_check_call_status();
@@ -292,15 +256,10 @@ PHP_METHOD(Vii_Assets_Manager, addJs) {
 
 PHP_METHOD(Vii_Assets_Manager, addInlineCss) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *content, content_sub, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&content_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -320,15 +279,10 @@ PHP_METHOD(Vii_Assets_Manager, addInlineCss) {
 
 PHP_METHOD(Vii_Assets_Manager, addInlineJs) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *content, content_sub, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&content_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -348,15 +302,10 @@ PHP_METHOD(Vii_Assets_Manager, addInlineJs) {
 
 PHP_METHOD(Vii_Assets_Manager, addResource) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *resources, resources_sub, _0, _1, _2, _3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&resources_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -382,15 +331,10 @@ PHP_METHOD(Vii_Assets_Manager, addResource) {
 
 PHP_METHOD(Vii_Assets_Manager, collection) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *name, name_sub, _0, _2, _3, _1$$4;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&name_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_2);
@@ -419,20 +363,15 @@ PHP_METHOD(Vii_Assets_Manager, collection) {
 	}
 	zephir_read_property(&_2, this_ptr, SL("collection"), PH_NOISY_CC | PH_READONLY);
 	zephir_array_fetch(&_3, &_2, name, PH_NOISY | PH_READONLY, "vii/assets/manager.zep", 86 TSRMLS_CC);
-	RETURN_CTOR(_3);
+	RETURN_CTOR(&_3);
 
 }
 
 PHP_METHOD(Vii_Assets_Manager, hasCollection) {
 
 	zval *name, name_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&name_sub);
 	ZVAL_UNDEF(&_0);
 
@@ -448,14 +387,9 @@ PHP_METHOD(Vii_Assets_Manager, hasCollection) {
 PHP_METHOD(Vii_Assets_Manager, getCss) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -471,14 +405,9 @@ PHP_METHOD(Vii_Assets_Manager, getCss) {
 PHP_METHOD(Vii_Assets_Manager, getJs) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -494,15 +423,10 @@ PHP_METHOD(Vii_Assets_Manager, getJs) {
 PHP_METHOD(Vii_Assets_Manager, output) {
 
 	zend_bool _0, _1;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *collectionName = NULL, collectionName_sub, *type = NULL, type_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&collectionName_sub);
 	ZVAL_UNDEF(&type_sub);
 
@@ -544,15 +468,10 @@ PHP_METHOD(Vii_Assets_Manager, output) {
 PHP_METHOD(Vii_Assets_Manager, outputinline) {
 
 	zend_bool _0, _1;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *collectionName = NULL, collectionName_sub, *type = NULL, type_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&collectionName_sub);
 	ZVAL_UNDEF(&type_sub);
 
@@ -593,15 +512,10 @@ PHP_METHOD(Vii_Assets_Manager, outputinline) {
 
 PHP_METHOD(Vii_Assets_Manager, outputCss) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *collectionName = NULL, collectionName_sub, collection, v, prefix, res, _0, _1, *_2, _3$$3, _4$$3, _5$$3, _6$$3, _7$$3, _8$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&collectionName_sub);
 	ZVAL_UNDEF(&collection);
 	ZVAL_UNDEF(&v);
@@ -666,15 +580,10 @@ PHP_METHOD(Vii_Assets_Manager, outputCss) {
 
 PHP_METHOD(Vii_Assets_Manager, outputInlineCss) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *collectionName = NULL, collectionName_sub, v, collection, _0, res, _1, *_2, _3$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&collectionName_sub);
 	ZVAL_UNDEF(&v);
 	ZVAL_UNDEF(&collection);
@@ -724,15 +633,10 @@ PHP_METHOD(Vii_Assets_Manager, outputInlineCss) {
 
 PHP_METHOD(Vii_Assets_Manager, outputJs) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *collectionName = NULL, collectionName_sub, v, collection, _0, prefix, res, *_1, _2$$3, _3$$3, _4$$3, _5$$3, _6$$3, _7$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&collectionName_sub);
 	ZVAL_UNDEF(&v);
 	ZVAL_UNDEF(&collection);
@@ -795,15 +699,10 @@ PHP_METHOD(Vii_Assets_Manager, outputJs) {
 
 PHP_METHOD(Vii_Assets_Manager, outputInlineJs) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *collectionName = NULL, collectionName_sub, v, collection, _0, res, _1, *_2, _3$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&collectionName_sub);
 	ZVAL_UNDEF(&v);
 	ZVAL_UNDEF(&collection);
@@ -853,19 +752,14 @@ PHP_METHOD(Vii_Assets_Manager, outputInlineJs) {
 
 PHP_METHOD(Vii_Assets_Manager, getCollections) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "collection");
+
+	RETURN_MEMBER(getThis(), "collection");
 
 }
 
-static zend_object *zephir_init_properties_Vii_Assets_Manager(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_Assets_Manager(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _0, _2, _1$$3, _3$$4;
 		ZVAL_UNDEF(&_0);

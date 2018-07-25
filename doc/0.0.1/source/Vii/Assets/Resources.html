@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+
+<script src="../../../asset/static/prettify.js"></script>
+<script src="../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../asset/static/prettify.js"></script>
+                                    <script src="../../../asset/api_definition.js"></script>
+                    <script src="../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../index.html">Home</a></li>
+        
+                <li><a href="../../../classes.html">Classes</a></li>
+                <li><a href="../../../class/Vii/Assets/Resources.html">Vii\Assets\Resources</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../class/Vii/Assets/Resources.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../namespace/Vii.html">Vii</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Vii/Assets.html">Assets</a>
+        </span>
+                <h1 class="class-name">Resources</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii\Assets;
+
+use Vii\Exceptions\AssetsException;
+
+/**
+ * 资源对象
+ * Class Resources
+ * @package Slothful\Assets
+ */
+class Resources
+{
+
+    protected type;
+
+    protected path = "";
+
+    protected local = true;
+
+    /**
+     * Resources constructor.
+     * @param $type string
+     * @param $path string
+     * @param bool $local
+     * @demo new Resource();
+     */
+    public function __construct(type, path, local = true)
+    {
+        this->checkType(type);
+        this->setType(type)->setPath(path)->setLocal(local);
+    }
+
+    public function getType()
+    {
+        return this->type;
+    }
+
+    public function getPath()
+    {
+        return this->path;
+    }
+
+    public function getLocal()
+    {
+        return this->local;
+    }
+
+    public function setType(type)
+    {
+        this->checkType(type);
+        let this->type = type;
+        return $this;
+    }
+
+
+    public function setPath(path)
+    {
+        let this->path = path;
+        return this;
+    }
+
+
+    public function setLocal($local)
+    {
+        let this->local = local;
+        return this;
+    }
+
+    private function checkType(type){
+        if type != "js" && type!= "css" {
+            throw new AssetsException("the resource key $type is not support!");
+        }
+    }
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+
+<script src="../../../asset/static/prettify.js"></script>
+<script src="../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../asset/static/prettify.js"></script>
+                                    <script src="../../../asset/api_definition.js"></script>
+                    <script src="../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../index.html">Home</a></li>
+        
+                <li><a href="../../../classes.html">Classes</a></li>
+                <li><a >Vii\Mvc\View</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+    
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../source/Vii/Mvc/View.html">Source</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../namespace/Vii.html">Vii</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Vii/Mvc.html">Mvc</a>
+        </span>
+                <h1 class="class-name">View</h1>
+    </div>
+
+</div>
+
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+<ul class="method-summary-list">
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setEngines">setEngines</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$engines</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setContent">setContent</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$content</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-getContent">getContent</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setMainView">setMainView</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$mainView</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-getMainView">getMainView</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setLayoutsDir">setLayoutsDir</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$layoutsDir</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-getLayoutsDir">getLayoutsDir</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setPartialsDir">setPartialsDir</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$partialsDir</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-getPartialsDir">getPartialsDir</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setViewsDir">setViewsDir</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$viewsDir</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-getViewsDir">getViewsDir</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setFile">setFile</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$file</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-getFile">getFile</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setSilent">setSilent</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$silent</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setIoc">setIoc</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$_ioc</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-getIoc">getIoc</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-getEngines">getEngines</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-render">render</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$file</span>, <span class="param-data-type">array</span> <span class="variable param-name">$data</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-load">load</a></span>(<span class="param-data-type">string</span> <span class="variable param-name">$file</span>, <span class="param-data-type">array</span> <span class="variable param-name">$data</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-partial">partial</a></span>(<span class="param-data-type">string</span> <span class="variable param-name">$file</span>, <span class="param-data-type">array</span> <span class="variable param-name">$data</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-layout">layout</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$file</span>, <span class="param-data-type">array</span> <span class="variable param-name">$data</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setVar">setVar</a></span>(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$value</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setVars">setVars</a></span>(<span class="param-data-type">array</span> <span class="variable param-name">$vars</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-getVars">getVars</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-setLayout">setLayout</a></span>(<span class="param-data-type">string</span> <span class="variable param-name">$layout</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-__toString">__toString</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-zephir_init_properties_Vii_Mvc_View">zephir_init_properties_Vii_Mvc_View</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    </ul>
+
+<div class="hidden-anchor"  id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+<ul class="method-details-list">
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setEngines"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setEngines</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$engines</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setContent"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setContent</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$content</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-getContent"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">getContent</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setMainView"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setMainView</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$mainView</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-getMainView"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">getMainView</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setLayoutsDir"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setLayoutsDir</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$layoutsDir</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-getLayoutsDir"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">getLayoutsDir</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setPartialsDir"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setPartialsDir</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$partialsDir</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-getPartialsDir"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">getPartialsDir</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setViewsDir"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setViewsDir</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$viewsDir</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-getViewsDir"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">getViewsDir</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setFile"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setFile</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$file</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-getFile"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">getFile</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setSilent"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setSilent</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$silent</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setIoc"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setIoc</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$_ioc</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-getIoc"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">getIoc</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-getEngines"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">getEngines</span>()
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        获取注册的模板引擎                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-render"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">render</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$file</span>, <span class="param-data-type">array</span> <span class="variable param-name">$data</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        通过变量渲染模板                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-load"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">load</span>(<span class="param-data-type">string</span> <span class="variable param-name">$file</span>, <span class="param-data-type">array</span> <span class="variable param-name">$data</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        加载模板                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-partial"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">partial</span>(<span class="param-data-type">string</span> <span class="variable param-name">$file</span>, <span class="param-data-type">array</span> <span class="variable param-name">$data</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        加载片段                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-layout"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">layout</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$file</span>, <span class="param-data-type">array</span> <span class="variable param-name">$data</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        加载布局                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setVar"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setVar</span>(<span class="param-data-type">string</span> <span class="variable param-name">$name</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$value</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        设置模板变量                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setVars"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setVars</span>(<span class="param-data-type">array</span> <span class="variable param-name">$vars</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        一次设置多个变量                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-getVars"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">getVars</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-setLayout"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">setLayout</span>(<span class="param-data-type">string</span> <span class="variable param-name">$layout</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        设置布局文件                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-__toString"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">__toString</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-zephir_init_properties_Vii_Mvc_View"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-internal keyword">internal</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">zephir_init_properties_Vii_Mvc_View</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    </ul>                </div>
+            </div>
+        </div>
+    </body>
+</html>

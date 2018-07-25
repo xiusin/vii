@@ -14,7 +14,7 @@
 #define PHP_VII_VERSION     "0.0.1"
 #define PHP_VII_EXTNAME     "vii"
 #define PHP_VII_AUTHOR      ""
-#define PHP_VII_ZEPVERSION  "0.9.1a-dev"
+#define PHP_VII_ZEPVERSION  "0.10.10"
 #define PHP_VII_DESCRIPTION ""
 
 
@@ -52,14 +52,14 @@ ZEND_END_MODULE_GLOBALS(vii)
 ZEND_EXTERN_MODULE_GLOBALS(vii)
 
 #ifdef ZTS
-	#define ZEPHIR_GLOBAL(v) TSRMG(vii_globals_id, zend_vii_globals *, v)
+	#define ZEPHIR_GLOBAL(v) ZEND_MODULE_GLOBALS_ACCESSOR(vii, v)
 #else
 	#define ZEPHIR_GLOBAL(v) (vii_globals.v)
 #endif
 
 #ifdef ZTS
 	void ***tsrm_ls;
-	#define ZEPHIR_VGLOBAL ((zend_vii_globals *) (*((void ***) tsrm_ls))[TSRM_UNSHUFFLE_RSRC_ID(vii_globals_id)])
+	#define ZEPHIR_VGLOBAL ((zend_vii_globals *) (*((void ***) tsrm_get_ls_cache()))[TSRM_UNSHUFFLE_RSRC_ID(vii_globals_id)])
 #else
 	#define ZEPHIR_VGLOBAL &(vii_globals)
 #endif

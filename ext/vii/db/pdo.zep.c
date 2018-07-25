@@ -36,17 +36,12 @@ ZEPHIR_INIT_CLASS(Vii_Db_Pdo) {
 PHP_METHOD(Vii_Db_Pdo, __construct) {
 
 	zend_class_entry *_4$$4;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval options;
 	zval user, password;
 	zval *dsn, dsn_sub, *user_param = NULL, *password_param = NULL, *options_param = NULL, e, _0, _1, pdo$$4, _2$$4, _3$$4, _5$$5, _6$$5, _7$$5;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&dsn_sub);
 	ZVAL_UNDEF(&e);
 	ZVAL_UNDEF(&_0);
@@ -80,13 +75,13 @@ PHP_METHOD(Vii_Db_Pdo, __construct) {
 		ZEPHIR_INIT_VAR(&options);
 		array_init(&options);
 	} else {
-	ZVAL_COPY_VALUE(&options, options_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&options, options_param);
 	}
 
 
 	ZEPHIR_INIT_VAR(&_0);
 	ZVAL_STRING(&_0, "pdo");
-	ZEPHIR_CALL_FUNCTION(&_1, "extension_loaded", NULL, 31, &_0);
+	ZEPHIR_CALL_FUNCTION(&_1, "extension_loaded", NULL, 30, &_0);
 	zephir_check_call_status();
 	if (!(zephir_is_true(&_1))) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(zend_exception_get_default(TSRMLS_C), "Pdo扩展没有安装，无法使用数据库服务", "vii/db/pdo.zep", 9);
@@ -98,7 +93,7 @@ PHP_METHOD(Vii_Db_Pdo, __construct) {
 		ZEPHIR_INIT_VAR(&pdo$$4);
 		ZVAL_STRING(&pdo$$4, "Pdo");
 		ZEPHIR_INIT_VAR(&_2$$4);
-		zephir_fetch_safe_class(_3$$4, pdo$$4);
+		zephir_fetch_safe_class(&_3$$4, &pdo$$4);
 		_4$$4 = zephir_fetch_class_str_ex(Z_STRVAL_P(&_3$$4), Z_STRLEN_P(&_3$$4), ZEND_FETCH_CLASS_AUTO);
 		object_init_ex(&_2$$4, _4$$4);
 		ZEPHIR_CALL_METHOD(NULL, &_2$$4, "__construct", NULL, 0, dsn, &user, &password, &options);
@@ -108,10 +103,12 @@ PHP_METHOD(Vii_Db_Pdo, __construct) {
 	try_end_1:
 
 	if (EG(exception)) {
-		ZVAL_OBJ(&e, EG(exception));
-		Z_ADDREF_P(&e);
-		if (zephir_instance_of_ev(&e, php_pdo_get_exception() TSRMLS_CC)) {
+		ZEPHIR_INIT_NVAR(&_0);
+		ZVAL_OBJ(&_0, EG(exception));
+		Z_ADDREF_P(&_0);
+		if (zephir_instance_of_ev(&_0, php_pdo_get_exception() TSRMLS_CC)) {
 			zend_clear_exception(TSRMLS_C);
+			ZEPHIR_CPY_WRT(&e, &_0);
 			ZEPHIR_INIT_VAR(&_5$$5);
 			object_init_ex(&_5$$5, php_pdo_get_exception());
 			ZEPHIR_CALL_METHOD(&_6$$5, &e, "getmessage", NULL, 0);
@@ -132,16 +129,11 @@ PHP_METHOD(Vii_Db_Pdo, __construct) {
 PHP_METHOD(Vii_Db_Pdo, __call) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *method_param = NULL, *arguments = NULL, arguments_sub, __$null, _1;
 	zval method;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&method);
 	ZVAL_UNDEF(&arguments_sub);
 	ZVAL_NULL(&__$null);

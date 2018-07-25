@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a >Vii\FileSystem</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header clearfix">
+    
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../source/Vii/FileSystem.html">Source</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Vii.html">Vii</a>
+        </span>
+                <h1 class="class-name">FileSystem</h1>
+    </div>
+
+</div>
+
+
+<div class="hidden-anchor"  id="methods"></div>
+<div class="methods-summary standard-bandeau">Methods</div>
+<ul class="method-summary-list">
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-__construct">__construct</a></span>()
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-exception">exception</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-exists">exists</a></span>(<span class="param-data-type">string</span> <span class="variable param-name">$path</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-get">get</a></span>(<span class="param-data-type">string</span> <span class="variable param-name">$path</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-requireFile">requireFile</a></span>(<span class="param-data-type">string</span> <span class="variable param-name">$path</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-put">put</a></span>(<span class="param-data-type">string</span> <span class="variable param-name">$path</span>, <span class="param-data-type">string</span> <span class="variable param-name">$content</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$flag</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-prepend">prepend</a></span>(<span class="param-data-type">string</span> <span class="variable param-name">$path</span>, <span class="param-data-type">string</span> <span class="variable param-name">$content</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-delete">delete</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$paths</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-move">move</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$target</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-copy">copy</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$target</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-name">name</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-extension">extension</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-type">type</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-size">size</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-lastModified">lastModified</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    int                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-isDirectory">isDirectory</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$directory</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-isWritable">isWritable</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-isFile">isFile</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$file</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    bool                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-glob">glob</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$pattern</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$flags</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    array                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-files">files</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$directory</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    array                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-makeDirectory">makeDirectory</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$mode</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$recursive</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-copyDirectory">copyDirectory</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$directory</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$destination</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$options</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-deleteDirectory">deleteDirectory</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$directory</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$preserve</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="method-summary">
+        <div class="method-signature">
+            <span class="method-name"><a href="#method-details-cleanDirectory">cleanDirectory</a></span>(<span class="param-data-type">variable</span> <span class="variable param-name">$directory</span>)
+            <span class="method-return">
+                &nbsp;<strong>:</strong>&nbsp;
+                                    void
+                            </span>
+        </div>
+                    <div class="method-doc">
+                <div class="summary-text">
+                                    </div>
+            </div>
+            </div>
+</li>
+
+    </ul>
+
+<div class="hidden-anchor"  id="methods-details"></div>
+<div class="methods-summary standard-bandeau">Methods Details</div>
+<ul class="method-details-list">
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-__construct"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">__construct</span>()
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-exception"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-private keyword">private</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">exception</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-exists"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">exists</span>(<span class="param-data-type">string</span> <span class="variable param-name">$path</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-get"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">get</span>(<span class="param-data-type">string</span> <span class="variable param-name">$path</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-requireFile"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">requireFile</span>(<span class="param-data-type">string</span> <span class="variable param-name">$path</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-put"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">put</span>(<span class="param-data-type">string</span> <span class="variable param-name">$path</span>, <span class="param-data-type">string</span> <span class="variable param-name">$content</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$flag</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-prepend"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">prepend</span>(<span class="param-data-type">string</span> <span class="variable param-name">$path</span>, <span class="param-data-type">string</span> <span class="variable param-name">$content</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-delete"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">delete</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$paths</span>)
+            </div>
+            <div class="method-doc">
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-move"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">move</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$target</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        将一个文件移动到一个新的位置。                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-copy"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">copy</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$target</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        将一个文件复制到一个新的位置。                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-name"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">name</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        从文件路径提取文件名。                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-extension"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">extension</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        从文件路径提取文件扩展名。                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-type"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">type</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        获取给定文件的文件类型。                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-size"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">size</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        获取给定文件的文件大小。                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-lastModified"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">lastModified</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        获取文件的最后修改时间。                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-isDirectory"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">isDirectory</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$directory</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        确定给定的路径是否是一个目录。                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-isWritable"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">isWritable</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        确定路径目录是否可写                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-isFile"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">isFile</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$file</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        确定给定的路径是否是一个文件。                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-glob"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">glob</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$pattern</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$flags</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        Find path names matching a given pattern.                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-files"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">files</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$directory</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        获取目录中的所有文件的数组。                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-makeDirectory"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">makeDirectory</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$path</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$mode</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$recursive</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        Create a directory.                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-copyDirectory"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">copyDirectory</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$directory</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$destination</span>, <span class="param-data-type">variable</span> <span class="variable param-name">$options</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        将目录从一个位置复制到另一个位置。                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-deleteDirectory"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">deleteDirectory</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$directory</span>, <span class="param-data-type">bool</span> <span class="variable param-name">$preserve</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        递归删除目录。 目录本身可以选择保留                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    
+        
+<li class="class-method clearfix">
+    <div class="hidden-anchor" id="method-details-cleanDirectory"></div>
+    <div class="method-details">
+        <div class="method-details-details">
+            <div class="method-signature">
+                                    <span class="visibility-public keyword">public</span>
+                                <span class="keyword">function</span>&nbsp;<span class="method-name">cleanDirectory</span>(<span class="param-data-type">variable</span> <span class="variable param-name">$directory</span>)
+            </div>
+            <div class="method-doc">
+                                    <div class="summary">
+                                            </div>
+                    <div class="description">
+                        清空文件夹下所有的文件和文件夹                    </div>
+                            </div>
+        </div>
+    </div>
+</li>
+
+    </ul>                </div>
+            </div>
+        </div>
+    </body>
+</html>

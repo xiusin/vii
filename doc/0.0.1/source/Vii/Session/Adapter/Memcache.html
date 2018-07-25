@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
+
+<script src="../../../../asset/static/prettify.js"></script>
+<script src="../../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../../asset/static/prettify.js"></script>
+                                    <script src="../../../../asset/api_definition.js"></script>
+                    <script src="../../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../classes.html">Classes</a></li>
+                <li><a href="../../../../class/Vii/Session/Adapter/Memcache.html">Vii\Session\Adapter\Memcache</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../class/Vii/Session/Adapter/Memcache.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Vii.html">Vii</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Vii/Session.html">Session</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../namespace/Vii/Session/Adapter.html">Adapter</a>
+        </span>
+                <h1 class="class-name">Memcache</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii\Session\Adapter;
+use Vii\Session\NativeSession;
+use Vii\Exceptions\RunTimeException;
+class Memcache extends NativeSession implements \SessionHandlerInterface
+{
+    private _memcache;
+    private _maxlifetime = 3600;   //最大的有效时间
+    public function __construct(array! options = [])
+    {
+        if !extension_loaded("memcache") {
+            throw new RunTimeException("必须安装php-memcached扩展");
+        }
+        let this->_memcache = new \Memcache();
+        //一次性配置多台服务器
+        if isset options["servers"] {
+            this->addServers(options["servers"]);
+        }
+        //配置一台服务器
+        if isset options["server"] {
+            var server;
+            let server = options["server"];
+            if typeof server != "array" || !isset server["host"] || !isset server["port"] {
+                throw new RunTimeException("配置Session::Memcache参数server必须为数组并且包括host和port");
+            }
+            this->addServer(server["host"],server["port"]);
+        }
+        session_set_save_handler(
+			[this, "open"],
+			[this, "close"],
+			[this, "read"],
+			[this, "write"],
+			[this, "destroy"],
+			[this, "gc"]
+		);
+        parent::__construct(options);
+    }
+
+
+    public function addServer(string! ip,int port){
+        this->_memcache->addServer(ip,port);
+    }
+
+    /**
+     * 一次性添加多台服务器
+     */
+    public function addServers(array! servers){
+        var server = [];
+        for _,server in servers {
+            this->_memcache->addServer(server["host"],server["port"]);
+        }
+    }
+
+    public function open(string save_path , string session_name){
+        return true;
+    }
+
+    public function read(string! session_id){
+        return (string) this->_memcache->get(session_id);
+    }
+
+    public function write(string! session_id,string! session_data){
+        //每次自动写入的时候覆盖之前的值
+        this->_memcache->set(session_id,session_data,false,this->_maxlifetime);
+    }
+
+    public function destroy(string session_id = null){
+        var sessionid;
+        if !session_id {
+            let sessionid = this->getId();
+        }else{
+            let sessionid = session_id;
+        }
+        //如果memcache内没有保存过值，则获取的值===false
+        if this->_memcache->get(sessionid) !== false {
+            this->_memcache->delete(sessionid);
+        }
+        return true;
+    }
+
+    public function gc(int maxlifetime){
+        return true;
+    }
+
+    public function close(){
+        return true;
+    }
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Vii/UrlManager.html">Vii\UrlManager</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Vii/UrlManager.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Vii.html">Vii</a>
+        </span>
+                <h1 class="class-name">UrlManager</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii;
+
+class UrlManager
+{
+    protected baseUri = "/";
+
+    protected staticBaseUri = "/";
+
+    protected basePath = "";
+
+    /**
+     * @param $baseUri string 所有地址的前缀不包含host
+     */
+    public function setBaseUri(baseUri)
+    {
+        let this->baseUri = baseUri;
+        return this;
+    }
+
+    /**
+     * @param $staticBaseUri string 设置静态文件的基本URI
+     */
+    public function setStaticBaseUri(staticBaseUri)
+    {
+        let this->staticBaseUri = staticBaseUri;
+        return this;
+    }
+
+    public function getBaseUri()
+    {
+        return this->baseUri;
+    }
+
+    public function getStaticBaseUri()
+    {
+        return this->staticBaseUri;
+    }
+
+
+    /**
+     * 设置本地文件绝对路径前缀
+     * @param $basePath string 本地文件的绝对路径前缀
+     * @return $this
+     */
+    public function setBasePath(basePath) ->string
+    {
+        let this->basePath = basePath;
+        return this;
+    }
+
+    public function getBasePath() -> string
+    {
+        return this->basePath;
+    }
+
+    /**
+     * 获取本地文件地址字符串
+     * @param $path string 本地文件字符串地址
+     */
+    public function path(path)
+    {
+        return trim(this->basePath) . path;
+    }
+
+    /**
+     * 获取静态文件网络资源地址
+     * @param $uri string|array 静态文件URI字符串
+     */
+    public function getStatic(uri) -> string
+    {
+        return this->staticBaseUri . uri;
+    }
+
+    /**
+     * 获取URI地址
+     * @param $uri  string 需要拼接的字符串
+     * @param array $params 其他额外参数
+     * @return string
+     */
+    public function get(uri,array params=[]) -> string
+    {
+        return this->baseUri . uri  . this->buildParams(params);
+    }
+
+    /**
+     * 组建参数字符串
+     * @param array $params 参数数组
+     * @return string
+     */
+    protected function buildParams(array params) -> string
+    {
+        if(empty(params)){
+            return "";
+        }
+        return "?" . http_build_query(params);
+    }
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

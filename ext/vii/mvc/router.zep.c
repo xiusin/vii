@@ -19,7 +19,6 @@
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
 #include "kernel/operators.h"
-#include "kernel/hash.h"
 #include "kernel/string.h"
 
 
@@ -69,13 +68,8 @@ ZEPHIR_INIT_CLASS(Vii_Mvc_Router) {
 PHP_METHOD(Vii_Mvc_Router, setIoc) {
 
 	zval *_ioc, _ioc_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_ioc_sub);
 
 	zephir_fetch_params(0, 1, 0, &_ioc);
@@ -89,15 +83,10 @@ PHP_METHOD(Vii_Mvc_Router, setIoc) {
 
 PHP_METHOD(Vii_Mvc_Router, getIoc) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "ioc");
+
+	RETURN_MEMBER(getThis(), "ioc");
 
 }
 
@@ -105,16 +94,11 @@ PHP_METHOD(Vii_Mvc_Router, __construct) {
 
 	zval _1$$3, _4$$3;
 	zephir_fcall_cache_entry *_3 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *hasDefaultRouter_param = NULL, _0$$3, _2$$3;
 	zend_bool hasDefaultRouter;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0$$3);
 	ZVAL_UNDEF(&_2$$3);
 	ZVAL_UNDEF(&_1$$3);
@@ -126,7 +110,7 @@ PHP_METHOD(Vii_Mvc_Router, __construct) {
 	if (!hasDefaultRouter_param) {
 		hasDefaultRouter = 1;
 	} else {
-	if (unlikely(Z_TYPE_P(hasDefaultRouter_param) != IS_TRUE && Z_TYPE_P(hasDefaultRouter_param) != IS_FALSE)) {
+	if (UNEXPECTED(Z_TYPE_P(hasDefaultRouter_param) != IS_TRUE && Z_TYPE_P(hasDefaultRouter_param) != IS_FALSE)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'hasDefaultRouter' must be a bool") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
@@ -142,7 +126,7 @@ PHP_METHOD(Vii_Mvc_Router, __construct) {
 		add_assoc_long_ex(&_1$$3, SL("controller"), 1);
 		ZEPHIR_INIT_VAR(&_2$$3);
 		ZVAL_STRING(&_2$$3, "/([\\w0-9\\_\\-]+)[/]{0,1}");
-		ZEPHIR_CALL_METHOD(NULL, &_0$$3, "__construct", &_3, 104, &_2$$3, &_1$$3);
+		ZEPHIR_CALL_METHOD(NULL, &_0$$3, "__construct", &_3, 101, &_2$$3, &_1$$3);
 		zephir_check_call_status();
 		zephir_update_property_array_append(this_ptr, SL("routes"), &_0$$3 TSRMLS_CC);
 		ZEPHIR_INIT_NVAR(&_0$$3);
@@ -154,7 +138,7 @@ PHP_METHOD(Vii_Mvc_Router, __construct) {
 		add_assoc_long_ex(&_4$$3, SL("params"), 3);
 		ZEPHIR_INIT_NVAR(&_2$$3);
 		ZVAL_STRING(&_2$$3, "/([\\w0-9\\_\\-]+)/([\\w0-9\\.\\_]+)(/.*)*");
-		ZEPHIR_CALL_METHOD(NULL, &_0$$3, "__construct", &_3, 104, &_2$$3, &_4$$3);
+		ZEPHIR_CALL_METHOD(NULL, &_0$$3, "__construct", &_3, 101, &_2$$3, &_4$$3);
 		zephir_check_call_status();
 		zephir_update_property_array_append(this_ptr, SL("routes"), &_0$$3 TSRMLS_CC);
 	}
@@ -164,16 +148,11 @@ PHP_METHOD(Vii_Mvc_Router, __construct) {
 
 PHP_METHOD(Vii_Mvc_Router, add) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *pattren_param = NULL, *path, path_sub, _route;
 	zval pattren;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&pattren);
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&_route);
@@ -181,11 +160,11 @@ PHP_METHOD(Vii_Mvc_Router, add) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &pattren_param, &path);
 
-	if (unlikely(Z_TYPE_P(pattren_param) != IS_STRING && Z_TYPE_P(pattren_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(pattren_param) != IS_STRING && Z_TYPE_P(pattren_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'pattren' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(pattren_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(pattren_param) == IS_STRING)) {
 		zephir_get_strval(&pattren, pattren_param);
 	} else {
 		ZEPHIR_INIT_VAR(&pattren);
@@ -195,10 +174,10 @@ PHP_METHOD(Vii_Mvc_Router, add) {
 
 	ZEPHIR_INIT_VAR(&_route);
 	object_init_ex(&_route, vii_mvc_router_route_ce);
-	ZEPHIR_CALL_METHOD(NULL, &_route, "__construct", NULL, 104, &pattren, path);
+	ZEPHIR_CALL_METHOD(NULL, &_route, "__construct", NULL, 101, &pattren, path);
 	zephir_check_call_status();
 	zephir_update_property_array_append(this_ptr, SL("routes"), &_route TSRMLS_CC);
-	RETURN_CCTOR(_route);
+	RETURN_CCTOR(&_route);
 
 }
 
@@ -209,16 +188,11 @@ PHP_METHOD(Vii_Mvc_Router, handle) {
 	zval _8$$7;
 	zend_bool _6$$7, _9$$7, _18$$18;
 	zephir_fcall_cache_entry *_5 = NULL, *_10 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *url_param = NULL, __$true, __$false, v, paths, methods, matches, matchMethod, beforeMatch, pattren, _0, *_1, _24, _26, _28, _30, _32, _2$$4, _3$$3, _4$$8, _7$$7, k$$12, params$$12, *_11$$12, _14$$14, _15$$15, _16$$16, _17$$17, _19$$19, _20$$19, _21$$19, _22$$19, _23$$20, _25$$21, _27$$22, _29$$23, _31$$24, _33$$25;
 	zval url;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&url);
 	ZVAL_BOOL(&__$true, 1);
 	ZVAL_BOOL(&__$false, 0);
@@ -260,11 +234,11 @@ PHP_METHOD(Vii_Mvc_Router, handle) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &url_param);
 
-	if (unlikely(Z_TYPE_P(url_param) != IS_STRING && Z_TYPE_P(url_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(url_param) != IS_STRING && Z_TYPE_P(url_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'url' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(url_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(url_param) == IS_STRING)) {
 		zephir_get_strval(&url, url_param);
 	} else {
 		ZEPHIR_INIT_VAR(&url);
@@ -319,7 +293,7 @@ PHP_METHOD(Vii_Mvc_Router, handle) {
 				zephir_create_array(&_8$$7, 2, 0 TSRMLS_CC);
 				zephir_array_fast_append(&_8$$7, &url);
 				zephir_array_fast_append(&_8$$7, this_ptr);
-				ZEPHIR_CALL_USER_FUNC_ARRAY(_7$$7, &beforeMatch, &_8$$7);
+				ZEPHIR_CALL_USER_FUNC_ARRAY(&_7$$7, &beforeMatch, &_8$$7);
 				zephir_check_call_status();
 				_6$$7 = !zephir_is_true(&_7$$7);
 			}
@@ -331,7 +305,7 @@ PHP_METHOD(Vii_Mvc_Router, handle) {
 				_9$$7 = zephir_is_callable(&matchMethod TSRMLS_CC);
 			}
 			if (_9$$7) {
-				ZEPHIR_CALL_FUNCTION(NULL, "call_user_func_array", &_10, 105, &matchMethod);
+				ZEPHIR_CALL_FUNCTION(NULL, "call_user_func_array", &_10, 102, &matchMethod);
 				zephir_check_call_status();
 			}
 			zephir_update_property_zval(this_ptr, SL("matchedRoute"), &v);
@@ -458,16 +432,11 @@ PHP_METHOD(Vii_Mvc_Router, handle) {
 PHP_METHOD(Vii_Mvc_Router, addGet) {
 
 	zval _1;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *pattren_param = NULL, *path, path_sub, _0, _2;
 	zval pattren;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&pattren);
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&_0);
@@ -477,11 +446,11 @@ PHP_METHOD(Vii_Mvc_Router, addGet) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &pattren_param, &path);
 
-	if (unlikely(Z_TYPE_P(pattren_param) != IS_STRING && Z_TYPE_P(pattren_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(pattren_param) != IS_STRING && Z_TYPE_P(pattren_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'pattren' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(pattren_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(pattren_param) == IS_STRING)) {
 		zephir_get_strval(&pattren, pattren_param);
 	} else {
 		ZEPHIR_INIT_VAR(&pattren);
@@ -505,16 +474,11 @@ PHP_METHOD(Vii_Mvc_Router, addGet) {
 PHP_METHOD(Vii_Mvc_Router, addPost) {
 
 	zval _1;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *pattren_param = NULL, *path, path_sub, _0, _2;
 	zval pattren;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&pattren);
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&_0);
@@ -524,11 +488,11 @@ PHP_METHOD(Vii_Mvc_Router, addPost) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &pattren_param, &path);
 
-	if (unlikely(Z_TYPE_P(pattren_param) != IS_STRING && Z_TYPE_P(pattren_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(pattren_param) != IS_STRING && Z_TYPE_P(pattren_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'pattren' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(pattren_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(pattren_param) == IS_STRING)) {
 		zephir_get_strval(&pattren, pattren_param);
 	} else {
 		ZEPHIR_INIT_VAR(&pattren);
@@ -553,13 +517,8 @@ PHP_METHOD(Vii_Mvc_Router, setDefaultModule) {
 
 	zval *moduleName_param = NULL;
 	zval moduleName;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&moduleName);
 
 	ZEPHIR_MM_GROW();
@@ -575,15 +534,10 @@ PHP_METHOD(Vii_Mvc_Router, setDefaultModule) {
 
 PHP_METHOD(Vii_Mvc_Router, getDefaultModule) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "defaultModuleName");
+
+	RETURN_MEMBER(getThis(), "defaultModuleName");
 
 }
 
@@ -591,13 +545,8 @@ PHP_METHOD(Vii_Mvc_Router, setDefaultNamespace) {
 
 	zval *namespaceName_param = NULL;
 	zval namespaceName;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&namespaceName);
 
 	ZEPHIR_MM_GROW();
@@ -615,13 +564,8 @@ PHP_METHOD(Vii_Mvc_Router, setDefaultController) {
 
 	zval *controllerName_param = NULL;
 	zval controllerName;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&controllerName);
 
 	ZEPHIR_MM_GROW();
@@ -639,13 +583,8 @@ PHP_METHOD(Vii_Mvc_Router, setDefaultAction) {
 
 	zval *actionName_param = NULL;
 	zval actionName;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&actionName);
 
 	ZEPHIR_MM_GROW();
@@ -661,126 +600,81 @@ PHP_METHOD(Vii_Mvc_Router, setDefaultAction) {
 
 PHP_METHOD(Vii_Mvc_Router, getModuleName) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "moduleName");
+
+	RETURN_MEMBER(getThis(), "moduleName");
 
 }
 
 PHP_METHOD(Vii_Mvc_Router, getNamespaceName) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "namespaceName");
+
+	RETURN_MEMBER(getThis(), "namespaceName");
 
 }
 
 PHP_METHOD(Vii_Mvc_Router, getControllerName) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "controllerName");
+
+	RETURN_MEMBER(getThis(), "controllerName");
 
 }
 
 PHP_METHOD(Vii_Mvc_Router, getActionName) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "actionName");
+
+	RETURN_MEMBER(getThis(), "actionName");
 
 }
 
 PHP_METHOD(Vii_Mvc_Router, getParams) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_params");
+
+	RETURN_MEMBER(getThis(), "_params");
 
 }
 
 PHP_METHOD(Vii_Mvc_Router, wasMatched) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_wasMatched");
+
+	RETURN_MEMBER(getThis(), "_wasMatched");
 
 }
 
 PHP_METHOD(Vii_Mvc_Router, getRoutes) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "routes");
+
+	RETURN_MEMBER(getThis(), "routes");
 
 }
 
 PHP_METHOD(Vii_Mvc_Router, getMatchedRoute) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "matchedRoute");
+
+	RETURN_MEMBER(getThis(), "matchedRoute");
 
 }
 
 PHP_METHOD(Vii_Mvc_Router, setNotFound) {
 
 	zval *callback, callback_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&callback_sub);
 
 	zephir_fetch_params(0, 1, 0, &callback);
@@ -793,29 +687,19 @@ PHP_METHOD(Vii_Mvc_Router, setNotFound) {
 
 PHP_METHOD(Vii_Mvc_Router, getNotFound) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_notFound");
+
+	RETURN_MEMBER(getThis(), "_notFound");
 
 }
 
 PHP_METHOD(Vii_Mvc_Router, getMatches) {
 
 	zval _0, _1;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 
@@ -841,7 +725,7 @@ PHP_METHOD(Vii_Mvc_Router, getMatches) {
 
 }
 
-static zend_object *zephir_init_properties_Vii_Mvc_Router(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_Mvc_Router(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _0, _2, _1$$3, _3$$4;
 		ZVAL_UNDEF(&_0);

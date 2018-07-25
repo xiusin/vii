@@ -7,10 +7,6 @@
 
 #include <php.h>
 
-#if PHP_VERSION_ID < 50500
-#include <locale.h>
-#endif
-
 #include "php_ext.h"
 #include "vii.h"
 
@@ -112,22 +108,8 @@ PHP_INI_END()
 
 static PHP_MINIT_FUNCTION(vii)
 {
-#if PHP_VERSION_ID < 50500
-	char* old_lc_all = setlocale(LC_ALL, NULL);
-	if (old_lc_all) {
-		size_t len = strlen(old_lc_all);
-		char *tmp  = calloc(len+1, 1);
-		if (UNEXPECTED(!tmp)) {
-			return FAILURE;
-		}
-
-		memcpy(tmp, old_lc_all, len);
-		old_lc_all = tmp;
-	}
-
-	setlocale(LC_ALL, "C");
-#endif
 	REGISTER_INI_ENTRIES();
+	zephir_module_init();
 	ZEPHIR_INIT(Vii_Interfaces_IocInterface);
 	ZEPHIR_INIT(Vii_Interfaces_ConfigInterface);
 	ZEPHIR_INIT(Vii_Interfaces_SessionAdapterInterface);
@@ -204,18 +186,14 @@ static PHP_MINIT_FUNCTION(vii)
 	ZEPHIR_INIT(Vii_UrlManager);
 	ZEPHIR_INIT(vii_0__closure);
 	ZEPHIR_INIT(vii_1__closure);
-
-#if PHP_VERSION_ID < 50500
-	setlocale(LC_ALL, old_lc_all);
-	free(old_lc_all);
-#endif
+	
 	return SUCCESS;
 }
 
 #ifndef ZEPHIR_RELEASE
 static PHP_MSHUTDOWN_FUNCTION(vii)
 {
-
+	
 	zephir_deinitialize_memory(TSRMLS_C);
 	UNREGISTER_INI_ENTRIES();
 	return SUCCESS;
@@ -244,12 +222,20 @@ static void php_zephir_init_globals(zend_vii_globals *vii_globals TSRMLS_DC)
 	/* Static cache */
 	memset(vii_globals->scache, '\0', sizeof(zephir_fcall_cache_entry*) * ZEPHIR_MAX_CACHE_SLOTS);
 
+	
+	
+}
 
+/**
+ * Initialize globals only on each thread started
+ */
+static void php_zephir_init_module_globals(zend_vii_globals *vii_globals TSRMLS_DC)
+{
+	
 }
 
 static PHP_RINIT_FUNCTION(vii)
 {
-
 	zend_vii_globals *vii_globals_ptr;
 #ifdef ZTS
 	tsrm_ls = ts_resource(0);
@@ -257,24 +243,22 @@ static PHP_RINIT_FUNCTION(vii)
 	vii_globals_ptr = ZEPHIR_VGLOBAL;
 
 	php_zephir_init_globals(vii_globals_ptr TSRMLS_CC);
-	//zephir_init_interned_strings(TSRMLS_C);
-
 	zephir_initialize_memory(vii_globals_ptr TSRMLS_CC);
 
-	zephir_init_static_properties_Vii_Log_Driver(TSRMLS_C);
-	zephir_init_static_properties_Vii_Request(TSRMLS_C);
-
+		zephir_init_static_properties_Vii_Log_Driver(TSRMLS_C);
+		zephir_init_static_properties_Vii_Request(TSRMLS_C);
+	
 	return SUCCESS;
 }
 
 static PHP_RSHUTDOWN_FUNCTION(vii)
 {
-
 	
-
 	zephir_deinitialize_memory(TSRMLS_C);
 	return SUCCESS;
 }
+
+
 
 static PHP_MINFO_FUNCTION(vii)
 {
@@ -289,23 +273,24 @@ static PHP_MINFO_FUNCTION(vii)
 	php_info_print_table_row(2, "Build Date", __DATE__ " " __TIME__ );
 	php_info_print_table_row(2, "Powered by Zephir", "Version " PHP_VII_ZEPVERSION);
 	php_info_print_table_end();
-
+	
 	DISPLAY_INI_ENTRIES();
 }
 
 static PHP_GINIT_FUNCTION(vii)
 {
 	php_zephir_init_globals(vii_globals TSRMLS_CC);
+	php_zephir_init_module_globals(vii_globals TSRMLS_CC);
 }
 
 static PHP_GSHUTDOWN_FUNCTION(vii)
 {
-
+	
 }
 
 
 zend_function_entry php_vii_functions[] = {
-ZEND_FE_END
+	ZEND_FE_END
 
 };
 
@@ -328,7 +313,11 @@ zend_module_entry vii_module_entry = {
 	ZEND_MODULE_GLOBALS(vii),
 	PHP_GINIT(vii),
 	PHP_GSHUTDOWN(vii),
+#ifdef ZEPHIR_POST_REQUEST
+	PHP_PRSHUTDOWN(vii),
+#else
 	NULL,
+#endif
 	STANDARD_MODULE_PROPERTIES_EX
 };
 

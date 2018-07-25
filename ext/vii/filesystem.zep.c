@@ -21,7 +21,7 @@
 #include "kernel/file.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/require.h"
-#include "kernel/hash.h"
+#include "kernel/main.h"
 #include "ext/spl/spl_directory.h"
 
 
@@ -42,14 +42,9 @@ ZEPHIR_INIT_CLASS(Vii_FileSystem) {
 PHP_METHOD(Vii_FileSystem, __construct) {
 
 	zval _0, _1$$3;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1$$3);
 
@@ -59,9 +54,9 @@ PHP_METHOD(Vii_FileSystem, __construct) {
 	if (!(zephir_is_true(&_0))) {
 		ZEPHIR_INIT_VAR(&_1$$3);
 		object_init_ex(&_1$$3, vii_filesystem_ce);
-		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 67);
+		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 64);
 		zephir_check_call_status();
-		zephir_update_static_property_ce(vii_filesystem_ce, SL("_self"), &_1$$3);
+		zend_update_static_property(vii_filesystem_ce, ZEND_STRL("_self"), &_1$$3);
 	}
 	ZEPHIR_MM_RESTORE();
 
@@ -69,15 +64,10 @@ PHP_METHOD(Vii_FileSystem, __construct) {
 
 PHP_METHOD(Vii_FileSystem, exception) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path, path_sub, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -91,7 +81,7 @@ PHP_METHOD(Vii_FileSystem, exception) {
 	object_init_ex(&_0, vii_exceptions_filenotexistsexception_ce);
 	ZEPHIR_INIT_VAR(&_1);
 	ZEPHIR_CONCAT_SVS(&_1, "file ", path, " is not exists");
-	ZEPHIR_CALL_METHOD(NULL, &_0, "__construct", NULL, 4, &_1);
+	ZEPHIR_CALL_METHOD(NULL, &_0, "__construct", NULL, 3, &_1);
 	zephir_check_call_status();
 	zephir_throw_exception_debug(&_0, "vii/filesystem.zep", 20 TSRMLS_CC);
 	ZEPHIR_MM_RESTORE();
@@ -103,23 +93,18 @@ PHP_METHOD(Vii_FileSystem, exists) {
 
 	zval *path_param = NULL;
 	zval path;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &path_param);
 
-	if (unlikely(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(path_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(path_param) == IS_STRING)) {
 		zephir_get_strval(&path, path_param);
 	} else {
 		ZEPHIR_INIT_VAR(&path);
@@ -133,27 +118,22 @@ PHP_METHOD(Vii_FileSystem, exists) {
 
 PHP_METHOD(Vii_FileSystem, get) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path_param = NULL, _0;
 	zval path;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path);
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &path_param);
 
-	if (unlikely(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(path_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(path_param) == IS_STRING)) {
 		zephir_get_strval(&path, path_param);
 	} else {
 		ZEPHIR_INIT_VAR(&path);
@@ -167,7 +147,7 @@ PHP_METHOD(Vii_FileSystem, get) {
 		zephir_file_get_contents(return_value, &path TSRMLS_CC);
 		RETURN_MM();
 	}
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "exception", NULL, 68, &path);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "exception", NULL, 65, &path);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -175,16 +155,11 @@ PHP_METHOD(Vii_FileSystem, get) {
 
 PHP_METHOD(Vii_FileSystem, requireFile) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path_param = NULL, _0, _1$$3;
 	zval path;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1$$3);
@@ -192,11 +167,11 @@ PHP_METHOD(Vii_FileSystem, requireFile) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &path_param);
 
-	if (unlikely(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(path_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(path_param) == IS_STRING)) {
 		zephir_get_strval(&path, path_param);
 	} else {
 		ZEPHIR_INIT_VAR(&path);
@@ -211,9 +186,9 @@ PHP_METHOD(Vii_FileSystem, requireFile) {
 		if (zephir_require_zval_ret(&_1$$3, &path TSRMLS_CC) == FAILURE) {
 			RETURN_MM_NULL();
 		}
-		RETURN_CCTOR(_1$$3);
+		RETURN_CCTOR(&_1$$3);
 	}
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "exception", NULL, 68, &path);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "exception", NULL, 65, &path);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -221,16 +196,11 @@ PHP_METHOD(Vii_FileSystem, requireFile) {
 
 PHP_METHOD(Vii_FileSystem, put) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path_param = NULL, *content_param = NULL, *flag = NULL, flag_sub;
 	zval path, content;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path);
 	ZVAL_UNDEF(&content);
 	ZVAL_UNDEF(&flag_sub);
@@ -238,21 +208,21 @@ PHP_METHOD(Vii_FileSystem, put) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 1, &path_param, &content_param, &flag);
 
-	if (unlikely(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(path_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(path_param) == IS_STRING)) {
 		zephir_get_strval(&path, path_param);
 	} else {
 		ZEPHIR_INIT_VAR(&path);
 		ZVAL_EMPTY_STRING(&path);
 	}
-	if (unlikely(Z_TYPE_P(content_param) != IS_STRING && Z_TYPE_P(content_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(content_param) != IS_STRING && Z_TYPE_P(content_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'content' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(content_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(content_param) == IS_STRING)) {
 		zephir_get_strval(&content, content_param);
 	} else {
 		ZEPHIR_INIT_VAR(&content);
@@ -265,7 +235,7 @@ PHP_METHOD(Vii_FileSystem, put) {
 	}
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("file_put_contents", NULL, 69, &path, &content, flag);
+	ZEPHIR_RETURN_CALL_FUNCTION("file_put_contents", NULL, 66, &path, &content, flag);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -274,16 +244,11 @@ PHP_METHOD(Vii_FileSystem, put) {
 PHP_METHOD(Vii_FileSystem, prepend) {
 
 	zephir_fcall_cache_entry *_2 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path_param = NULL, *content_param = NULL, _0, _3, _4, _5, _1$$3;
 	zval path, content;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path);
 	ZVAL_UNDEF(&content);
 	ZVAL_UNDEF(&_0);
@@ -295,21 +260,21 @@ PHP_METHOD(Vii_FileSystem, prepend) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &path_param, &content_param);
 
-	if (unlikely(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(path_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(path_param) == IS_STRING)) {
 		zephir_get_strval(&path, path_param);
 	} else {
 		ZEPHIR_INIT_VAR(&path);
 		ZVAL_EMPTY_STRING(&path);
 	}
-	if (unlikely(Z_TYPE_P(content_param) != IS_STRING && Z_TYPE_P(content_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(content_param) != IS_STRING && Z_TYPE_P(content_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'content' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(content_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(content_param) == IS_STRING)) {
 		zephir_get_strval(&content, content_param);
 	} else {
 		ZEPHIR_INIT_VAR(&content);
@@ -341,16 +306,11 @@ PHP_METHOD(Vii_FileSystem, delete) {
 	zend_string *_3;
 	zend_ulong _2;
 	zend_bool success = 0;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_5 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
 	zval *paths = NULL, paths_sub, path, _0, *_1, _4$$4;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&paths_sub);
 	ZVAL_UNDEF(&path);
 	ZVAL_UNDEF(&_0);
@@ -364,8 +324,8 @@ PHP_METHOD(Vii_FileSystem, delete) {
 
 	success = 1;
 	if (Z_TYPE_P(paths) != IS_ARRAY) {
-		ZEPHIR_CALL_FUNCTION(paths, "func_get_args", NULL, 52);
-		zephir_check_call_status();
+		ZEPHIR_INIT_NVAR(paths);
+		zephir_get_args(paths);
 	}
 	ZEPHIR_INIT_VAR(&_0);
 	zephir_is_iterable(paths, 0, "vii/filesystem.zep", 65);
@@ -379,7 +339,7 @@ PHP_METHOD(Vii_FileSystem, delete) {
 		}
 		ZEPHIR_INIT_NVAR(&path);
 		ZVAL_COPY(&path, _1);
-		ZEPHIR_CALL_FUNCTION(&_4$$4, "unlink", &_5, 70, &path);
+		ZEPHIR_CALL_FUNCTION(&_4$$4, "unlink", &_5, 67, &path);
 		zephir_check_call_status();
 		if (!(zephir_is_true(&_4$$4))) {
 			success = 0;
@@ -400,15 +360,10 @@ PHP_METHOD(Vii_FileSystem, delete) {
  */
 PHP_METHOD(Vii_FileSystem, move) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path, path_sub, *target, target_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&target_sub);
 
@@ -417,7 +372,7 @@ PHP_METHOD(Vii_FileSystem, move) {
 
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("rename", NULL, 71, path, target);
+	ZEPHIR_RETURN_CALL_FUNCTION("rename", NULL, 68, path, target);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -432,15 +387,10 @@ PHP_METHOD(Vii_FileSystem, move) {
  */
 PHP_METHOD(Vii_FileSystem, copy) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path, path_sub, *target, target_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&target_sub);
 
@@ -449,7 +399,7 @@ PHP_METHOD(Vii_FileSystem, copy) {
 
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("copy", NULL, 72, path, target);
+	ZEPHIR_RETURN_CALL_FUNCTION("copy", NULL, 69, path, target);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -463,15 +413,10 @@ PHP_METHOD(Vii_FileSystem, copy) {
  */
 PHP_METHOD(Vii_FileSystem, name) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path, path_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&_0);
 
@@ -481,7 +426,7 @@ PHP_METHOD(Vii_FileSystem, name) {
 
 
 	ZVAL_LONG(&_0, 8);
-	ZEPHIR_RETURN_CALL_FUNCTION("pathinfo", NULL, 73, path, &_0);
+	ZEPHIR_RETURN_CALL_FUNCTION("pathinfo", NULL, 70, path, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -495,15 +440,10 @@ PHP_METHOD(Vii_FileSystem, name) {
  */
 PHP_METHOD(Vii_FileSystem, extension) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path, path_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&_0);
 
@@ -513,7 +453,7 @@ PHP_METHOD(Vii_FileSystem, extension) {
 
 
 	ZVAL_LONG(&_0, 4);
-	ZEPHIR_RETURN_CALL_FUNCTION("pathinfo", NULL, 73, path, &_0);
+	ZEPHIR_RETURN_CALL_FUNCTION("pathinfo", NULL, 70, path, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -527,15 +467,10 @@ PHP_METHOD(Vii_FileSystem, extension) {
  */
 PHP_METHOD(Vii_FileSystem, type) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path, path_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 
 	ZEPHIR_MM_GROW();
@@ -543,7 +478,7 @@ PHP_METHOD(Vii_FileSystem, type) {
 
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("filetype", NULL, 74, path);
+	ZEPHIR_RETURN_CALL_FUNCTION("filetype", NULL, 71, path);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -557,15 +492,10 @@ PHP_METHOD(Vii_FileSystem, type) {
  */
 PHP_METHOD(Vii_FileSystem, size) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path, path_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 
 	ZEPHIR_MM_GROW();
@@ -573,7 +503,7 @@ PHP_METHOD(Vii_FileSystem, size) {
 
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("filesize", NULL, 75, path);
+	ZEPHIR_RETURN_CALL_FUNCTION("filesize", NULL, 72, path);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -588,13 +518,8 @@ PHP_METHOD(Vii_FileSystem, size) {
 PHP_METHOD(Vii_FileSystem, lastModified) {
 
 	zval *path, path_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 
 	zephir_fetch_params(0, 1, 0, &path);
@@ -614,15 +539,10 @@ PHP_METHOD(Vii_FileSystem, lastModified) {
  */
 PHP_METHOD(Vii_FileSystem, isDirectory) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *directory, directory_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&directory_sub);
 
 	ZEPHIR_MM_GROW();
@@ -630,7 +550,7 @@ PHP_METHOD(Vii_FileSystem, isDirectory) {
 
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("is_dir", NULL, 76, directory);
+	ZEPHIR_RETURN_CALL_FUNCTION("is_dir", NULL, 73, directory);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -644,15 +564,10 @@ PHP_METHOD(Vii_FileSystem, isDirectory) {
  */
 PHP_METHOD(Vii_FileSystem, isWritable) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path, path_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 
 	ZEPHIR_MM_GROW();
@@ -660,7 +575,7 @@ PHP_METHOD(Vii_FileSystem, isWritable) {
 
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("is_writable", NULL, 77, path);
+	ZEPHIR_RETURN_CALL_FUNCTION("is_writable", NULL, 74, path);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -674,15 +589,10 @@ PHP_METHOD(Vii_FileSystem, isWritable) {
  */
 PHP_METHOD(Vii_FileSystem, isFile) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *file, file_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&file_sub);
 
 	ZEPHIR_MM_GROW();
@@ -690,7 +600,7 @@ PHP_METHOD(Vii_FileSystem, isFile) {
 
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("is_file", NULL, 78, file);
+	ZEPHIR_RETURN_CALL_FUNCTION("is_file", NULL, 75, file);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -705,15 +615,10 @@ PHP_METHOD(Vii_FileSystem, isFile) {
  */
 PHP_METHOD(Vii_FileSystem, glob) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *pattern, pattern_sub, *flags = NULL, flags_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&pattern_sub);
 	ZVAL_UNDEF(&flags_sub);
 
@@ -727,7 +632,7 @@ PHP_METHOD(Vii_FileSystem, glob) {
 	}
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("glob", NULL, 79, pattern, flags);
+	ZEPHIR_RETURN_CALL_FUNCTION("glob", NULL, 76, pattern, flags);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -741,15 +646,10 @@ PHP_METHOD(Vii_FileSystem, glob) {
  */
 PHP_METHOD(Vii_FileSystem, files) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *directory, directory_sub, glob, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&directory_sub);
 	ZVAL_UNDEF(&glob);
 	ZVAL_UNDEF(&_0);
@@ -762,7 +662,7 @@ PHP_METHOD(Vii_FileSystem, files) {
 
 	ZEPHIR_INIT_VAR(&_0);
 	ZEPHIR_CONCAT_VS(&_0, directory, "/*");
-	ZEPHIR_CALL_FUNCTION(&glob, "glob", NULL, 79, &_0);
+	ZEPHIR_CALL_FUNCTION(&glob, "glob", NULL, 76, &_0);
 	zephir_check_call_status();
 	if (!(zephir_is_true(&glob))) {
 		array_init(return_value);
@@ -771,7 +671,7 @@ PHP_METHOD(Vii_FileSystem, files) {
 	ZEPHIR_INIT_VAR(&_1);
 	ZEPHIR_INIT_NVAR(&_1);
 	zephir_create_closure_ex(&_1, NULL, vii_0__closure_ce, SL("__invoke"));
-	ZEPHIR_RETURN_CALL_FUNCTION("array_filter", NULL, 80, &glob, &_1);
+	ZEPHIR_RETURN_CALL_FUNCTION("array_filter", NULL, 77, &glob, &_1);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -786,15 +686,10 @@ PHP_METHOD(Vii_FileSystem, files) {
  */
 PHP_METHOD(Vii_FileSystem, makeDirectory) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *path, path_sub, *mode = NULL, mode_sub, *recursive = NULL, recursive_sub, __$false;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&mode_sub);
 	ZVAL_UNDEF(&recursive_sub);
@@ -814,7 +709,7 @@ PHP_METHOD(Vii_FileSystem, makeDirectory) {
 	}
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("mkdir", NULL, 81, path, mode, recursive);
+	ZEPHIR_RETURN_CALL_FUNCTION("mkdir", NULL, 78, path, mode, recursive);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -833,15 +728,10 @@ PHP_METHOD(Vii_FileSystem, copyDirectory) {
 	zend_string *_9;
 	zend_ulong _8;
 	zephir_fcall_cache_entry *_1 = NULL, *_13 = NULL, *_16 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *directory, directory_sub, *destination, destination_sub, *options = NULL, options_sub, __$null, _0, _2, _3, item, items, target, path, _6, *_7, _4$$4, _5$$4, _10$$5, _11$$5, _12$$6, _14$$8, _15$$8;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&directory_sub);
 	ZVAL_UNDEF(&destination_sub);
 	ZVAL_UNDEF(&options_sub);
@@ -896,7 +786,7 @@ PHP_METHOD(Vii_FileSystem, copyDirectory) {
 	}
 	ZEPHIR_INIT_VAR(&items);
 	object_init_ex(&items, spl_ce_FilesystemIterator);
-	ZEPHIR_CALL_METHOD(NULL, &items, "__construct", NULL, 82, directory, options);
+	ZEPHIR_CALL_METHOD(NULL, &items, "__construct", NULL, 79, directory, options);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_6);
 	zephir_is_iterable(&items, 0, "vii/filesystem.zep", 258);
@@ -919,7 +809,7 @@ PHP_METHOD(Vii_FileSystem, copyDirectory) {
 		if (zephir_is_true(&_11$$5)) {
 			ZEPHIR_CALL_METHOD(&path, &item, "getpathname", NULL, 0);
 			zephir_check_call_status();
-			ZEPHIR_CALL_METHOD(&_12$$6, this_ptr, "copydirectory", &_13, 83, &path, &target, options);
+			ZEPHIR_CALL_METHOD(&_12$$6, this_ptr, "copydirectory", &_13, 80, &path, &target, options);
 			zephir_check_call_status();
 			if (!(zephir_is_true(&_12$$6))) {
 				RETURN_MM_BOOL(0);
@@ -951,16 +841,11 @@ PHP_METHOD(Vii_FileSystem, deleteDirectory) {
 	zend_string *_4;
 	zend_ulong _3;
 	zephir_fcall_cache_entry *_7 = NULL, *_9 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zend_bool preserve;
 	zval *directory, directory_sub, *preserve_param = NULL, item, items, _0, _1, *_2, _5$$4, _6$$5, _8$$6;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&directory_sub);
 	ZVAL_UNDEF(&item);
 	ZVAL_UNDEF(&items);
@@ -987,7 +872,7 @@ PHP_METHOD(Vii_FileSystem, deleteDirectory) {
 	}
 	ZEPHIR_INIT_VAR(&items);
 	object_init_ex(&items, spl_ce_FilesystemIterator);
-	ZEPHIR_CALL_METHOD(NULL, &items, "__construct", NULL, 82, directory);
+	ZEPHIR_CALL_METHOD(NULL, &items, "__construct", NULL, 79, directory);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_1);
 	zephir_is_iterable(&items, 0, "vii/filesystem.zep", 281);
@@ -1006,7 +891,7 @@ PHP_METHOD(Vii_FileSystem, deleteDirectory) {
 		if (zephir_is_true(&_5$$4)) {
 			ZEPHIR_CALL_METHOD(&_6$$5, &item, "getpathname", NULL, 0);
 			zephir_check_call_status();
-			ZEPHIR_CALL_METHOD(NULL, this_ptr, "deletedirectory", &_7, 84, &_6$$5);
+			ZEPHIR_CALL_METHOD(NULL, this_ptr, "deletedirectory", &_7, 81, &_6$$5);
 			zephir_check_call_status();
 		} else {
 			ZEPHIR_CALL_METHOD(&_8$$6, &item, "getpathname", NULL, 0);
@@ -1018,7 +903,7 @@ PHP_METHOD(Vii_FileSystem, deleteDirectory) {
 	ZEPHIR_INIT_NVAR(&item);
 	ZEPHIR_INIT_NVAR(&_1);
 	if (!preserve) {
-		ZEPHIR_CALL_FUNCTION(NULL, "rmdir", NULL, 85, directory);
+		ZEPHIR_CALL_FUNCTION(NULL, "rmdir", NULL, 82, directory);
 		zephir_check_call_status();
 	}
 	RETURN_MM_BOOL(1);
@@ -1032,15 +917,10 @@ PHP_METHOD(Vii_FileSystem, deleteDirectory) {
  */
 PHP_METHOD(Vii_FileSystem, cleanDirectory) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *directory, directory_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&directory_sub);
 	ZVAL_UNDEF(&_0);
 

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Vii/Request.html">Vii\Request</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Vii/Request.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Vii.html">Vii</a>
+        </span>
+                <h1 class="class-name">Request</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">
+namespace Vii;
+
+use Vii\Exceptions\HttpException;
+use Vii\Interfaces\IocInterface;
+use Vii\Exceptions\RunTimeException;
+class Request implements IocInterface
+{
+    private method = "GET";
+    protected cookie;
+    private file;
+    //SERVER变量
+    private static server = [];
+
+    //构造函数
+    public function __construct()
+    {
+         let this->method = this->server("REQUEST_METHOD");
+         let this->file = _FILES;
+    }
+
+    public function setIoc(_ioc){
+        let this->cookie = _ioc->get("cookie");
+    }
+    public function getIoc(){
+      
+    }
+
+    //获取服务请求
+    private function server(key, _default = "")
+    {
+        return isset _SERVER[key] ? _SERVER[key] : _default;
+    }
+
+    //获取请求方式
+    public function getReferer()
+    {
+        return this->server("HTTP_REFERER");
+    }
+
+    //获取cookie
+    public function getCookie(key, _default = null)
+    {
+        return this->cookie->get(key, _default);
+    }
+
+    //设置cookie
+    public function setCookie(key, value, _time = "")
+    {
+        this->cookie->set(key, value, _time);
+        return this;
+    }
+
+    //获取请求方法
+    public function getMethod()
+    {
+        return this->method;
+    }
+
+    //获取闪存cookie
+    public function flashCookie(key, _default = "")
+    {
+        return this->cookie->flashGet(key, _default);
+    }
+
+    //获取客户机IP
+    public function clientIp()
+    {
+        var ip;
+        if getenv("HTTP_CLIENT_IP") {
+            let ip = getenv("HTTP_CLIENT_IP");
+        } elseif (getenv("HTTP_X_FORWARDED_FOR")) {
+            let ip = getenv("HTTP_X_FORWARDED_FOR");
+        } elseif (getenv("REMOTE_ADDR")) {
+            let ip = getenv("REMOTE_ADDR");
+        } else {
+            let ip = false;
+        }
+        return ip;
+    }
+
+    //获取请求时间
+    public function getRequestTime()
+    {
+        return this->server("REQUEST_TIME");
+    }
+    public function isweixin()
+    {
+        return false !== strpos(this->server("HTTP_USER_AGENT"), "MicroMessenger");
+    }
+
+    public function pathinfo()
+    {
+        return this->server("PATH_INFO");
+    }
+
+    public function getPost(key = "", def = "", filter = "")
+    {
+        return this->_get_post(key, def, filter, 1);
+    }
+
+    public function get(key = "", def = "", filter = "")
+    {
+        return this->_get_post(key, def, filter, 0);
+    }
+
+    protected function _get_post(key = "", def = "", filter = "", type)
+    {
+        var data;
+        if type == 0 {
+            let data = _GET;
+        }else{
+            let data =  _POST;
+        }
+        if empty(key) {
+            return data;
+        }
+        if key {
+            if isset data[key] {
+                if !Empty filter {
+                    if !is_callable(filter) {
+                        throw new RunTimeException(filter . " can not callable");
+                    }
+                    return {filter}(data[key]);
+                } else {
+                    return data[key];
+                }
+            } else {
+                return def;
+            }
+        }
+    }
+
+    public function hasFiles()
+    {
+        if this->file && count(this->file) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getUploadedFiles(only_success = false)
+    {
+        var files = [],v;
+        for v in this->file  {
+            if only_success && v["error"] != "" {
+                continue;
+            }
+            let files[] = new UploadFileInfo(v);
+        }
+        return files;
+    }
+
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

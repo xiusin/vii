@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+
+<script src="../../../asset/static/prettify.js"></script>
+<script src="../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../asset/static/prettify.js"></script>
+                                    <script src="../../../asset/api_definition.js"></script>
+                    <script src="../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../index.html">Home</a></li>
+        
+                <li><a href="../../../classes.html">Classes</a></li>
+                <li><a href="../../../class/Vii/Log/Driver.html">Vii\Log\Driver</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../class/Vii/Log/Driver.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../namespace/Vii.html">Vii</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Vii/Log.html">Log</a>
+        </span>
+                <h1 class="class-name">Driver</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii\Log;
+
+abstract class Driver
+{
+    public static _recordLevel = [];
+    public static _enable = true;
+    public static _logFileSize = 1;
+
+    //设置日志记录级别
+    public function setRecordLevel(array! recordLevel = []){
+        let Driver::_recordLevel = recordLevel;
+    }
+
+    //禁用日志记录
+    public function disable(){
+        let Driver::_enable = false;
+    }
+
+    //设置日志文件分隔尺寸 单位 MB
+    public function setLogFileSize(int _size = 1){
+        let Driver::_logFileSize = _size;
+    }
+
+    //派生类必须实现的方法
+    public function log(string! logLevel , string! message,array placeholders = []) -> void;
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

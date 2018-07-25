@@ -27,15 +27,10 @@ ZEPHIR_INIT_CLASS(vii_0__closure) {
 
 PHP_METHOD(vii_0__closure, __invoke) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *file, file_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&file_sub);
 	ZVAL_UNDEF(&_0);
 
@@ -44,7 +39,7 @@ PHP_METHOD(vii_0__closure, __invoke) {
 
 
 
-	ZEPHIR_CALL_FUNCTION(&_0, "filetype", NULL, 74, file);
+	ZEPHIR_CALL_FUNCTION(&_0, "filetype", NULL, 71, file);
 	zephir_check_call_status();
 	RETURN_MM_BOOL(ZEPHIR_IS_STRING(&_0, "file"));
 

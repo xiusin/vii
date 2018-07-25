@@ -47,15 +47,10 @@ ZEPHIR_INIT_CLASS(Vii_Assets_Resources) {
  */
 PHP_METHOD(Vii_Assets_Resources, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *type, type_sub, *path, path_sub, *local = NULL, local_sub, __$true, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&type_sub);
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&local_sub);
@@ -72,7 +67,7 @@ PHP_METHOD(Vii_Assets_Resources, __construct) {
 	}
 
 
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "checktype", NULL, 25, type);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "checktype", NULL, 24, type);
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(&_0, this_ptr, "settype", NULL, 0, type);
 	zephir_check_call_status();
@@ -86,57 +81,37 @@ PHP_METHOD(Vii_Assets_Resources, __construct) {
 
 PHP_METHOD(Vii_Assets_Resources, getType) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "type");
+
+	RETURN_MEMBER(getThis(), "type");
 
 }
 
 PHP_METHOD(Vii_Assets_Resources, getPath) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "path");
+
+	RETURN_MEMBER(getThis(), "path");
 
 }
 
 PHP_METHOD(Vii_Assets_Resources, getLocal) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "local");
+
+	RETURN_MEMBER(getThis(), "local");
 
 }
 
 PHP_METHOD(Vii_Assets_Resources, setType) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *type, type_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&type_sub);
 
 	ZEPHIR_MM_GROW();
@@ -144,7 +119,7 @@ PHP_METHOD(Vii_Assets_Resources, setType) {
 
 
 
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "checktype", NULL, 25, type);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "checktype", NULL, 24, type);
 	zephir_check_call_status();
 	zephir_update_property_zval(this_ptr, SL("type"), type);
 	RETURN_THIS();
@@ -154,13 +129,8 @@ PHP_METHOD(Vii_Assets_Resources, setType) {
 PHP_METHOD(Vii_Assets_Resources, setPath) {
 
 	zval *path, path_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 
 	zephir_fetch_params(0, 1, 0, &path);
@@ -175,13 +145,8 @@ PHP_METHOD(Vii_Assets_Resources, setPath) {
 PHP_METHOD(Vii_Assets_Resources, setLocal) {
 
 	zval *local, local_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&local_sub);
 
 	zephir_fetch_params(0, 1, 0, &local);
@@ -197,13 +162,8 @@ PHP_METHOD(Vii_Assets_Resources, checkType) {
 
 	zend_bool _0;
 	zval *type, type_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&type_sub);
 
 	zephir_fetch_params(0, 1, 0, &type);

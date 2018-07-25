@@ -10,7 +10,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _js);
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _css);
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _foreach);
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _list);
-static zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Tag(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Tag(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_mvc_view_engine_tiny_tag__php, 0, 0, 2)
 	ZEND_ARG_INFO(0, params)

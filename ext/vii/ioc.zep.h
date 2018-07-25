@@ -19,7 +19,7 @@ PHP_METHOD(Vii_Ioc, offsetUnset);
 PHP_METHOD(Vii_Ioc, setIoc);
 PHP_METHOD(Vii_Ioc, getIoc);
 PHP_METHOD(Vii_Ioc, count);
-static zend_object *zephir_init_properties_Vii_Ioc(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_Ioc(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_ioc_set, 0, 0, 2)
 	ZEND_ARG_INFO(0, name)

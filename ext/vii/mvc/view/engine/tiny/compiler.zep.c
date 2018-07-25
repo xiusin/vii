@@ -18,7 +18,6 @@
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
 #include "kernel/operators.h"
-#include "kernel/hash.h"
 #include "kernel/string.h"
 #include "kernel/concat.h"
 #include "kernel/array.h"
@@ -54,13 +53,8 @@ ZEPHIR_INIT_CLASS(Vii_Mvc_View_Engine_Tiny_Compiler) {
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, __construct) {
 
 	zval *view, view_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&view_sub);
 
 	zephir_fetch_params(0, 1, 0, &view);
@@ -76,16 +70,11 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, __construct) {
  */
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, compile) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *content_param = NULL, _0, _1, _2, _3;
 	zval content;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&content);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -95,11 +84,11 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, compile) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &content_param);
 
-	if (unlikely(Z_TYPE_P(content_param) != IS_STRING && Z_TYPE_P(content_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(content_param) != IS_STRING && Z_TYPE_P(content_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'content' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(content_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(content_param) == IS_STRING)) {
 		zephir_get_strval(&content, content_param);
 	} else {
 		ZEPHIR_INIT_VAR(&content);
@@ -127,15 +116,10 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, compile) {
  */
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, getContent) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "content");
+
+	RETURN_MEMBER(getThis(), "content");
 
 }
 
@@ -146,22 +130,18 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, setVarPath) {
 
 	zval *varpath_param = NULL;
 	zval varpath;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&varpath);
 
-	zephir_fetch_params(0, 1, 0, &varpath_param);
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &varpath_param);
 
-	ZVAL_COPY_VALUE(&varpath, varpath_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&varpath, varpath_param);
 
 
 	zephir_update_property_zval(this_ptr, SL("varPath"), &varpath);
-	RETURN_THISW();
+	RETURN_THIS();
 
 }
 
@@ -173,13 +153,8 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, parseVarPath) {
 	zend_string *_3;
 	zend_ulong _2;
 	zval key, value, _0, *_1, _4$$3, _5$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&key);
 	ZVAL_UNDEF(&value);
 	ZVAL_UNDEF(&_0);
@@ -215,21 +190,18 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, setTagLibarys) {
 
 	zval *taglibarys_param = NULL;
 	zval taglibarys;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&taglibarys);
 
-	zephir_fetch_params(0, 1, 0, &taglibarys_param);
+	ZEPHIR_MM_GROW();
+	zephir_fetch_params(1, 1, 0, &taglibarys_param);
 
-	ZVAL_COPY_VALUE(&taglibarys, taglibarys_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&taglibarys, taglibarys_param);
 
 
 	zephir_update_property_zval(this_ptr, SL("taglibarys"), &taglibarys);
+	ZEPHIR_MM_RESTORE();
 
 }
 
@@ -241,14 +213,9 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, parseTags) {
 	zend_string *_6;
 	zend_ulong _5;
 	zval tagHandler, v, _0, _2, _3, *_4, _1$$3, _7$$4, _8$$4;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&tagHandler);
 	ZVAL_UNDEF(&v);
 	ZVAL_UNDEF(&_0);
@@ -299,14 +266,9 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, parseTags) {
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, parseVar) {
 
 	zval preg, _0, _1, _2, _3, _4, _5, _6, _7, _8;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&preg);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -328,7 +290,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, parseVar) {
 	ZEPHIR_INIT_NVAR(&_2);
 	zephir_create_closure_ex(&_2, NULL, vii_1__closure_ce, SL("__invoke"));
 	zephir_read_property(&_3, this_ptr, SL("content"), PH_NOISY_CC | PH_READONLY);
-	ZEPHIR_CALL_FUNCTION(&_4, "preg_replace_callback", NULL, 16, &preg, &_2, &_3);
+	ZEPHIR_CALL_FUNCTION(&_4, "preg_replace_callback", NULL, 15, &preg, &_2, &_3);
 	zephir_check_call_status();
 	zephir_update_property_zval(this_ptr, SL("content"), &_4);
 	ZEPHIR_INIT_VAR(&_5);
@@ -347,14 +309,9 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, parsePartial) {
 
 	zval _2;
 	zval preg, _0, _1, _3, _4, _5;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&preg);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -376,7 +333,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, parsePartial) {
 	ZVAL_STRING(&_3, "_partial");
 	zephir_array_fast_append(&_2, &_3);
 	zephir_read_property(&_4, this_ptr, SL("content"), PH_NOISY_CC | PH_READONLY);
-	ZEPHIR_CALL_FUNCTION(&_5, "preg_replace_callback", NULL, 16, &preg, &_2, &_4);
+	ZEPHIR_CALL_FUNCTION(&_5, "preg_replace_callback", NULL, 15, &preg, &_2, &_4);
 	zephir_check_call_status();
 	zephir_update_property_zval(this_ptr, SL("content"), &_5);
 	RETURN_THIS();
@@ -386,16 +343,11 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, parsePartial) {
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, _partial) {
 
 	zend_bool _1;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *metchs_param = NULL, _0, _2, _3, _4;
 	zval metchs;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&metchs);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_2);
@@ -405,7 +357,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, _partial) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &metchs_param);
 
-	ZVAL_COPY_VALUE(&metchs, metchs_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&metchs, metchs_param);
 
 
 	zephir_array_fetch_long(&_0, &metchs, 0, PH_NOISY | PH_READONLY, "vii/mvc/view/engine/tiny/compiler.zep", 136 TSRMLS_CC);
@@ -425,7 +377,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, _partial) {
 
 }
 
-static zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Compiler(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Compiler(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _0, _2, _4, _6, _1$$3, _3$$4, _5$$5, _7$$6;
 		ZVAL_UNDEF(&_0);

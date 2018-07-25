@@ -12,7 +12,6 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
-#include "kernel/hash.h"
 #include "kernel/memory.h"
 #include "kernel/fcall.h"
 #include "kernel/object.h"
@@ -38,16 +37,11 @@ PHP_METHOD(Vii_Config, __construct) {
 	zend_string *_2;
 	zend_ulong _1;
 	zephir_fcall_cache_entry *_3 = NULL, *_5 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *config_param = NULL, key, value, *_0, _4$$5;
 	zval config;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&config);
 	ZVAL_UNDEF(&key);
 	ZVAL_UNDEF(&value);
@@ -56,7 +50,7 @@ PHP_METHOD(Vii_Config, __construct) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &config_param);
 
-	ZVAL_COPY_VALUE(&config, config_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&config, config_param);
 
 
 	zephir_is_iterable(&config, 0, "vii/config.zep", 18);
@@ -93,16 +87,11 @@ PHP_METHOD(Vii_Config, merge) {
 	zend_bool _7$$3;
 	zend_string *_3;
 	zend_ulong _2;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_0 = NULL, *_5 = NULL;
 	zval *config, config_sub, key, value, configArr, *_1, _4$$3, _6$$3, _8$$4;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&config_sub);
 	ZVAL_UNDEF(&key);
 	ZVAL_UNDEF(&value);
@@ -116,7 +105,7 @@ PHP_METHOD(Vii_Config, merge) {
 
 
 
-	ZEPHIR_CALL_CE_STATIC(&configArr, vii_helper_ce, "obj2arr", &_0, 3, config);
+	ZEPHIR_CALL_CE_STATIC(&configArr, vii_helper_ce, "obj2arr", &_0, 0, config);
 	zephir_check_call_status();
 	zephir_is_iterable(&configArr, 0, "vii/config.zep", 32);
 	ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(&configArr), _2, _3, _1)
@@ -156,15 +145,10 @@ PHP_METHOD(Vii_Config, merge) {
 
 PHP_METHOD(Vii_Config, isValidKey) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *key, key_sub, _0, _1, _2, _3$$3, _4$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&key_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -187,7 +171,7 @@ PHP_METHOD(Vii_Config, isValidKey) {
 		object_init_ex(&_3$$3, vii_exceptions_configexception_ce);
 		ZEPHIR_INIT_VAR(&_4$$3);
 		ZEPHIR_CONCAT_SVS(&_4$$3, "the config key ", key, " is valid key , must string");
-		ZEPHIR_CALL_METHOD(NULL, &_3$$3, "__construct", NULL, 4, &_4$$3);
+		ZEPHIR_CALL_METHOD(NULL, &_3$$3, "__construct", NULL, 3, &_4$$3);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(&_3$$3, "vii/config.zep", 37 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
@@ -204,14 +188,9 @@ PHP_METHOD(Vii_Config, toArray) {
 	zend_ulong _2;
 	zval _0, _6$$4;
 	zval config, key, value, *_1, _5$$4;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&config);
 	ZVAL_UNDEF(&key);
 	ZVAL_UNDEF(&value);
@@ -247,7 +226,7 @@ PHP_METHOD(Vii_Config, toArray) {
 	} ZEND_HASH_FOREACH_END();
 	ZEPHIR_INIT_NVAR(&value);
 	ZEPHIR_INIT_NVAR(&key);
-	RETURN_CCTOR(config);
+	RETURN_CCTOR(&config);
 
 }
 

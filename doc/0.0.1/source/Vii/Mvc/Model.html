@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+
+<script src="../../../asset/static/prettify.js"></script>
+<script src="../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../asset/static/prettify.js"></script>
+                                    <script src="../../../asset/api_definition.js"></script>
+                    <script src="../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../index.html">Home</a></li>
+        
+                <li><a href="../../../classes.html">Classes</a></li>
+                <li><a href="../../../class/Vii/Mvc/Model.html">Vii\Mvc\Model</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../class/Vii/Mvc/Model.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../namespace/Vii.html">Vii</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Vii/Mvc.html">Mvc</a>
+        </span>
+                <h1 class="class-name">Model</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii\Mvc;
+
+use Vii\Ioc;
+class Model
+{
+    protected _source;
+    protected _db;
+    protected queryBuilder;
+    public function __construct(array! fields = []){
+        //分析表名称
+        if method_exists(this,"getSource"){
+            let this->_source = this->{"getSource"}();
+        }else{
+            var calledClass ;
+            let calledClass = get_called_class();
+            let this->_source = strtolower(substr(calledClass,strrpos(calledClass,"\\") + 1));
+        }
+        let this->_db = Ioc::getDefault()->get("db");   //获取操作对象
+        let this->queryBuilder = this->_db->createBuilder();
+    }
+
+    public function find(var options = []){
+        var res;
+        this->queryBuilder->from(this->_source);
+        if typeof options != "array" {
+            this->queryBuilder->where(options);
+        }
+        if isset options["conditions"] {
+            if isset options["bind"] {
+                let res = this->queryBuilder->parseWhereArr(options["conditions"],options["bind"]);
+            }else{
+                let res = this->queryBuilder->parseWhereArr(options["conditions"]);
+            }
+            this->queryBuilder->where(res[0],res[1]);
+        }
+        if isset options["limit"] {
+            this->queryBuilder->limit(options["limit"]);
+        }
+        if isset options["order"] {
+            this->queryBuilder->orderBy(options["order"]);
+        }
+        if isset options["columns"] {
+            this->queryBuilder->columns(options["columns"]);
+        }
+        return this->queryBuilder->select();    //返回结果
+    }
+
+    public function getLastQuery(){
+        return this->queryBuilder->getLastQuery();
+    }
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

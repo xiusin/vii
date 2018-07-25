@@ -26,13 +26,8 @@ ZEPHIR_INIT_CLASS(Vii_Mvc_Model_Resultset) {
 PHP_METHOD(Vii_Mvc_Model_Resultset, __construct) {
 
 	zval *model = NULL, model_sub, __$null;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&model_sub);
 	ZVAL_NULL(&__$null);
 

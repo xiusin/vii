@@ -34,18 +34,13 @@ ZEPHIR_INIT_CLASS(Vii_Mvc_Controller) {
 
 PHP_METHOD(Vii_Mvc_Controller, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 
 	ZEPHIR_MM_GROW();
 
-	if ((zephir_method_exists_ex(this_ptr, SS("initialize") TSRMLS_CC) == SUCCESS)) {
+	if ((zephir_method_exists_ex(this_ptr, SL("initialize") TSRMLS_CC) == SUCCESS)) {
 		ZEPHIR_CALL_METHOD(NULL, this_ptr, "initialize", NULL, 0);
 		zephir_check_call_status();
 	}
@@ -55,15 +50,10 @@ PHP_METHOD(Vii_Mvc_Controller, __construct) {
 
 PHP_METHOD(Vii_Mvc_Controller, display) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *module, module_sub, *controller, controller_sub, *action, action_sub, view, _0, _1, _2, _3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&module_sub);
 	ZVAL_UNDEF(&controller_sub);
 	ZVAL_UNDEF(&action_sub);
@@ -98,14 +88,9 @@ PHP_METHOD(Vii_Mvc_Controller, display) {
  */
 PHP_METHOD(Vii_Mvc_Controller, goHome) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 
 	ZEPHIR_MM_GROW();
 
@@ -120,40 +105,30 @@ PHP_METHOD(Vii_Mvc_Controller, goHome) {
  */
 PHP_METHOD(Vii_Mvc_Controller, redirect) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 
 
 }
 
 PHP_METHOD(Vii_Mvc_Controller, __get) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *name_param = NULL, _0;
 	zval name;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&name);
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &name_param);
 
-	if (unlikely(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(name_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(name_param) == IS_STRING)) {
 		zephir_get_strval(&name, name_param);
 	} else {
 		ZEPHIR_INIT_VAR(&name);
@@ -171,13 +146,8 @@ PHP_METHOD(Vii_Mvc_Controller, __get) {
 PHP_METHOD(Vii_Mvc_Controller, setIoc) {
 
 	zval *_ioc, _ioc_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_ioc_sub);
 
 	zephir_fetch_params(0, 1, 0, &_ioc);
@@ -191,15 +161,10 @@ PHP_METHOD(Vii_Mvc_Controller, setIoc) {
 
 PHP_METHOD(Vii_Mvc_Controller, getIoc) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "ioc");
+
+	RETURN_MEMBER(getThis(), "ioc");
 
 }
 

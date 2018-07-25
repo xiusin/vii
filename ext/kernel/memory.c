@@ -3,7 +3,7 @@
   +------------------------------------------------------------------------+
   | Zephir Language                                                        |
   +------------------------------------------------------------------------+
-  | Copyright (c) 2011-2015 Zephir Team (http://www.zephir-lang.com)       |
+  | Copyright (c) 2011-2017 Zephir Team (http://www.zephir-lang.com)       |
   +------------------------------------------------------------------------+
   | This source file is subject to the New BSD License that is bundled     |
   | with this package in the file docs/LICENSE.txt.                        |
@@ -40,7 +40,7 @@
  *
  * The whole memory frame is an open double-linked list which start is an
  * allocated empty frame that points to the real first frame. The start
- * memory frame is globally accesed using ZEPHIR_GLOBAL(start_frame)
+ * memory frame is globally accessed using ZEPHIR_GLOBAL(start_frame)
  *
  * Not all methods must grow/restore the zephir_memory_entry.
  */
@@ -90,6 +90,9 @@ static void zephir_memory_restore_stack_common(zend_zephir_globals_def *g)
 	zephir_memory_entry *prev, *active_memory;
 	zephir_symbol_table *active_symbol_table;
 	zval *ptr;
+#ifndef ZEPHIR_RELEASE
+	int show_backtrace = 0;
+#endif
 
 	active_memory = g->active_memory;
 	assert(active_memory != NULL);
@@ -98,12 +101,18 @@ static void zephir_memory_restore_stack_common(zend_zephir_globals_def *g)
 		/* Clean active symbol table */
 		if (g->active_symbol_table) {
 			active_symbol_table = g->active_symbol_table;
-			if (active_symbol_table->scope == active_memory) {
-				zend_hash_destroy(EG(current_execute_data)->symbol_table);
-				FREE_HASHTABLE(EG(current_execute_data)->symbol_table);
-				EG(current_execute_data)->symbol_table = active_symbol_table->symbol_table;
+			while (active_symbol_table && active_symbol_table->scope == active_memory) {
+				zend_execute_data *ex = EG(current_execute_data);
+
+				zend_hash_destroy(ex->symbol_table);
+				efree(ex->symbol_table);
+				ex->symbol_table = active_symbol_table->symbol_table;
+				zend_attach_symbol_table(ex);
+				zend_rebuild_symbol_table();
+
 				g->active_symbol_table = active_symbol_table->prev;
 				efree(active_symbol_table);
+				active_symbol_table = g->active_symbol_table;
 			}
 		}
 
@@ -124,22 +133,21 @@ static void zephir_memory_restore_stack_common(zend_zephir_globals_def *g)
 				zval *var = active_memory->addresses[i];
 				if (Z_TYPE_P(var) > IS_CALLABLE) {
 					fprintf(stderr, "%s: observed variable #%d (%p) has invalid type %u [%s]\n", __func__, (int)i, var, Z_TYPE_P(var), active_memory->func);
+					show_backtrace = 1;
 				}
 
-				if (!Z_REFCOUNTED_P(var)) continue;
+				if (!Z_REFCOUNTED_P(var)) {
+					continue;
+				}
 
 				if (Z_REFCOUNT_P(var) == 0) {
 					fprintf(stderr, "%s: observed variable #%d (%p) has 0 references, type=%d [%s]\n", __func__, (int)i, var, Z_TYPE_P(var), active_memory->func);
+					show_backtrace = 1;
 				}
 				else if (Z_REFCOUNT_P(var) >= 1000000) {
 					fprintf(stderr, "%s: observed variable #%d (%p) has too many references (%u), type=%d  [%s]\n", __func__, (int)i, var, Z_REFCOUNT_P(var), Z_TYPE_P(var), active_memory->func);
+					show_backtrace = 1;
 				}
-#if 0
-				/* Skip this check, PDO does return variables with is_ref = 1 and refcount = 1*/
-				else if (Z_REFCOUNT_PP(var) == 1 && Z_ISREF_PP(var)) {
-					fprintf(stderr, "%s: observed variable #%d (%p) is a reference with reference count = 1, type=%d  [%s]\n", __func__, (int)i, *var, Z_TYPE_PP(var), active_memory->func);
-				}
-#endif
 			}
 		}
 #endif
@@ -202,14 +210,19 @@ static void zephir_memory_restore_stack_common(zend_zephir_globals_def *g)
 			}
 		}
 	}
+
+	if (show_backtrace == 1) {
+		zephir_print_backtrace();
+	}
 #endif
+
 }
 
 #ifndef ZEPHIR_RELEASE
 /**
  * Finishes the current memory stack by releasing allocated memory
  */
-int ZEPHIR_FASTCALL zephir_memory_restore_stack(const char *func TSRMLS_DC)
+int ZEPHIR_FASTCALL zephir_memory_restore_stack(const char *func)
 {
 	zend_zephir_globals_def *zephir_globals_ptr = ZEPHIR_VGLOBAL;
 
@@ -238,7 +251,7 @@ void ZEPHIR_FASTCALL zephir_memory_grow_stack(const char *func)
 	zephir_memory_entry *entry;
 	zend_zephir_globals_def *g = ZEPHIR_VGLOBAL;
 	if (g->start_memory == NULL) {
-		zephir_initialize_memory(g TSRMLS_CC);
+		zephir_initialize_memory(g);
 	}
 	entry = zephir_memory_grow_stack_common(g);
 	entry->func = func;
@@ -329,7 +342,23 @@ void zephir_deinitialize_memory()
 		zephir_clean_restore_stack();
 	}
 
+//	{
+//		size_t i;
+//		for (i=0; i<ZEPHIR_MAX_CACHE_SLOTS; ++i) {
+//			zephir_fcall_cache_entry* e = zephir_globals_ptr->scache[i];
+//			if (e) {
+//				free(e);
+//			}
+//		}
+//		zephir_fcall_cache_entry *cache_entry_temp = NULL;
+//		ZEND_HASH_FOREACH_PTR(zephir_globals_ptr->fcache, cache_entry_temp) {
+//			free(cache_entry_temp);
+//		} ZEND_HASH_FOREACH_END();
+//	}
+
+#if 0
 	zend_hash_apply_with_arguments(zephir_globals_ptr->fcache, zephir_cleanup_fcache, 0);
+#endif
 
 #ifndef ZEPHIR_RELEASE
 	assert(zephir_globals_ptr->start_memory != NULL);
@@ -348,6 +377,79 @@ void zephir_deinitialize_memory()
 	zephir_globals_ptr->fcache = NULL;
 
 	zephir_globals_ptr->initialized = 0;
+}
+
+/**
+ * Creates a virtual symbol tables dynamically
+ */
+void zephir_create_symbol_table()
+{
+	zephir_symbol_table *entry;
+	zend_zephir_globals_def *gptr = ZEPHIR_VGLOBAL;
+	zend_execute_data *ex = EG(current_execute_data);
+	zend_array *symbol_table;
+
+#ifndef ZEPHIR_RELEASE
+	if (!gptr->active_memory) {
+		fprintf(stderr, "ERROR: Trying to create a virtual symbol table without a memory frame");
+		zephir_print_backtrace();
+		return;
+	}
+#endif
+
+	zend_rebuild_symbol_table();
+	zend_detach_symbol_table(ex);
+
+	entry               = (zephir_symbol_table*)emalloc(sizeof(zephir_symbol_table));
+	entry->scope        = gptr->active_memory;
+	entry->symbol_table = ex->symbol_table;
+	entry->prev         = gptr->active_symbol_table;
+
+	symbol_table = (zend_array*)emalloc(sizeof(zend_array));
+	zend_hash_init(symbol_table, 0, NULL, ZVAL_PTR_DTOR, 0);
+	zend_hash_real_init(symbol_table, 0);
+
+	ex->symbol_table          = symbol_table;
+	gptr->active_symbol_table = entry;
+}
+
+/**
+ * Exports symbols to the active symbol table
+ */
+int zephir_set_symbol(zval *key_name, zval *value)
+{
+	zend_array *symbol_table;
+
+	symbol_table = zend_rebuild_symbol_table();
+	if (!symbol_table) {
+		php_error_docref(NULL, E_WARNING, "Cannot find a valid symbol_table");
+		return FAILURE;
+	}
+
+	if (Z_TYPE_P(key_name) == IS_STRING) {
+		Z_TRY_ADDREF_P(value);
+		zend_hash_update(symbol_table, Z_STR_P(key_name), value);
+	}
+
+	return SUCCESS;
+}
+
+/**
+ * Exports a string symbol to the active symbol table
+ */
+int zephir_set_symbol_str(char *key_name, unsigned int key_length, zval *value)
+{
+	zend_array *symbol_table = zend_rebuild_symbol_table();
+
+	if (!symbol_table) {
+		php_error_docref(NULL, E_WARNING, "Cannot find a valid symbol_table");
+		return FAILURE;
+	}
+
+	Z_TRY_ADDREF_P(value);
+	zend_hash_str_update(symbol_table, key_name, key_length, value);
+
+	return SUCCESS;
 }
 
 /**
@@ -375,15 +477,9 @@ int zephir_cleanup_fcache(void *pDest, int num_args, va_list args, zend_hash_key
 #endif
 */
 
-#ifndef ZEPHIR_RELEASE
-	if ((*entry)->f->type != ZEND_INTERNAL_FUNCTION || (scope && scope->type != ZEND_INTERNAL_CLASS)) {
-		return ZEND_HASH_APPLY_REMOVE;
-	}
-#else
 	if ((*entry)->type != ZEND_INTERNAL_FUNCTION || (scope && scope->type != ZEND_INTERNAL_CLASS)) {
 		return ZEND_HASH_APPLY_REMOVE;
 	}
-#endif
 
 	if (scope && scope->type == ZEND_INTERNAL_CLASS && scope->info.internal.module->type != MODULE_PERSISTENT) {
 		return ZEND_HASH_APPLY_REMOVE;
@@ -462,7 +558,7 @@ void ZEPHIR_FASTCALL zephir_memory_alloc(zval *var)
 }
 
 /**
- * Cleans the zephir memory stack recursivery
+ * Cleans the zephir memory stack recursively
  */
 int ZEPHIR_FASTCALL zephir_clean_restore_stack() {
 
@@ -505,14 +601,22 @@ void zephir_dump_memory_frame(zephir_memory_entry *active_memory)
 			fprintf(stderr, "Obs var %lu (%p), type=%u, refcnted=%d, refcnt=%u; ", (ulong)i, var, Z_TYPE_P(var), Z_REFCOUNTED_P(var), Z_REFCOUNTED_P(var) ? Z_REFCOUNT_P(var) : 0);
 			switch (Z_TYPE_P(var)) {
 				case IS_NULL:     fprintf(stderr, "value=NULL\n"); break;
+#ifdef ZEPHIR_ENABLE_64BITS
+				case IS_LONG:     fprintf(stderr, "value=%lld\n", (long long int)Z_LVAL_P(var)); break;
+#else
 				case IS_LONG:     fprintf(stderr, "value=%ld\n", Z_LVAL_P(var)); break;
+#endif
 				case IS_DOUBLE:   fprintf(stderr, "value=%E\n", Z_DVAL_P(var)); break;
 				case IS_TRUE:     fprintf(stderr, "value=(bool)true\n"); break;
 				case IS_FALSE:    fprintf(stderr, "value=(bool)false\n"); break;
 				case IS_ARRAY:    fprintf(stderr, "value=array(%p), %d elements\n", Z_ARRVAL_P(var), zend_hash_num_elements(Z_ARRVAL_P(var))); break;
 				case IS_OBJECT:   fprintf(stderr, "value=object(%u), %s\n", Z_OBJ_HANDLE_P(var), ZSTR_VAL(Z_OBJCE_P(var)->name)); break;
-				case IS_STRING:   fprintf(stderr, "value=%*s (%p)\n", Z_STRLEN_P(var), Z_STRVAL_P(var), Z_STRVAL_P(var)); break;
+				case IS_STRING:   fprintf(stderr, "value=%s (%zu)\n", Z_STRVAL_P(var), Z_STRLEN_P(var)); break;
+#ifdef ZEPHIR_ENABLE_64BITS
+				case IS_RESOURCE: fprintf(stderr, "value=(resource)%lld\n", (long long int)Z_LVAL_P(var)); break;
+#else
 				case IS_RESOURCE: fprintf(stderr, "value=(resource)%ld\n", Z_LVAL_P(var)); break;
+#endif
 				default:          fprintf(stderr, "\n"); break;
 			}
 		}

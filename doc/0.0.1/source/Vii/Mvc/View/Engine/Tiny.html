@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../../../asset/static/prettify.css" />
+
+<script src="../../../../../asset/static/prettify.js"></script>
+<script src="../../../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../../../asset/static/prettify.js"></script>
+                                    <script src="../../../../../asset/api_definition.js"></script>
+                    <script src="../../../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../../classes.html">Classes</a></li>
+                <li><a href="../../../../../class/Vii/Mvc/View/Engine/Tiny.html">Vii\Mvc\View\Engine\Tiny</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../../class/Vii/Mvc/View/Engine/Tiny.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../../namespace/Vii.html">Vii</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../namespace/Vii/Mvc.html">Mvc</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../namespace/Vii/Mvc/View.html">View</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../namespace/Vii/Mvc/View/Engine.html">Engine</a>
+        </span>
+                <h1 class="class-name">Tiny</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii\Mvc\View\Engine;
+
+use Vii\Exceptions\ViewException;
+use Vii\Ioc;
+use Vii\Mvc\View\Engine\Tiny\Compiler;
+use Vii\Interfaces\ViewInterface;
+use Vii\Interfaces\IocInterface;
+use Vii\Interfaces\EngineInterface;
+
+class Tiny implements EngineInterface
+{
+    protected compileDir {get};
+    protected options {set, get};
+    protected compiler;
+    protected view;
+    protected di;
+    protected extension;
+    public function __construct(<ViewInterface> view, <IocInterface> ioc = null)
+    {
+        let this->view = view;
+        if !ioc {
+            let this->di = Ioc::getDefault();
+        }
+        let this->di = ioc;
+    }
+
+    /**
+     * 获取编译组件
+     */
+    public function getComiler(){
+        if !this->compiler {
+            let this->compiler = new Compiler(this);
+        }
+        return this->compiler;
+    }
+
+    /**
+     * 渲染模板
+     * @type {Array}
+     */
+    public function render(string! path , array! data = [])
+    {
+        var compiled,compile_file;
+        if this->compileDir {
+            let compile_file = this->compileDir . "/" . basename(path). ".phtml"; //编译文件
+        }else{
+            let compile_file = dirname(path) . "/" . basename(path). ".phtml"; //编译文件
+        }
+        ob_start();
+        extract(data, EXTR_OVERWRITE);
+        let compiled = this->getComiler()->compile(file_get_contents(path));
+        if !is_dir(dirname(compile_file)) {
+            mkdir(dirname(compile_file),true);
+        }
+        file_put_contents(compile_file, compiled);
+        require(compile_file);
+        let compiled = ob_get_clean();
+        this->view->setContent(compiled);   //向view内填充解析内容
+        return compiled;
+    }
+
+    public function partial(string! path, array data = []) -> string
+    {
+        return this->view->partial(path, data);
+    }
+
+    public function getContent(){
+        return this->view->getContent();
+    }
+
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

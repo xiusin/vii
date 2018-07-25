@@ -18,7 +18,9 @@ class Helper
             return arr;
         }
 
-        //手机系统
+        /**
+        *手机系统
+        */
         public static function getOs() -> string
         {
             var browser;
@@ -51,7 +53,9 @@ class Helper
             return substr(path,strrpos(path,"."));
         }
 
-        //检测文件是否是以某个字符串开始的
+        /**
+        *检测文件是否是以某个字符串开始的
+        */
         public static function start_with(string! _string,string! _find) -> boolean
         {
             return starts_with(_string,_find);
@@ -59,7 +63,7 @@ class Helper
 
         /**
          * I18n快速助手
-         * @type {Array}
+         * @param {Array}
          */
         public static function _t(string! strOrId , array! value = []) -> string
         {

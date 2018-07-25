@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../../../asset/static/prettify.css" />
+
+<script src="../../../../../asset/static/prettify.js"></script>
+<script src="../../../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../../../asset/static/prettify.js"></script>
+                                    <script src="../../../../../asset/api_definition.js"></script>
+                    <script src="../../../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../../classes.html">Classes</a></li>
+                <li><a href="../../../../../class/Vii/Mvc/View/Engine/Sleet.html">Vii\Mvc\View\Engine\Sleet</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../../class/Vii/Mvc/View/Engine/Sleet.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../../namespace/Vii.html">Vii</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../namespace/Vii/Mvc.html">Mvc</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../namespace/Vii/Mvc/View.html">View</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../namespace/Vii/Mvc/View/Engine.html">Engine</a>
+        </span>
+                <h1 class="class-name">Sleet</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">
+namespace Vii\Mvc\View\Engine;
+
+use Vii\Exceptions\ViewException;
+use Vii\Ioc;
+use Vii\Mvc\View\Engine\Sleet\Compiler;
+use Vii\Interfaces\ViewInterface;
+use Vii\Interfaces\IocInterface;
+use Vii\Interfaces\EngineInterface;
+
+/**
+ * Sleet template engine. Syntax is similar to Twig, Volt or Django.
+ */
+class Sleet implements EngineInterface
+{
+    protected compiler { get };
+    protected view;
+    protected options { set };
+    protected di;
+
+    public function __construct(<ViewInterface> view, <IocInterface> ioc = null)
+    {
+        let this->view = view;
+        if !ioc {
+            let this->di = Ioc::getDefault();
+        }
+        let this->di = ioc;
+    }
+
+    /**
+     * Compile the .sleet file.
+     *
+     * @param string path 编译的文件
+     * @return string Path 编译文件地址
+     */
+    public function compile(string! path)
+    {
+        var compileDir, compile, trim, dir, file, compiledPath, old, compiled;
+
+        fetch trim, this->options["trimPath"];
+        fetch compileDir, this->options["compileDir"];
+        fetch compile, this->options["compile"];
+
+        let dir = rtrim(compileDir, DIRECTORY_SEPARATOR) . str_replace(trim, "", realpath(dirname(path))),
+            file = basename(path, ".sleet"),
+            compiledPath = dir . DIRECTORY_SEPARATOR . file . ".phtml";
+
+
+        switch compile {
+            case Compiler::NEVER:
+                let compile = false;
+            break;
+            case Compiler::NOT_EXIST:
+                let compile = !file_exists(compiledPath);
+            break;
+            case Compiler::IF_CHANGE:
+                if !file_exists(compiledPath) {
+                    let compile = true;
+                } else {
+                    let compile = md5_file(compiledPath);
+                }
+            break;
+            default: // Compiler::ALWAYS:
+                let compile = true;
+            break;
+        }
+
+        if compile {
+            let this->compiler = new Compiler(this),
+                compiled = this->compiler->compile(path);
+
+            // Check if file was changed
+            if typeof compile == "string" {
+                if compile != md5(compiled) {
+                    let compile = true;
+                }
+            }
+
+            if compile === true {
+                if !is_dir(dir) {
+                    let old = umask(0);
+                    mkdir(dir, 0777, true);
+                    umask(old);
+                }
+
+                if file_put_contents(compiledPath, compiled) === false {
+                    throw new ViewException("模板编译目录不可写");
+                }
+            }
+        }
+
+        return compiledPath;
+    }
+
+    public function render(string! path, array data = [])
+    {
+        let path = this->compile(path);
+
+        extract(data);
+        ob_start();
+
+        require path;
+        return ob_get_clean();
+    }
+
+    /**
+     * Get the view content.
+     *
+     * @return string
+     */
+    public function getContent() -> string
+    {
+        return this->view->getContent();
+    }
+
+    /**
+     * Load some view.
+     *
+     * @param string path
+     * @param array data
+     */
+    public function load(string! path, array data = []) -> string
+    {
+        return this->view->load(path, data);
+    }
+
+    /**
+     * Load some partial view.
+     *
+     * @param string path
+     * @param array data
+     */
+    public function partial(string! path, array data = []) -> string
+    {
+        return this->view->partial(path, data);
+    }
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

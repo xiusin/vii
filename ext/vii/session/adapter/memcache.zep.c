@@ -19,7 +19,6 @@
 #include "kernel/object.h"
 #include "kernel/array.h"
 #include "ext/spl/spl_exceptions.h"
-#include "kernel/hash.h"
 
 
 ZEPHIR_INIT_CLASS(Vii_Session_Adapter_Memcache) {
@@ -39,16 +38,11 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, __construct) {
 
 	zend_bool _3$$5, _4$$5;
 	zephir_fcall_cache_entry *_14 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *options_param = NULL, _0, _1, _8, _2$$4, server$$5, _5$$5, _6$$5;
 	zval options, _7, _9, _10, _11, _12, _13;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&options);
 	ZVAL_UNDEF(&_7);
 	ZVAL_UNDEF(&_9);
@@ -71,13 +65,13 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, __construct) {
 		ZEPHIR_INIT_VAR(&options);
 		array_init(&options);
 	} else {
-	ZVAL_COPY_VALUE(&options, options_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&options, options_param);
 	}
 
 
 	ZEPHIR_INIT_VAR(&_0);
 	ZVAL_STRING(&_0, "memcache");
-	ZEPHIR_CALL_FUNCTION(&_1, "extension_loaded", NULL, 31, &_0);
+	ZEPHIR_CALL_FUNCTION(&_1, "extension_loaded", NULL, 30, &_0);
 	zephir_check_call_status();
 	if (!(zephir_is_true(&_1))) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(vii_exceptions_runtimeexception_ce, "必须安装php-memcached扩展", "vii/session/adapter/memcache.zep", 11);
@@ -151,9 +145,9 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, __construct) {
 	ZEPHIR_INIT_NVAR(&_8);
 	ZVAL_STRING(&_8, "gc");
 	zephir_array_fast_append(&_13, &_8);
-	ZEPHIR_CALL_FUNCTION(NULL, "session_set_save_handler", NULL, 142, &_7, &_9, &_10, &_11, &_12, &_13);
+	ZEPHIR_CALL_FUNCTION(NULL, "session_set_save_handler", NULL, 139, &_7, &_9, &_10, &_11, &_12, &_13);
 	zephir_check_call_status();
-	ZEPHIR_CALL_PARENT(NULL, vii_session_adapter_memcache_ce, this_ptr, "__construct", &_14, 143, &options);
+	ZEPHIR_CALL_PARENT(NULL, vii_session_adapter_memcache_ce, getThis(), "__construct", &_14, 0, &options);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -161,16 +155,11 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, __construct) {
 
 PHP_METHOD(Vii_Session_Adapter_Memcache, addServer) {
 
-	int port, ZEPHIR_LAST_CALL_STATUS;
+	zend_long port, ZEPHIR_LAST_CALL_STATUS;
 	zval *ip_param = NULL, *port_param = NULL, _0, _1;
 	zval ip;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&ip);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -178,11 +167,11 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, addServer) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &ip_param, &port_param);
 
-	if (unlikely(Z_TYPE_P(ip_param) != IS_STRING && Z_TYPE_P(ip_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(ip_param) != IS_STRING && Z_TYPE_P(ip_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'ip' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(ip_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(ip_param) == IS_STRING)) {
 		zephir_get_strval(&ip, ip_param);
 	} else {
 		ZEPHIR_INIT_VAR(&ip);
@@ -206,16 +195,11 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, addServers) {
 
 	zend_string *_3;
 	zend_ulong _2;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *servers_param = NULL, server, _0, *_1, _4$$3, _5$$3, _6$$3;
 	zval servers;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&servers);
 	ZVAL_UNDEF(&server);
 	ZVAL_UNDEF(&_0);
@@ -226,7 +210,7 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, addServers) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &servers_param);
 
-	ZVAL_COPY_VALUE(&servers, servers_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&servers, servers_param);
 
 
 	ZEPHIR_INIT_VAR(&server);
@@ -259,13 +243,8 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, open) {
 
 	zval *save_path_param = NULL, *session_name_param = NULL;
 	zval save_path, session_name;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&save_path);
 	ZVAL_UNDEF(&session_name);
 
@@ -282,16 +261,11 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, open) {
 
 PHP_METHOD(Vii_Session_Adapter_Memcache, read) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *session_id_param = NULL, _0, _1;
 	zval session_id, _2;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&session_id);
 	ZVAL_UNDEF(&_2);
 	ZVAL_UNDEF(&_0);
@@ -300,11 +274,11 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, read) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &session_id_param);
 
-	if (unlikely(Z_TYPE_P(session_id_param) != IS_STRING && Z_TYPE_P(session_id_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(session_id_param) != IS_STRING && Z_TYPE_P(session_id_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'session_id' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(session_id_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(session_id_param) == IS_STRING)) {
 		zephir_get_strval(&session_id, session_id_param);
 	} else {
 		ZEPHIR_INIT_VAR(&session_id);
@@ -316,22 +290,17 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, read) {
 	ZEPHIR_CALL_METHOD(&_1, &_0, "get", NULL, 0, &session_id);
 	zephir_check_call_status();
 	zephir_get_strval(&_2, &_1);
-	RETURN_CTOR(_2);
+	RETURN_CTOR(&_2);
 
 }
 
 PHP_METHOD(Vii_Session_Adapter_Memcache, write) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *session_id_param = NULL, *session_data_param = NULL, _0, _1, _2;
 	zval session_id, session_data;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&session_id);
 	ZVAL_UNDEF(&session_data);
 	ZVAL_UNDEF(&_0);
@@ -341,21 +310,21 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, write) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &session_id_param, &session_data_param);
 
-	if (unlikely(Z_TYPE_P(session_id_param) != IS_STRING && Z_TYPE_P(session_id_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(session_id_param) != IS_STRING && Z_TYPE_P(session_id_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'session_id' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(session_id_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(session_id_param) == IS_STRING)) {
 		zephir_get_strval(&session_id, session_id_param);
 	} else {
 		ZEPHIR_INIT_VAR(&session_id);
 		ZVAL_EMPTY_STRING(&session_id);
 	}
-	if (unlikely(Z_TYPE_P(session_data_param) != IS_STRING && Z_TYPE_P(session_data_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(session_data_param) != IS_STRING && Z_TYPE_P(session_data_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'session_data' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(session_data_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(session_data_param) == IS_STRING)) {
 		zephir_get_strval(&session_data, session_data_param);
 	} else {
 		ZEPHIR_INIT_VAR(&session_data);
@@ -374,16 +343,11 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, write) {
 
 PHP_METHOD(Vii_Session_Adapter_Memcache, destroy) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *session_id_param = NULL, sessionid, _0, _1, _2$$5;
 	zval session_id;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&session_id);
 	ZVAL_UNDEF(&sessionid);
 	ZVAL_UNDEF(&_0);
@@ -422,14 +386,9 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, destroy) {
 PHP_METHOD(Vii_Session_Adapter_Memcache, gc) {
 
 	zval *maxlifetime_param = NULL;
-	int maxlifetime;
-		zval this_zv;
+	zend_long maxlifetime;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 
 	zephir_fetch_params(0, 1, 0, &maxlifetime_param);
 
@@ -442,13 +401,8 @@ PHP_METHOD(Vii_Session_Adapter_Memcache, gc) {
 
 PHP_METHOD(Vii_Session_Adapter_Memcache, close) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 
 	RETURN_BOOL(1);
 

@@ -7,7 +7,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, checkAttr);
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, parse);
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, _attr);
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, callback);
-static zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Taglibarys(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Taglibarys(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_mvc_view_engine_tiny_taglibarys_checkattr, 0, 0, 2)
 	ZEND_ARG_INFO(0, attr)

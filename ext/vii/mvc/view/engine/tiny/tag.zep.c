@@ -34,13 +34,8 @@ ZEPHIR_INIT_CLASS(Vii_Mvc_View_Engine_Tiny_Tag) {
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _php) {
 
 	zval *params, params_sub, *content, content_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&params_sub);
 	ZVAL_UNDEF(&content_sub);
 
@@ -56,13 +51,8 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _php) {
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _if) {
 
 	zval *params, params_sub, *content = NULL, content_sub, __$null, condition, str;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&params_sub);
 	ZVAL_UNDEF(&content_sub);
 	ZVAL_NULL(&__$null);
@@ -91,19 +81,14 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _if) {
 	}
 	ZEPHIR_INIT_VAR(&str);
 	ZEPHIR_CONCAT_SVSVS(&str, "<?php if(", &condition, ") : ?>", content, "<?php endif; ?>");
-	RETURN_CCTOR(str);
+	RETURN_CCTOR(&str);
 
 }
 
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _else) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 
 	RETURN_STRING("<?php  else:  ?>");
 
@@ -112,13 +97,8 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _else) {
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _js) {
 
 	zval *params, params_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&params_sub);
 	ZVAL_UNDEF(&_0);
 
@@ -135,13 +115,8 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _js) {
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _css) {
 
 	zval *params, params_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&params_sub);
 	ZVAL_UNDEF(&_0);
 
@@ -158,13 +133,8 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _css) {
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _foreach) {
 
 	zval *params, params_sub, *content, content_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&params_sub);
 	ZVAL_UNDEF(&content_sub);
 
@@ -178,13 +148,8 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _foreach) {
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _list) {
 
 	zval *params, params_sub, *content, content_sub, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&params_sub);
 	ZVAL_UNDEF(&content_sub);
 	ZVAL_UNDEF(&_0);
@@ -201,7 +166,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Tag, _list) {
 
 }
 
-static zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Tag(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Tag(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _1$$3, _2$$3;
 	zval _0;

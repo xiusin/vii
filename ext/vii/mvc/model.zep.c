@@ -39,16 +39,11 @@ ZEPHIR_INIT_CLASS(Vii_Mvc_Model) {
 PHP_METHOD(Vii_Mvc_Model, __construct) {
 
 	zephir_fcall_cache_entry *_6 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *fields_param = NULL, _0$$3, calledClass$$4, _1$$4, _2$$4, _3$$4, _4$$4, _5, _7, _8, _9, _10;
 	zval fields;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&fields);
 	ZVAL_UNDEF(&_0$$3);
 	ZVAL_UNDEF(&calledClass$$4);
@@ -69,11 +64,11 @@ PHP_METHOD(Vii_Mvc_Model, __construct) {
 		ZEPHIR_INIT_VAR(&fields);
 		array_init(&fields);
 	} else {
-	ZVAL_COPY_VALUE(&fields, fields_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&fields, fields_param);
 	}
 
 
-	if ((zephir_method_exists_ex(this_ptr, SS("getsource") TSRMLS_CC) == SUCCESS)) {
+	if ((zephir_method_exists_ex(this_ptr, SL("getsource") TSRMLS_CC) == SUCCESS)) {
 		ZEPHIR_CALL_METHOD(&_0$$3, this_ptr, "getsource", NULL, 0);
 		zephir_check_call_status();
 		zephir_update_property_zval(this_ptr, SL("_source"), &_0$$3);
@@ -83,7 +78,7 @@ PHP_METHOD(Vii_Mvc_Model, __construct) {
 		ZEPHIR_INIT_VAR(&_1$$4);
 		ZEPHIR_INIT_VAR(&_2$$4);
 		ZVAL_STRING(&_2$$4, "\\");
-		ZEPHIR_CALL_FUNCTION(&_3$$4, "strrpos", NULL, 45, &calledClass$$4, &_2$$4);
+		ZEPHIR_CALL_FUNCTION(&_3$$4, "strrpos", NULL, 43, &calledClass$$4, &_2$$4);
 		zephir_check_call_status();
 		ZVAL_LONG(&_4$$4, (zephir_get_numberval(&_3$$4) + 1));
 		ZEPHIR_INIT_NVAR(&_2$$4);
@@ -91,7 +86,7 @@ PHP_METHOD(Vii_Mvc_Model, __construct) {
 		zephir_fast_strtolower(&_1$$4, &_2$$4);
 		zephir_update_property_zval(this_ptr, SL("_source"), &_1$$4);
 	}
-	ZEPHIR_CALL_CE_STATIC(&_5, vii_ioc_ce, "getdefault", &_6, 32);
+	ZEPHIR_CALL_CE_STATIC(&_5, vii_ioc_ce, "getdefault", &_6, 0);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_8);
 	ZVAL_STRING(&_8, "db");
@@ -108,15 +103,10 @@ PHP_METHOD(Vii_Mvc_Model, __construct) {
 
 PHP_METHOD(Vii_Mvc_Model, find) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *options = NULL, options_sub, res, _0, _1, _17, _2$$3, _3$$5, _4$$5, _5$$5, _6$$6, _7$$6, _8$$4, _9$$4, _10$$4, _11$$7, _12$$7, _13$$8, _14$$8, _15$$9, _16$$9;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&options_sub);
 	ZVAL_UNDEF(&res);
 	ZVAL_UNDEF(&_0);
@@ -204,14 +194,9 @@ PHP_METHOD(Vii_Mvc_Model, find) {
 PHP_METHOD(Vii_Mvc_Model, getLastQuery) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();

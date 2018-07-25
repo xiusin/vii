@@ -16,7 +16,7 @@ PHP_METHOD(Vii_Loader, registerDirs);
 PHP_METHOD(Vii_Loader, getNamespaces);
 PHP_METHOD(Vii_Loader, saveMap);
 PHP_METHOD(Vii_Loader, getMap);
-static zend_object *zephir_init_properties_Vii_Loader(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_Loader(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_loader___construct, 0, 0, 0)
 	ZEND_ARG_INFO(0, classFileName)

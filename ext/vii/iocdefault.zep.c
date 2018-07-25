@@ -15,7 +15,6 @@
 #include "kernel/fcall.h"
 #include "kernel/memory.h"
 #include "kernel/array.h"
-#include "kernel/hash.h"
 
 
 ZEPHIR_INIT_CLASS(Vii_IocDefault) {
@@ -31,15 +30,10 @@ PHP_METHOD(Vii_IocDefault, __construct) {
 	zend_string *_7;
 	zend_ulong _6;
 	zval iocs, serverKey, iocValue, _1, _2, _3, _4, *_5;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_0 = NULL, *_8 = NULL;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&iocs);
 	ZVAL_UNDEF(&serverKey);
 	ZVAL_UNDEF(&iocValue);
@@ -50,7 +44,7 @@ PHP_METHOD(Vii_IocDefault, __construct) {
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_PARENT(NULL, vii_iocdefault_ce, this_ptr, "__construct", &_0, 89);
+	ZEPHIR_CALL_PARENT(NULL, vii_iocdefault_ce, getThis(), "__construct", &_0, 0);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&iocs);
 	zephir_create_array(&iocs, 11, 0 TSRMLS_CC);
@@ -65,14 +59,14 @@ PHP_METHOD(Vii_IocDefault, __construct) {
 		ZEPHIR_CALL_METHOD(NULL, &_1, "__construct", NULL, 0);
 		zephir_check_call_status();
 	}
-	ZEPHIR_CALL_METHOD(&_2, &_1, "setioc", NULL, 90, this_ptr);
+	ZEPHIR_CALL_METHOD(&_2, &_1, "setioc", NULL, 87, this_ptr);
 	zephir_check_call_status();
 	zephir_array_update_string(&iocs, SL("dispatcher"), &_2, PH_COPY | PH_SEPARATE);
 	ZEPHIR_INIT_VAR(&_3);
 	object_init_ex(&_3, vii_mvc_router_ce);
-	ZEPHIR_CALL_METHOD(NULL, &_3, "__construct", NULL, 91);
+	ZEPHIR_CALL_METHOD(NULL, &_3, "__construct", NULL, 88);
 	zephir_check_call_status();
-	ZEPHIR_CALL_METHOD(&_2, &_3, "setioc", NULL, 92, this_ptr);
+	ZEPHIR_CALL_METHOD(&_2, &_3, "setioc", NULL, 89, this_ptr);
 	zephir_check_call_status();
 	zephir_array_update_string(&iocs, SL("router"), &_2, PH_COPY | PH_SEPARATE);
 	ZEPHIR_INIT_VAR(&_4);
@@ -81,7 +75,7 @@ PHP_METHOD(Vii_IocDefault, __construct) {
 		ZEPHIR_CALL_METHOD(NULL, &_4, "__construct", NULL, 0);
 		zephir_check_call_status();
 	}
-	ZEPHIR_CALL_METHOD(&_2, &_4, "setioc", NULL, 93, this_ptr);
+	ZEPHIR_CALL_METHOD(&_2, &_4, "setioc", NULL, 90, this_ptr);
 	zephir_check_call_status();
 	zephir_array_update_string(&iocs, SL("view"), &_2, PH_COPY | PH_SEPARATE);
 	add_assoc_stringl_ex(&iocs, SL("dump"), SL("Vii\\Dump"));

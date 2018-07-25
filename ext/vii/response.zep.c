@@ -19,7 +19,6 @@
 #include "kernel/concat.h"
 #include "kernel/string.h"
 #include "kernel/operators.h"
-#include "kernel/hash.h"
 
 
 ZEPHIR_INIT_CLASS(Vii_Response) {
@@ -42,13 +41,8 @@ ZEPHIR_INIT_CLASS(Vii_Response) {
 PHP_METHOD(Vii_Response, __construct) {
 
 	zval _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -121,15 +115,10 @@ PHP_METHOD(Vii_Response, __construct) {
 
 PHP_METHOD(Vii_Response, setStatusCode) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *code, code_sub, _0, _1, _2;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&code_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -152,15 +141,10 @@ PHP_METHOD(Vii_Response, setStatusCode) {
 
 PHP_METHOD(Vii_Response, setHeader) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *name, name_sub, *value, value_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&name_sub);
 	ZVAL_UNDEF(&value_sub);
 	ZVAL_UNDEF(&_0);
@@ -181,13 +165,8 @@ PHP_METHOD(Vii_Response, setHeader) {
 PHP_METHOD(Vii_Response, setRawHeader) {
 
 	zval *header, header_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&header_sub);
 
 	zephir_fetch_params(0, 1, 0, &header);
@@ -200,13 +179,8 @@ PHP_METHOD(Vii_Response, setRawHeader) {
 
 PHP_METHOD(Vii_Response, redirect) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 
 
 }
@@ -214,13 +188,8 @@ PHP_METHOD(Vii_Response, redirect) {
 PHP_METHOD(Vii_Response, setContent) {
 
 	zval *content, content_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&content_sub);
 
 	zephir_fetch_params(0, 1, 0, &content);
@@ -234,15 +203,10 @@ PHP_METHOD(Vii_Response, setContent) {
 
 PHP_METHOD(Vii_Response, setJsonContent) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *content, content_sub, *option = NULL, option_sub, *depth = NULL, depth_sub, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&content_sub);
 	ZVAL_UNDEF(&option_sub);
 	ZVAL_UNDEF(&depth_sub);
@@ -279,15 +243,10 @@ PHP_METHOD(Vii_Response, setJsonContent) {
 
 PHP_METHOD(Vii_Response, appendContent) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *content, content_sub, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&content_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -308,28 +267,18 @@ PHP_METHOD(Vii_Response, appendContent) {
 
 PHP_METHOD(Vii_Response, getContent) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "content");
+
+	RETURN_MEMBER(getThis(), "content");
 
 }
 
 PHP_METHOD(Vii_Response, resetHeaders) {
 
 	zval _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -343,30 +292,20 @@ PHP_METHOD(Vii_Response, resetHeaders) {
 
 PHP_METHOD(Vii_Response, isSend) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "issent");
+
+	RETURN_MEMBER(getThis(), "issent");
 
 }
 
 PHP_METHOD(Vii_Response, sendHeaders) {
 
 	zval v, _0, *_1;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_2 = NULL;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&v);
 	ZVAL_UNDEF(&_0);
 
@@ -378,7 +317,7 @@ PHP_METHOD(Vii_Response, sendHeaders) {
 	{
 		ZEPHIR_INIT_NVAR(&v);
 		ZVAL_COPY(&v, _1);
-		ZEPHIR_CALL_FUNCTION(NULL, "header", &_2, 141, &v);
+		ZEPHIR_CALL_FUNCTION(NULL, "header", &_2, 138, &v);
 		zephir_check_call_status();
 	} ZEND_HASH_FOREACH_END();
 	ZEPHIR_INIT_NVAR(&v);
@@ -388,29 +327,19 @@ PHP_METHOD(Vii_Response, sendHeaders) {
 
 PHP_METHOD(Vii_Response, sendContent) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "content");
+
+	RETURN_MEMBER(getThis(), "content");
 
 }
 
 PHP_METHOD(Vii_Response, send) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval __$true, __$false, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_BOOL(&__$true, 1);
 	ZVAL_BOOL(&__$false, 0);
 	ZVAL_UNDEF(&_0);
@@ -433,13 +362,8 @@ PHP_METHOD(Vii_Response, send) {
 PHP_METHOD(Vii_Response, hasHeader) {
 
 	zval _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 
@@ -448,7 +372,7 @@ PHP_METHOD(Vii_Response, hasHeader) {
 
 }
 
-static zend_object *zephir_init_properties_Vii_Response(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_Response(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _0, _2, _1$$3, _3$$4;
 		ZVAL_UNDEF(&_0);

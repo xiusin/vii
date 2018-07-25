@@ -12,7 +12,7 @@ PHP_METHOD(Vii_UploadFileInfo, getType);
 PHP_METHOD(Vii_UploadFileInfo, getExt);
 PHP_METHOD(Vii_UploadFileInfo, getTmpName);
 PHP_METHOD(Vii_UploadFileInfo, moveTo);
-static zend_object *zephir_init_properties_Vii_UploadFileInfo(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_UploadFileInfo(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_uploadfileinfo___construct, 0, 0, 1)
 	ZEND_ARG_INFO(0, fileinfo)

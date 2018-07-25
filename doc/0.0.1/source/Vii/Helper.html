@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Vii/Helper.html">Vii\Helper</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Vii/Helper.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Vii.html">Vii</a>
+        </span>
+                <h1 class="class-name">Helper</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii;
+use Vii\Dump;
+class Helper
+{
+        /**
+         * 对象转数组方法
+         * @return {array}
+         */
+        public static function obj2arr (object! obj) -> array
+        {
+            var arr,key,val;
+            let arr = get_object_vars(obj);
+            for key,val in arr
+            {
+               let val = (is_array(val) || is_object(val)) ? self::obj2arr(val) : val;
+               let arr[key] = val;
+            }
+            return arr;
+        }
+
+        //手机系统
+        public static function getOs() -> string
+        {
+            var browser;
+            if stripos(_SERVER["HTTP_USER_AGENT"], "iphone") || stripos(_SERVER["HTTP_USER_AGENT"], "ipod") {
+                let browser = "ios";
+            } elseif (stripos(_SERVER["HTTP_USER_AGENT"], "ipad")) {
+                let browser = "ios";
+            } elseif (stripos(_SERVER["HTTP_USER_AGENT"], "android")) {
+                let browser = "android";
+            } else {
+                let browser = "other";
+            }
+            return browser;
+        }
+
+       /**
+        * 返回Http请求方法
+        * @return
+        */
+        public static function  getHttpMethod() -> string
+        {
+            return strtoupper(_SERVER["REQUEST_METHOD"]);
+        }
+
+        /**
+         * 获取文件扩展
+         */
+        public static function getFileExtension(string! path)->string
+        {
+            return substr(path,strrpos(path,"."));
+        }
+
+        //检测文件是否是以某个字符串开始的
+        public static function start_with(string! _string,string! _find) -> boolean
+        {
+            return starts_with(_string,_find);
+        }
+
+        /**
+         * I18n快速助手
+         * @type {Array}
+         */
+        public static function _t(string! strOrId , array! value = []) -> string
+        {
+            return I18n::getDefault()->translate(strOrId , value);
+        }
+
+        /**
+         * Dump助手
+         * @output string
+         * @return void
+         */
+        public static function dump() -> void
+        {
+            var dump;
+            let dump = new Dump();
+            echo dump->all(func_get_args());
+            exit();
+        }
+
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

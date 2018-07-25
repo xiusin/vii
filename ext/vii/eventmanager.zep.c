@@ -46,16 +46,11 @@ ZEPHIR_INIT_CLASS(Vii_EventManager) {
 
 PHP_METHOD(Vii_EventManager, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_1 = NULL;
 	zval *ioc = NULL, ioc_sub, __$null, _0$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&ioc_sub);
 	ZVAL_NULL(&__$null);
 	ZVAL_UNDEF(&_0$$3);
@@ -70,7 +65,7 @@ PHP_METHOD(Vii_EventManager, __construct) {
 
 
 	if (!(zephir_is_true(ioc))) {
-		ZEPHIR_CALL_CE_STATIC(&_0$$3, vii_ioc_ce, "getdefault", &_1, 32);
+		ZEPHIR_CALL_CE_STATIC(&_0$$3, vii_ioc_ce, "getdefault", &_1, 0);
 		zephir_check_call_status();
 		zephir_update_property_zval(this_ptr, SL("_ioc"), &_0$$3);
 	} else {
@@ -87,19 +82,14 @@ PHP_METHOD(Vii_EventManager, setPriorityState) {
 
 	zval *priority_param = NULL, __$true, __$false;
 	zend_bool priority;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_BOOL(&__$true, 1);
 	ZVAL_BOOL(&__$false, 0);
 
 	zephir_fetch_params(0, 1, 0, &priority_param);
 
-	if (unlikely(Z_TYPE_P(priority_param) != IS_TRUE && Z_TYPE_P(priority_param) != IS_FALSE)) {
+	if (UNEXPECTED(Z_TYPE_P(priority_param) != IS_TRUE && Z_TYPE_P(priority_param) != IS_FALSE)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'priority' must be a bool") TSRMLS_CC);
 		RETURN_NULL();
 	}
@@ -122,19 +112,14 @@ PHP_METHOD(Vii_EventManager, collectResponses) {
 
 	zval *collect_param = NULL, __$true, __$false;
 	zend_bool collect;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_BOOL(&__$true, 1);
 	ZVAL_BOOL(&__$false, 0);
 
 	zephir_fetch_params(0, 1, 0, &collect_param);
 
-	if (unlikely(Z_TYPE_P(collect_param) != IS_TRUE && Z_TYPE_P(collect_param) != IS_FALSE)) {
+	if (UNEXPECTED(Z_TYPE_P(collect_param) != IS_TRUE && Z_TYPE_P(collect_param) != IS_FALSE)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'collect' must be a bool") TSRMLS_CC);
 		RETURN_NULL();
 	}
@@ -159,16 +144,11 @@ PHP_METHOD(Vii_EventManager, collectResponses) {
 PHP_METHOD(Vii_EventManager, attach) {
 
 	zephir_fcall_cache_entry *_3 = NULL;
-	int priority, ZEPHIR_LAST_CALL_STATUS;
+	zend_long priority, ZEPHIR_LAST_CALL_STATUS;
 	zval *eventType_param = NULL, *handler, handler_sub, *priority_param = NULL, priorityQueue, _0, _1$$3, _2$$3, _4$$4, _5$$4;
 	zval eventType;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&eventType);
 	ZVAL_UNDEF(&handler_sub);
 	ZVAL_UNDEF(&priorityQueue);
@@ -181,11 +161,11 @@ PHP_METHOD(Vii_EventManager, attach) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 1, &eventType_param, &handler, &priority_param);
 
-	if (unlikely(Z_TYPE_P(eventType_param) != IS_STRING && Z_TYPE_P(eventType_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(eventType_param) != IS_STRING && Z_TYPE_P(eventType_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'eventType' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(eventType_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(eventType_param) == IS_STRING)) {
 		zephir_get_strval(&eventType, eventType_param);
 	} else {
 		ZEPHIR_INIT_VAR(&eventType);
@@ -207,22 +187,22 @@ PHP_METHOD(Vii_EventManager, attach) {
 			zephir_check_call_status();
 		}
 		ZVAL_LONG(&_1$$3, 1);
-		ZEPHIR_CALL_METHOD(NULL, &priorityQueue, "setextractflags", NULL, 64, &_1$$3);
+		ZEPHIR_CALL_METHOD(NULL, &priorityQueue, "setextractflags", NULL, 61, &_1$$3);
 		zephir_check_call_status();
 		ZEPHIR_INIT_VAR(&_2$$3);
 		object_init_ex(&_2$$3, vii_event_ce);
 		ZVAL_LONG(&_1$$3, priority);
-		ZEPHIR_CALL_METHOD(NULL, &_2$$3, "__construct", &_3, 65, handler, &_1$$3);
+		ZEPHIR_CALL_METHOD(NULL, &_2$$3, "__construct", &_3, 62, handler, &_1$$3);
 		zephir_check_call_status();
 		ZVAL_LONG(&_1$$3, priority);
-		ZEPHIR_CALL_METHOD(NULL, &priorityQueue, "insert", NULL, 66, &_2$$3, &_1$$3);
+		ZEPHIR_CALL_METHOD(NULL, &priorityQueue, "insert", NULL, 63, &_2$$3, &_1$$3);
 		zephir_check_call_status();
 	} else {
 		array_init(&priorityQueue);
 		ZEPHIR_INIT_VAR(&_4$$4);
 		object_init_ex(&_4$$4, vii_event_ce);
 		ZVAL_LONG(&_5$$4, priority);
-		ZEPHIR_CALL_METHOD(NULL, &_4$$4, "__construct", &_3, 65, handler, &_5$$4);
+		ZEPHIR_CALL_METHOD(NULL, &_4$$4, "__construct", &_3, 62, handler, &_5$$4);
 		zephir_check_call_status();
 		zephir_array_append(&priorityQueue, &_4$$4, PH_SEPARATE, "vii/eventmanager.zep", 60);
 		zephir_update_property_array(this_ptr, SL("_events"), &eventType, &priorityQueue TSRMLS_CC);
@@ -236,16 +216,11 @@ PHP_METHOD(Vii_EventManager, attach) {
  */
 PHP_METHOD(Vii_EventManager, detachAll) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *eventType_param = NULL, _0$$3, _1$$4, _4$$4, _2$$5;
 	zval eventType, _3$$5;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&eventType);
 	ZVAL_UNDEF(&_3$$5);
 	ZVAL_UNDEF(&_0$$3);
@@ -260,11 +235,11 @@ PHP_METHOD(Vii_EventManager, detachAll) {
 		ZEPHIR_INIT_VAR(&eventType);
 		ZVAL_STRING(&eventType, "");
 	} else {
-	if (unlikely(Z_TYPE_P(eventType_param) != IS_STRING && Z_TYPE_P(eventType_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(eventType_param) != IS_STRING && Z_TYPE_P(eventType_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'eventType' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(eventType_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(eventType_param) == IS_STRING)) {
 		zephir_get_strval(&eventType, eventType_param);
 	} else {
 		ZEPHIR_INIT_VAR(&eventType);
@@ -285,7 +260,7 @@ PHP_METHOD(Vii_EventManager, detachAll) {
 			object_init_ex(&_2$$5, vii_exceptions_eventexception_ce);
 			ZEPHIR_INIT_VAR(&_3$$5);
 			ZEPHIR_CONCAT_SVS(&_3$$5, "事件类型:", &eventType, "没有被注册");
-			ZEPHIR_CALL_METHOD(NULL, &_2$$5, "__construct", NULL, 4, &_3$$5);
+			ZEPHIR_CALL_METHOD(NULL, &_2$$5, "__construct", NULL, 3, &_3$$5);
 			zephir_check_call_status();
 			zephir_throw_exception_debug(&_2$$5, "vii/eventmanager.zep", 73 TSRMLS_CC);
 			ZEPHIR_MM_RESTORE();
@@ -303,15 +278,10 @@ PHP_METHOD(Vii_EventManager, detachAll) {
  */
 PHP_METHOD(Vii_EventManager, iscollect) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_collect");
+
+	RETURN_MEMBER(getThis(), "_collect");
 
 }
 
@@ -320,15 +290,10 @@ PHP_METHOD(Vii_EventManager, iscollect) {
  */
 PHP_METHOD(Vii_EventManager, getResponses) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_responses");
+
+	RETURN_MEMBER(getThis(), "_responses");
 
 }
 
@@ -340,24 +305,19 @@ PHP_METHOD(Vii_EventManager, hasListener) {
 
 	zval *eventType_param = NULL, _0;
 	zval eventType;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&eventType);
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &eventType_param);
 
-	if (unlikely(Z_TYPE_P(eventType_param) != IS_STRING && Z_TYPE_P(eventType_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(eventType_param) != IS_STRING && Z_TYPE_P(eventType_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'eventType' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(eventType_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(eventType_param) == IS_STRING)) {
 		zephir_get_strval(&eventType, eventType_param);
 	} else {
 		ZEPHIR_INIT_VAR(&eventType);
@@ -376,16 +336,11 @@ PHP_METHOD(Vii_EventManager, hasListener) {
  */
 PHP_METHOD(Vii_EventManager, getListener) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *eventType_param = NULL, _0, _1$$4, _2$$4;
 	zval eventType;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&eventType);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1$$4);
@@ -394,11 +349,11 @@ PHP_METHOD(Vii_EventManager, getListener) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &eventType_param);
 
-	if (unlikely(Z_TYPE_P(eventType_param) != IS_STRING && Z_TYPE_P(eventType_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(eventType_param) != IS_STRING && Z_TYPE_P(eventType_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'eventType' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(eventType_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(eventType_param) == IS_STRING)) {
 		zephir_get_strval(&eventType, eventType_param);
 	} else {
 		ZEPHIR_INIT_VAR(&eventType);
@@ -414,7 +369,7 @@ PHP_METHOD(Vii_EventManager, getListener) {
 	} else {
 		zephir_read_property(&_1$$4, this_ptr, SL("_events"), PH_NOISY_CC | PH_READONLY);
 		zephir_array_fetch(&_2$$4, &_1$$4, &eventType, PH_NOISY | PH_READONLY, "vii/eventmanager.zep", 109 TSRMLS_CC);
-		RETURN_CTOR(_2$$4);
+		RETURN_CTOR(&_2$$4);
 	}
 
 }
@@ -429,13 +384,8 @@ PHP_METHOD(Vii_EventManager, fire) {
 	zend_bool cancelable;
 	zval *eventType_param = NULL, *source, source_sub, *data = NULL, data_sub, *cancelable_param = NULL, __$null;
 	zval eventType;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&eventType);
 	ZVAL_UNDEF(&source_sub);
 	ZVAL_UNDEF(&data_sub);
@@ -444,11 +394,11 @@ PHP_METHOD(Vii_EventManager, fire) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 2, &eventType_param, &source, &data, &cancelable_param);
 
-	if (unlikely(Z_TYPE_P(eventType_param) != IS_STRING && Z_TYPE_P(eventType_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(eventType_param) != IS_STRING && Z_TYPE_P(eventType_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'eventType' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(eventType_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(eventType_param) == IS_STRING)) {
 		zephir_get_strval(&eventType, eventType_param);
 	} else {
 		ZEPHIR_INIT_VAR(&eventType);
@@ -468,7 +418,7 @@ PHP_METHOD(Vii_EventManager, fire) {
 
 }
 
-static zend_object *zephir_init_properties_Vii_EventManager(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_EventManager(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _0, _1$$3;
 		ZVAL_UNDEF(&_0);

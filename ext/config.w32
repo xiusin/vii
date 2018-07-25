@@ -2,8 +2,7 @@ ARG_ENABLE("vii", "enable vii", "no");
 
 if (PHP_VII != "no") {
   EXTENSION("vii", "vii.c", null, "-I"+configure_module_dirname);
-  ADD_SOURCES(configure_module_dirname + "/kernel", "main.c memory.c exception.c hash.c debug.c backtrace.c object.c array.c string.c fcall.c require.c file.c operators.c math.c concat.c variables.c filter.c iterator.c exit.c time.c", "vii");
-  ADD_SOURCES(configure_module_dirname + "/kernel/extended", "array.c fcall.c", "vii");
+  ADD_SOURCES(configure_module_dirname + "/kernel", "main.c memory.c exception.c debug.c backtrace.c object.c array.c string.c fcall.c require.c file.c operators.c math.c concat.c variables.c filter.c iterator.c exit.c time.c", "vii");
   /* PCRE is always included on WIN32 */
   AC_DEFINE("ZEPHIR_USE_PHP_PCRE", 1, "Whether PHP pcre extension is present at compile time");
   if (PHP_JSON != "no") {
@@ -26,5 +25,7 @@ if (PHP_VII != "no") {
 	ADD_SOURCES(configure_module_dirname + "/vii/mvc/view/engine", "sleet.zep.c tiny.zep.c", "vii");
 	ADD_SOURCES(configure_module_dirname + "/vii/mvc/view/engine/sleet", "compiler.zep.c parser.zep.c", "vii");
 	ADD_SOURCES(configure_module_dirname + "/vii/session/adapter", "file.zep.c memcache.zep.c", "vii");
-  ADD_FLAG("CFLAGS_VII", "/D ZEPHIR_RELEASE");
+  ADD_FLAG("CFLAGS_VII", "/D ZEPHIR_RELEASE /Oi /Ot /Oy /Ob2 /Gs /GF /Gy /GL");
+  ADD_FLAG("CFLAGS", "/D ZEPHIR_RELEASE /Oi /Ot /Oy /Ob2 /Gs /GF /Gy /GL");
+  ADD_FLAG("LDFLAGS", "/LTCG");
 }

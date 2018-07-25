@@ -25,9 +25,9 @@ class Dump
     /**
      * 打印所有传入的变量
      */
-    public function all() -> string
+    public function all(var data) -> string
     {
-        return call_user_func_array([this, "vars"], func_get_args());
+        return call_user_func_array([this, "vars"], data);
     }
 
     protected function getStyle(string! type) -> string

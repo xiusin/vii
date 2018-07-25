@@ -26,7 +26,7 @@ PHP_METHOD(Vii_Mvc_Router, getMatchedRoute);
 PHP_METHOD(Vii_Mvc_Router, setNotFound);
 PHP_METHOD(Vii_Mvc_Router, getNotFound);
 PHP_METHOD(Vii_Mvc_Router, getMatches);
-static zend_object *zephir_init_properties_Vii_Mvc_Router(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_Mvc_Router(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_mvc_router_setioc, 0, 0, 1)
 	ZEND_ARG_INFO(0, _ioc)

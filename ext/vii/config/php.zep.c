@@ -31,28 +31,23 @@ ZEPHIR_INIT_CLASS(Vii_Config_Php) {
 
 PHP_METHOD(Vii_Config_Php, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_0 = NULL;
 	zval *phpFile_param = NULL, _1;
 	zval phpFile;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&phpFile);
 	ZVAL_UNDEF(&_1);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &phpFile_param);
 
-	if (unlikely(Z_TYPE_P(phpFile_param) != IS_STRING && Z_TYPE_P(phpFile_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(phpFile_param) != IS_STRING && Z_TYPE_P(phpFile_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'phpFile' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(phpFile_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(phpFile_param) == IS_STRING)) {
 		zephir_get_strval(&phpFile, phpFile_param);
 	} else {
 		ZEPHIR_INIT_VAR(&phpFile);
@@ -68,7 +63,7 @@ PHP_METHOD(Vii_Config_Php, __construct) {
 	if (zephir_require_zval_ret(&_1, &phpFile TSRMLS_CC) == FAILURE) {
 		RETURN_MM_NULL();
 	}
-	ZEPHIR_CALL_PARENT(NULL, vii_config_php_ce, this_ptr, "__construct", &_0, 2, &_1);
+	ZEPHIR_CALL_PARENT(NULL, vii_config_php_ce, getThis(), "__construct", &_0, 0, &_1);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 

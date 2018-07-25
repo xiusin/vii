@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/prettify.css" />
+
+<script src="../../../../../../asset/static/prettify.js"></script>
+<script src="../../../../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../../../../asset/static/prettify.js"></script>
+                                    <script src="../../../../../../asset/api_definition.js"></script>
+                    <script src="../../../../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../../../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../../../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../../../classes.html">Classes</a></li>
+                <li><a href="../../../../../../class/Vii/Mvc/View/Engine/Tiny/Tag.html">Vii\Mvc\View\Engine\Tiny\Tag</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../../../class/Vii/Mvc/View/Engine/Tiny/Tag.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Vii.html">Vii</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Vii/Mvc.html">Mvc</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Vii/Mvc/View.html">View</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Vii/Mvc/View/Engine.html">Engine</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Vii/Mvc/View/Engine/Tiny.html">Tiny</a>
+        </span>
+                <h1 class="class-name">Tag</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii\Mvc\View\Engine\Tiny;
+class Tag extends Taglibarys
+{
+    public tags = [
+        "else"      : ["attr" : "", "block" : 0],
+        "elseif"    : ["attr" : "condition", "block" : 0],
+        "php"       : ["attr" : "like", "block" : 1],
+        "if"        : ["attr" : "condition", "block" : 1, "level" : 2],
+        "foreach"   : ["attr" : "item,value,key", "block" : 1, "level" : 2],
+        "list"      : ["attr" : "data,item", "block" : 1],
+        "js"        : ["attr" : "src", "block" : 0]
+    ];
+
+    public function _php(params , content)
+    {
+        return "<?php " . content . "?>";
+    }
+
+    public function _if(params, content = null)
+    {
+        var condition,str;
+        let condition = isset(params["condition"]) ? params["condition"] : false;
+        if (condition) {
+            throw new \Exception("if标签内必须有condition属性");
+        }
+        let str = "<?php if(" . condition . ") : ?>" .content . "<?php endif; ?>";
+        return str;
+    }
+
+    public function _else()
+    {
+        return "<?php  else:  ?>";
+    }
+
+    public function _js(params)
+    {
+        return "<script type=\"text/javascript\" src=\"" . params["src"] . "\"></script>";
+    }
+
+    public function _css(params)
+    {
+        return "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . params["link"] . "\" />";
+    }
+
+    public function _foreach(params, content)
+    {
+        //return "<?php\n\$i=0;\nforeach(" . params['item'] . " as \$key=>" . params['value'] . ") :\n\$i++;
+   // \n?>\n" . preg_replace("/\s/", " ", content) . "\n<?php\nendforeach;?>\n";
+    }
+
+    public function _list(params, content)
+    {
+        return  "<?php foreach(".params["data"]." as  ".params["item"]."): ?>".content."<?php endforeach;?>";
+    }
+
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Vii/UploadFileInfo.html">Vii\UploadFileInfo</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Vii/UploadFileInfo.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Vii.html">Vii</a>
+        </span>
+                <h1 class="class-name">UploadFileInfo</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii;
+
+use Vii\Exceptions\UploadFileException;
+
+class UploadFileInfo
+{
+    public info = [];
+    public error = "";
+
+    public function __construct(fileinfo)
+    {
+        if !isset(fileinfo["tmp_name"]) {
+            throw new UploadFileException("上传文件信息传入错误");
+        }
+        let this->info = fileinfo;
+    }
+
+    public function isUploadFile()
+    {
+        return is_uploaded_file(this->info["tmp_name"]);
+    }
+
+    protected function hasError()
+    {
+        switch (this->info["error"]) {
+            case 1:
+                let this->error = "文件大小超出了服务器的空间大小";
+                break;
+            case 2:
+                let this->error = "文件超出了表单承载范围.";
+                break;
+            case 3:
+                let this->error = "该文件只被部分上传";
+                break;
+            case 4:
+                let this->error = "没有找到要上传的文件";
+                break;
+            case 5:
+                let this->error = "服务器临时文件夹丢失";
+                break;
+            case 6:
+                let this->error = "文件写入到临时文件夹出错";
+                break;
+            default:
+                return false;
+        }
+        return true;
+    }
+
+    public function getSize()
+    {
+        return this->info["size"];
+    }
+
+    public function getName()
+    {
+        return this->info["name"];
+    }
+
+    public function getType()
+    {
+        return this->info["type"];
+    }
+
+    public function getExt()
+    {
+        var finfo = explode(".", this->getName());
+        return end(finfo);
+    }
+
+    public function getTmpName()
+    {
+        return this->info["tmp_name"];
+    }
+
+    public function moveTo(destination_file)
+    {
+        if empty(destination_file) || !is_dir(dirname(destination_file)) {
+            throw new UploadFileException("移动临时文件到目标目录失败，原因：不存在");
+        }
+        if this->hasError() {
+            return false;
+        }
+        if move_uploaded_file(this->getTmpName(), destination_file) {
+            return true;
+        }
+        let this->error = "移动文件失败";
+        return false;
+    }
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

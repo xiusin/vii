@@ -29,7 +29,7 @@ PHP_METHOD(Vii_Mvc_View, setVars);
 PHP_METHOD(Vii_Mvc_View, getVars);
 PHP_METHOD(Vii_Mvc_View, setLayout);
 PHP_METHOD(Vii_Mvc_View, __toString);
-static zend_object *zephir_init_properties_Vii_Mvc_View(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_Mvc_View(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_mvc_view_setengines, 0, 0, 1)
 	ZEND_ARG_INFO(0, engines)

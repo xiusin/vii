@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+
+<script src="../../../asset/static/prettify.js"></script>
+<script src="../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../asset/static/prettify.js"></script>
+                                    <script src="../../../asset/api_definition.js"></script>
+                    <script src="../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../index.html">Home</a></li>
+        
+                <li><a href="../../../classes.html">Classes</a></li>
+                <li><a href="../../../class/Vii/Log/File.html">Vii\Log\File</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../class/Vii/Log/File.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../namespace/Vii.html">Vii</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../namespace/Vii/Log.html">Log</a>
+        </span>
+                <h1 class="class-name">File</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii\Log;
+use Vii\Interfaces\LogInterface;
+use Vii\Log;
+use Vii\Exceptions\LogException;
+//日志记录
+class File extends Driver implements LogInterface
+{
+    private _file ;
+    private _timeFormat;
+    private _logformat;
+    public function __construct(string! filePath) {
+        var filename,ext;
+        //防止日志过大,分割文件尺寸
+        if file_exists(filePath) && filesize(filePath) >= 1024 * 1024 * Driver::_logFileSize {   //按照设置的文件尺寸分隔
+            let ext = substr(filePath,strrpos(this->_file,".") );
+            let filename = strtr(filePath,ext,"");
+            rename(filePath,filename . count(glob(filename . "*")) . ext);
+        }
+        this->createLogFile(filePath);
+        let this->_file = filePath;
+        this
+        ->setTimeFormat("Y-m-d H:i:s")
+        ->setLogFormat( "[".Log::PLACEHOLDER_TIME."] " . Log::PLACEHOLDER_LEVEL . ": " . Log::PLACEHOLDER_MESSAGE);
+    }
+
+    //设置时间格式
+    public function setTimeFormat (string! timeFormat){
+        let this->_timeFormat = timeFormat;
+        return this;
+    }
+
+    private function createLogFile(string! filePath){
+        var _dirname;
+        let _dirname = dirname(filePath);
+        if !is_dir(_dirname) {
+            mkdir(_dirname , 0777 , true);
+        }
+        if touch(filePath) {    //创建这个文件
+            throw new LogException("日志文件[".filePath."]创建失败");
+        }
+        if !is_writable(filePath) {
+            throw new LogException("日志文件".filePath."]无写权限");
+        }
+    }
+
+    public function setLogFormat(string! logformat){
+        let this->_logformat = logformat;
+        return this;
+    }
+    //placeholders为message里的占位符，可以从占位符内替换变量
+    public function debug(string message,array placeholders  = []){
+        this->log(Log::DEBUG,message,placeholders);
+    }
+
+    public function info(string message,array placeholders  = []){
+        this->log(Log::INFO,message,placeholders);
+    }
+
+    public function alert(string message,array placeholders  = []){
+        this->log(Log::ALERT,message,placeholders);
+    }
+
+    public function error(string message,array placeholders  = []){
+        this->log(Log::ERROR,message,placeholders);
+    }
+
+    public function notice(string message,array placeholders  = []){
+        this->log(Log::NOTICE,message,placeholders);
+    }
+
+    public function warning(string message,array placeholders  = []){
+        this->log(Log::WARNING,message,placeholders);
+    }
+
+    private function _replacePlaceholders (string! message ,array placeholders  = []){
+        var k,v,_replacePlaceholders;
+        for k,v in placeholders {
+            let _replacePlaceholders["{".k."}"] = v;
+        }
+        strtr(message,_replacePlaceholders);
+    }
+
+    public function log(string! logLevel , string! message,array placeholders = []) -> void
+    {
+        //不启用日志记录
+        if !Driver::_enable {
+            return ;
+        }
+        //调试机制记录级别
+        if !in_array(Driver::_recordLevel,logLevel) && ! Empty Driver::_recordLevel {
+            return ;
+        }
+        var line;
+        let line =  strtr(this->_logformat,[
+            Log::PLACEHOLDER_TIME : date(this->_timeFormat),
+            Log::PLACEHOLDER_LEVEL : strtoupper(logLevel),
+            Log::PLACEHOLDER_MESSAGE : this->_replacePlaceholders(message,placeholders)
+        ]) . PHP_EOL;
+        file_put_contents(this->_file,line,FILE_APPEND);
+    }
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

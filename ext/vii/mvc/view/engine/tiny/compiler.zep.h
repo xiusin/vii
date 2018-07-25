@@ -13,7 +13,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, parseTags);
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, parseVar);
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, parsePartial);
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Compiler, _partial);
-static zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Compiler(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Compiler(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_mvc_view_engine_tiny_compiler___construct, 0, 0, 1)
 	ZEND_ARG_INFO(0, view)

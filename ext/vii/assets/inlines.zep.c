@@ -31,43 +31,28 @@ ZEPHIR_INIT_CLASS(Vii_Assets_Inlines) {
 
 PHP_METHOD(Vii_Assets_Inlines, getType) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "type");
+
+	RETURN_MEMBER(getThis(), "type");
 
 }
 
 PHP_METHOD(Vii_Assets_Inlines, getContent) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "content");
+
+	RETURN_MEMBER(getThis(), "content");
 
 }
 
 PHP_METHOD(Vii_Assets_Inlines, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *type, type_sub, *content, content_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&type_sub);
 	ZVAL_UNDEF(&content_sub);
 	ZVAL_UNDEF(&_0);
@@ -88,13 +73,8 @@ PHP_METHOD(Vii_Assets_Inlines, __construct) {
 PHP_METHOD(Vii_Assets_Inlines, setType) {
 
 	zval *type, type_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&type_sub);
 
 	zephir_fetch_params(0, 1, 0, &type);
@@ -109,13 +89,8 @@ PHP_METHOD(Vii_Assets_Inlines, setType) {
 PHP_METHOD(Vii_Assets_Inlines, setContent) {
 
 	zval *content, content_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&content_sub);
 
 	zephir_fetch_params(0, 1, 0, &content);

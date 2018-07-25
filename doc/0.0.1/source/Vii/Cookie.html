@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Vii/Cookie.html">Vii\Cookie</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Vii/Cookie.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Vii.html">Vii</a>
+        </span>
+                <h1 class="class-name">Cookie</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii;
+class Cookie
+{
+    protected domain = "";
+    protected salt = "";
+    protected isuse = false;
+
+    public function __construct(domain = "", salt = "vii_cookie_encodekey")
+    {
+        let this->domain = domain;
+        let this->salt = salt;
+    }
+
+    public function encryption(_string, aciton = "ENCODE")
+    {
+        var code = "", k,i = 0;
+        if aciton != "ENCODE" {
+            let _string = base64_decode(_string);
+        }
+        var keylen = strlen(this->salt);
+        var _strlen = strlen(_string);
+        for i in range(0,_strlen) {
+            let k = i % keylen;
+            let code = code . _string[i] ^ this->salt[k];
+        }
+        return (aciton != "DECODE" ? base64_encode(code) : code);
+    }
+
+    public function useEncryption(isuse = false)
+    {
+        let this->isuse = isuse;
+    }
+
+    public function set(key, value, _time = 0)
+    {
+        setcookie(key, this->setValue(value), _time, this->domain);
+    }
+
+    protected function setValue(value)
+    {
+        if this->isuse {
+            return this->encryption(value, "ENCODE");
+        }
+        return value;
+    }
+
+    public function get(key, _default = "")
+    {
+        if !isset(_COOKIE[key]) {
+            return _default;
+        }
+        return this->getValue(_COOKIE[key]);
+    }
+
+    public function getValue($value)
+    {
+        if this->isuse {
+            return this->encryption(value, "DECODE");
+        }
+        return value;
+    }
+
+
+    public function clear()
+    {
+        var k;
+        for k,_ in _COOKIE {
+            this->del(k);
+        }
+        return this;
+    }
+
+    public function flashGet(key, _default)
+    {
+        var result = this->get(key, _default);
+        this->del(key);
+        return result;
+    }
+
+    public function del(key)
+    {
+        setcookie(key, null, time() - 3600);
+        unset(_COOKIE[key]);
+    }
+
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

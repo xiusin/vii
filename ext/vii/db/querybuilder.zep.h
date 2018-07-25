@@ -36,7 +36,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, getLastInsertId);
 PHP_METHOD(Vii_Db_QueryBuilder, getLastQuery);
 PHP_METHOD(Vii_Db_QueryBuilder, delete);
 PHP_METHOD(Vii_Db_QueryBuilder, parseWhereArr);
-static zend_object *zephir_init_properties_Vii_Db_QueryBuilder(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_Db_QueryBuilder(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_db_querybuilder_columns, 0, 0, 1)
 	ZEND_ARG_INFO(0, columns)

@@ -20,7 +20,6 @@
 #include "kernel/array.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/concat.h"
-#include "kernel/hash.h"
 
 
 /**
@@ -51,15 +50,10 @@ ZEPHIR_INIT_CLASS(Vii_Session_NativeSession) {
 
 PHP_METHOD(Vii_Session_NativeSession, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *options = NULL, options_sub, __$null, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&options_sub);
 	ZVAL_NULL(&__$null);
 	ZVAL_UNDEF(&_0);
@@ -76,9 +70,9 @@ PHP_METHOD(Vii_Session_NativeSession, __construct) {
 
 	ZEPHIR_INIT_VAR(&_0);
 	ZVAL_STRING(&_0, "session.auto_start");
-	ZEPHIR_CALL_FUNCTION(&_1, "ini_get", NULL, 5, &_0);
+	ZEPHIR_CALL_FUNCTION(&_1, "ini_get", NULL, 4, &_0);
 	zephir_check_call_status();
-	if (ZEPHIR_IS_LONG_IDENTICAL(&_1, 1)) {
+	if (ZEPHIR_IS_STRING_IDENTICAL(&_1, "1")) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(vii_exceptions_runtimeexception_ce, "Session::__construct 不接受php.ini的配置信息内开启session.auto_start", "vii/session/nativesession.zep", 21);
 		return;
 	}
@@ -97,14 +91,9 @@ PHP_METHOD(Vii_Session_NativeSession, start) {
 
 	zend_bool _2;
 	zval __$true, __$false, _0, _1, _3;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_BOOL(&__$true, 1);
 	ZVAL_BOOL(&__$false, 0);
 	ZVAL_UNDEF(&_0);
@@ -113,7 +102,7 @@ PHP_METHOD(Vii_Session_NativeSession, start) {
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_FUNCTION(&_0, "headers_sent", NULL, 6);
+	ZEPHIR_CALL_FUNCTION(&_0, "headers_sent", NULL, 5);
 	zephir_check_call_status();
 	if (zephir_is_true(&_0)) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(vii_exceptions_runtimeexception_ce, "Session::start 之前不要进行header头发送信息", "vii/session/nativesession.zep", 34);
@@ -127,7 +116,7 @@ PHP_METHOD(Vii_Session_NativeSession, start) {
 		_2 = !ZEPHIR_IS_LONG_IDENTICAL(&_3, 2);
 	}
 	if (_2) {
-		ZEPHIR_CALL_FUNCTION(NULL, "session_start", NULL, 7);
+		ZEPHIR_CALL_FUNCTION(NULL, "session_start", NULL, 6);
 		zephir_check_call_status();
 		if (1) {
 			zephir_update_property_zval(this_ptr, SL("_started"), &__$true);
@@ -148,13 +137,8 @@ PHP_METHOD(Vii_Session_NativeSession, setOptions) {
 
 	zval *options_param = NULL, uniqueId, maxlifetime;
 	zval options;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&options);
 	ZVAL_UNDEF(&uniqueId);
 	ZVAL_UNDEF(&maxlifetime);
@@ -162,7 +146,7 @@ PHP_METHOD(Vii_Session_NativeSession, setOptions) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &options_param);
 
-	ZVAL_COPY_VALUE(&options, options_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&options, options_param);
 
 
 	ZEPHIR_OBS_VAR(&uniqueId);
@@ -182,15 +166,10 @@ PHP_METHOD(Vii_Session_NativeSession, setOptions) {
 
 PHP_METHOD(Vii_Session_NativeSession, getOptions) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_options");
+
+	RETURN_MEMBER(getThis(), "_options");
 
 }
 
@@ -199,16 +178,11 @@ PHP_METHOD(Vii_Session_NativeSession, getOptions) {
  */
 PHP_METHOD(Vii_Session_NativeSession, setName) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *name_param = NULL;
 	zval name;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&name);
 
 	ZEPHIR_MM_GROW();
@@ -217,7 +191,7 @@ PHP_METHOD(Vii_Session_NativeSession, setName) {
 	zephir_get_strval(&name, name_param);
 
 
-	ZEPHIR_CALL_FUNCTION(NULL, "session_name", NULL, 8, &name);
+	ZEPHIR_CALL_FUNCTION(NULL, "session_name", NULL, 7, &name);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -228,18 +202,13 @@ PHP_METHOD(Vii_Session_NativeSession, setName) {
  */
 PHP_METHOD(Vii_Session_NativeSession, getName) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_RETURN_CALL_FUNCTION("session_name", NULL, 8);
+	ZEPHIR_RETURN_CALL_FUNCTION("session_name", NULL, 7);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -251,16 +220,11 @@ PHP_METHOD(Vii_Session_NativeSession, getName) {
  */
 PHP_METHOD(Vii_Session_NativeSession, regenerateId) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *deleteOldSession_param = NULL, _0;
 	zend_bool deleteOldSession;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -274,7 +238,7 @@ PHP_METHOD(Vii_Session_NativeSession, regenerateId) {
 
 
 	ZVAL_BOOL(&_0, (deleteOldSession ? 1 : 0));
-	ZEPHIR_CALL_FUNCTION(NULL, "session_regenerate_id", NULL, 9, &_0);
+	ZEPHIR_CALL_FUNCTION(NULL, "session_regenerate_id", NULL, 8, &_0);
 	zephir_check_call_status();
 	RETURN_THIS();
 
@@ -283,13 +247,8 @@ PHP_METHOD(Vii_Session_NativeSession, regenerateId) {
 PHP_METHOD(Vii_Session_NativeSession, getIndex) {
 
 	zval *index, index_sub, _0, _1$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&index_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1$$3);
@@ -317,20 +276,14 @@ PHP_METHOD(Vii_Session_NativeSession, getIndex) {
  */
 PHP_METHOD(Vii_Session_NativeSession, get) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zend_bool remove;
-	zval *index_param = NULL, *defaultValue = NULL, defaultValue_sub, *remove_param = NULL, _SESSION, __$null, value, _0;
+	zval *index_param = NULL, *defaultValue = NULL, defaultValue_sub, *remove_param = NULL, *_SESSION, __$null, value, _0;
 	zval index;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&index);
 	ZVAL_UNDEF(&defaultValue_sub);
-	ZVAL_UNDEF(&_SESSION);
 	ZVAL_NULL(&__$null);
 	ZVAL_UNDEF(&value);
 	ZVAL_UNDEF(&_0);
@@ -355,11 +308,11 @@ PHP_METHOD(Vii_Session_NativeSession, get) {
 	zephir_check_call_status();
 	zephir_get_strval(&index, &_0);
 	ZEPHIR_OBS_VAR(&value);
-	if (zephir_array_isset_fetch(&value, &_SESSION, &index, 0 TSRMLS_CC)) {
+	if (zephir_array_isset_fetch(&value, _SESSION, &index, 0 TSRMLS_CC)) {
 		if (remove) {
-			zephir_array_unset(&_SESSION, &index, PH_SEPARATE);
+			zephir_array_unset(_SESSION, &index, PH_SEPARATE);
 		}
-		RETURN_CCTOR(value);
+		RETURN_CCTOR(&value);
 	}
 	RETVAL_ZVAL(defaultValue, 1, 0);
 	RETURN_MM();
@@ -371,19 +324,13 @@ PHP_METHOD(Vii_Session_NativeSession, get) {
  */
 PHP_METHOD(Vii_Session_NativeSession, set) {
 
-	int ZEPHIR_LAST_CALL_STATUS, _1;
-	zval *index_param = NULL, *value, value_sub, _SESSION, _0;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *index_param = NULL, *value, value_sub, *_SESSION, _0;
 	zval index;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&index);
 	ZVAL_UNDEF(&value_sub);
-	ZVAL_UNDEF(&_SESSION);
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -395,11 +342,7 @@ PHP_METHOD(Vii_Session_NativeSession, set) {
 
 	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getindex", NULL, 0, &index);
 	zephir_check_call_status();
-	_1 = zephir_maybe_separate_zval(&_SESSION);
-	zephir_array_update_zval(&_SESSION, &_0, value, PH_COPY | PH_SEPARATE);
-	if (_1) {
-		ZEPHIR_SET_SYMBOL(&EG(symbol_table), "_SESSION", &_SESSION);
-	}
+	zephir_array_update_zval(_SESSION, &_0, value, PH_COPY | PH_SEPARATE);
 	ZEPHIR_MM_RESTORE();
 
 }
@@ -409,18 +352,12 @@ PHP_METHOD(Vii_Session_NativeSession, set) {
  */
 PHP_METHOD(Vii_Session_NativeSession, has) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *index_param = NULL, _SESSION, _0;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *index_param = NULL, *_SESSION, _0;
 	zval index;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&index);
-	ZVAL_UNDEF(&_SESSION);
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -432,7 +369,7 @@ PHP_METHOD(Vii_Session_NativeSession, has) {
 
 	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getindex", NULL, 0, &index);
 	zephir_check_call_status();
-	RETURN_MM_BOOL(zephir_array_isset(&_SESSION, &_0));
+	RETURN_MM_BOOL(zephir_array_isset(_SESSION, &_0));
 
 }
 
@@ -441,18 +378,12 @@ PHP_METHOD(Vii_Session_NativeSession, has) {
  */
 PHP_METHOD(Vii_Session_NativeSession, remove) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *index_param = NULL, _SESSION, _0;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *index_param = NULL, *_SESSION, _0;
 	zval index;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&index);
-	ZVAL_UNDEF(&_SESSION);
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -464,7 +395,7 @@ PHP_METHOD(Vii_Session_NativeSession, remove) {
 
 	ZEPHIR_CALL_METHOD(&_0, this_ptr, "getindex", NULL, 0, &index);
 	zephir_check_call_status();
-	zephir_array_unset(&_SESSION, &_0, PH_SEPARATE);
+	zephir_array_unset(_SESSION, &_0, PH_SEPARATE);
 	ZEPHIR_MM_RESTORE();
 
 }
@@ -474,18 +405,13 @@ PHP_METHOD(Vii_Session_NativeSession, remove) {
  */
 PHP_METHOD(Vii_Session_NativeSession, getId) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_RETURN_CALL_FUNCTION("session_id", NULL, 10);
+	ZEPHIR_RETURN_CALL_FUNCTION("session_id", NULL, 9);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -496,16 +422,11 @@ PHP_METHOD(Vii_Session_NativeSession, getId) {
  */
 PHP_METHOD(Vii_Session_NativeSession, setId) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *id_param = NULL;
 	zval id;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&id);
 
 	ZEPHIR_MM_GROW();
@@ -514,7 +435,7 @@ PHP_METHOD(Vii_Session_NativeSession, setId) {
 	zephir_get_strval(&id, id_param);
 
 
-	ZEPHIR_CALL_FUNCTION(NULL, "session_id", NULL, 10, &id);
+	ZEPHIR_CALL_FUNCTION(NULL, "session_id", NULL, 9, &id);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -525,15 +446,10 @@ PHP_METHOD(Vii_Session_NativeSession, setId) {
  */
 PHP_METHOD(Vii_Session_NativeSession, isStarted) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_started");
+
+	RETURN_MEMBER(getThis(), "_started");
 
 }
 
@@ -546,17 +462,11 @@ PHP_METHOD(Vii_Session_NativeSession, destroy) {
 	zend_string *_3$$3;
 	zend_ulong _2$$3;
 	zephir_fcall_cache_entry *_5 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *removeCurrentSessionData_param = NULL, _SESSION, __$true, __$false, key$$3, _0$$3, *_1$$3, _4$$4;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *removeCurrentSessionData_param = NULL, *_SESSION, __$true, __$false, key$$3, _0$$3, *_1$$3, _4$$4;
 	zend_bool removeCurrentSessionData;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
-	ZVAL_UNDEF(&_SESSION);
+
 	ZVAL_BOOL(&__$true, 1);
 	ZVAL_BOOL(&__$false, 0);
 	ZVAL_UNDEF(&key$$3);
@@ -576,8 +486,8 @@ PHP_METHOD(Vii_Session_NativeSession, destroy) {
 
 	if (removeCurrentSessionData) {
 		ZEPHIR_INIT_VAR(&_0$$3);
-		zephir_is_iterable(&_SESSION, 1, "vii/session/nativesession.zep", 179);
-		ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(&_SESSION), _2$$3, _3$$3, _1$$3)
+		zephir_is_iterable(_SESSION, 1, "vii/session/nativesession.zep", 179);
+		ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(_SESSION), _2$$3, _3$$3, _1$$3)
 		{
 			ZEPHIR_INIT_NVAR(&key$$3);
 			if (_3$$3 != NULL) { 
@@ -589,7 +499,7 @@ PHP_METHOD(Vii_Session_NativeSession, destroy) {
 			ZVAL_COPY(&_0$$3, _1$$3);
 			ZEPHIR_CALL_METHOD(&_4$$4, this_ptr, "getindex", &_5, 0, &key$$3);
 			zephir_check_call_status();
-			zephir_array_unset(&_SESSION, &_4$$4, PH_SEPARATE);
+			zephir_array_unset(_SESSION, &_4$$4, PH_SEPARATE);
 		} ZEND_HASH_FOREACH_END();
 		ZEPHIR_INIT_NVAR(&_0$$3);
 		ZEPHIR_INIT_NVAR(&key$$3);
@@ -599,7 +509,7 @@ PHP_METHOD(Vii_Session_NativeSession, destroy) {
 	} else {
 		zephir_update_property_zval(this_ptr, SL("_started"), &__$false);
 	}
-	ZEPHIR_RETURN_CALL_FUNCTION("session_destroy", NULL, 11);
+	ZEPHIR_RETURN_CALL_FUNCTION("session_destroy", NULL, 10);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -611,19 +521,14 @@ PHP_METHOD(Vii_Session_NativeSession, destroy) {
 PHP_METHOD(Vii_Session_NativeSession, status) {
 
 	zval status;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&status);
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_FUNCTION(&status, "session_status", NULL, 12);
+	ZEPHIR_CALL_FUNCTION(&status, "session_status", NULL, 11);
 	zephir_check_call_status();
 	do {
 		if (ZEPHIR_IS_LONG(&status, 0)) {
@@ -640,16 +545,11 @@ PHP_METHOD(Vii_Session_NativeSession, status) {
 
 PHP_METHOD(Vii_Session_NativeSession, __get) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *index_param = NULL;
 	zval index;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&index);
 
 	ZEPHIR_MM_GROW();
@@ -666,16 +566,11 @@ PHP_METHOD(Vii_Session_NativeSession, __get) {
 
 PHP_METHOD(Vii_Session_NativeSession, __set) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *index_param = NULL, *value, value_sub;
 	zval index;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&index);
 	ZVAL_UNDEF(&value_sub);
 
@@ -693,16 +588,11 @@ PHP_METHOD(Vii_Session_NativeSession, __set) {
 
 PHP_METHOD(Vii_Session_NativeSession, __isset) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *index_param = NULL;
 	zval index;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&index);
 
 	ZEPHIR_MM_GROW();
@@ -719,16 +609,11 @@ PHP_METHOD(Vii_Session_NativeSession, __isset) {
 
 PHP_METHOD(Vii_Session_NativeSession, __unset) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *index_param = NULL;
 	zval index;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&index);
 
 	ZEPHIR_MM_GROW();
@@ -746,14 +631,9 @@ PHP_METHOD(Vii_Session_NativeSession, __unset) {
 PHP_METHOD(Vii_Session_NativeSession, __destruct) {
 
 	zval __$true, __$false, _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_BOOL(&__$true, 1);
 	ZVAL_BOOL(&__$false, 0);
 	ZVAL_UNDEF(&_0);
@@ -762,7 +642,7 @@ PHP_METHOD(Vii_Session_NativeSession, __destruct) {
 
 	zephir_read_property(&_0, this_ptr, SL("_started"), PH_NOISY_CC | PH_READONLY);
 	if (zephir_is_true(&_0)) {
-		ZEPHIR_CALL_FUNCTION(NULL, "session_write_close", NULL, 13);
+		ZEPHIR_CALL_FUNCTION(NULL, "session_write_close", NULL, 12);
 		zephir_check_call_status();
 		if (0) {
 			zephir_update_property_zval(this_ptr, SL("_started"), &__$true);

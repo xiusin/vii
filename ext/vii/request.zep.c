@@ -20,7 +20,6 @@
 #include "kernel/string.h"
 #include "kernel/exception.h"
 #include "kernel/concat.h"
-#include "kernel/hash.h"
 
 
 ZEPHIR_INIT_CLASS(Vii_Request) {
@@ -42,16 +41,10 @@ ZEPHIR_INIT_CLASS(Vii_Request) {
 
 PHP_METHOD(Vii_Request, __construct) {
 
-	zval _FILES, _0, _1;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zval *_FILES, _0, _1;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
-	ZVAL_UNDEF(&_FILES);
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 
@@ -60,25 +53,20 @@ PHP_METHOD(Vii_Request, __construct) {
 
 	ZEPHIR_INIT_VAR(&_1);
 	ZVAL_STRING(&_1, "REQUEST_METHOD");
-	ZEPHIR_CALL_METHOD(&_0, this_ptr, "server", NULL, 138, &_1);
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "server", NULL, 135, &_1);
 	zephir_check_call_status();
 	zephir_update_property_zval(this_ptr, SL("method"), &_0);
-	zephir_update_property_zval(this_ptr, SL("file"), &_FILES);
+	zephir_update_property_zval(this_ptr, SL("file"), _FILES);
 	ZEPHIR_MM_RESTORE();
 
 }
 
 PHP_METHOD(Vii_Request, setIoc) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *_ioc, _ioc_sub, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_ioc_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -99,30 +87,19 @@ PHP_METHOD(Vii_Request, setIoc) {
 
 PHP_METHOD(Vii_Request, getIoc) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 
 
 }
 
 PHP_METHOD(Vii_Request, server) {
 
-	zval *key, key_sub, *_default = NULL, _default_sub, _SERVER, _0;
-		zval this_zv;
+	zval *key, key_sub, *_default = NULL, _default_sub, *_SERVER, _0;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&key_sub);
 	ZVAL_UNDEF(&_default_sub);
-	ZVAL_UNDEF(&_SERVER);
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -137,33 +114,28 @@ PHP_METHOD(Vii_Request, server) {
 
 
 	ZEPHIR_INIT_VAR(&_0);
-	if (zephir_array_isset(&_SERVER, key)) {
-		zephir_array_fetch(&_0, &_SERVER, key, PH_NOISY, "vii/request.zep", 32 TSRMLS_CC);
+	if (zephir_array_isset(_SERVER, key)) {
+		zephir_array_fetch(&_0, _SERVER, key, PH_NOISY, "vii/request.zep", 32 TSRMLS_CC);
 	} else {
 		ZEPHIR_CPY_WRT(&_0, _default);
 	}
-	RETURN_CCTOR(_0);
+	RETURN_CCTOR(&_0);
 
 }
 
 PHP_METHOD(Vii_Request, getReferer) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
 
 	ZEPHIR_INIT_VAR(&_0);
 	ZVAL_STRING(&_0, "HTTP_REFERER");
-	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "server", NULL, 138, &_0);
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "server", NULL, 135, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -171,15 +143,10 @@ PHP_METHOD(Vii_Request, getReferer) {
 
 PHP_METHOD(Vii_Request, getCookie) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *key, key_sub, *_default = NULL, _default_sub, __$null, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&key_sub);
 	ZVAL_UNDEF(&_default_sub);
 	ZVAL_NULL(&__$null);
@@ -203,15 +170,10 @@ PHP_METHOD(Vii_Request, getCookie) {
 
 PHP_METHOD(Vii_Request, setCookie) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *key, key_sub, *value, value_sub, *_time = NULL, _time_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&key_sub);
 	ZVAL_UNDEF(&value_sub);
 	ZVAL_UNDEF(&_time_sub);
@@ -236,29 +198,19 @@ PHP_METHOD(Vii_Request, setCookie) {
 
 PHP_METHOD(Vii_Request, getMethod) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "method");
+
+	RETURN_MEMBER(getThis(), "method");
 
 }
 
 PHP_METHOD(Vii_Request, flashCookie) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *key, key_sub, *_default = NULL, _default_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&key_sub);
 	ZVAL_UNDEF(&_default_sub);
 	ZVAL_UNDEF(&_0);
@@ -283,15 +235,10 @@ PHP_METHOD(Vii_Request, flashCookie) {
 PHP_METHOD(Vii_Request, clientIp) {
 
 	zval ip, _0, _1, _3, _4, _5$$3, _6$$4, _7$$5;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_2 = NULL;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&ip);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -305,57 +252,52 @@ PHP_METHOD(Vii_Request, clientIp) {
 
 	ZEPHIR_INIT_VAR(&_0);
 	ZVAL_STRING(&_0, "HTTP_CLIENT_IP");
-	ZEPHIR_CALL_FUNCTION(&_1, "getenv", &_2, 139, &_0);
+	ZEPHIR_CALL_FUNCTION(&_1, "getenv", &_2, 136, &_0);
 	zephir_check_call_status();
 	ZEPHIR_INIT_NVAR(&_0);
 	ZVAL_STRING(&_0, "HTTP_X_FORWARDED_FOR");
-	ZEPHIR_CALL_FUNCTION(&_3, "getenv", &_2, 139, &_0);
+	ZEPHIR_CALL_FUNCTION(&_3, "getenv", &_2, 136, &_0);
 	zephir_check_call_status();
 	ZEPHIR_INIT_NVAR(&_0);
 	ZVAL_STRING(&_0, "REMOTE_ADDR");
-	ZEPHIR_CALL_FUNCTION(&_4, "getenv", &_2, 139, &_0);
+	ZEPHIR_CALL_FUNCTION(&_4, "getenv", &_2, 136, &_0);
 	zephir_check_call_status();
 	if (zephir_is_true(&_1)) {
 		ZEPHIR_INIT_VAR(&_5$$3);
 		ZVAL_STRING(&_5$$3, "HTTP_CLIENT_IP");
-		ZEPHIR_CALL_FUNCTION(&ip, "getenv", &_2, 139, &_5$$3);
+		ZEPHIR_CALL_FUNCTION(&ip, "getenv", &_2, 136, &_5$$3);
 		zephir_check_call_status();
 	} else if (zephir_is_true(&_3)) {
 		ZEPHIR_INIT_VAR(&_6$$4);
 		ZVAL_STRING(&_6$$4, "HTTP_X_FORWARDED_FOR");
-		ZEPHIR_CALL_FUNCTION(&ip, "getenv", &_2, 139, &_6$$4);
+		ZEPHIR_CALL_FUNCTION(&ip, "getenv", &_2, 136, &_6$$4);
 		zephir_check_call_status();
 	} else if (zephir_is_true(&_4)) {
 		ZEPHIR_INIT_VAR(&_7$$5);
 		ZVAL_STRING(&_7$$5, "REMOTE_ADDR");
-		ZEPHIR_CALL_FUNCTION(&ip, "getenv", &_2, 139, &_7$$5);
+		ZEPHIR_CALL_FUNCTION(&ip, "getenv", &_2, 136, &_7$$5);
 		zephir_check_call_status();
 	} else {
 		ZEPHIR_INIT_NVAR(&ip);
 		ZVAL_BOOL(&ip, 0);
 	}
-	RETURN_CCTOR(ip);
+	RETURN_CCTOR(&ip);
 
 }
 
 PHP_METHOD(Vii_Request, getRequestTime) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
 
 	ZEPHIR_INIT_VAR(&_0);
 	ZVAL_STRING(&_0, "REQUEST_TIME");
-	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "server", NULL, 138, &_0);
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "server", NULL, 135, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -364,14 +306,9 @@ PHP_METHOD(Vii_Request, getRequestTime) {
 PHP_METHOD(Vii_Request, isweixin) {
 
 	zval _0, _1, _2;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 	ZVAL_UNDEF(&_2);
@@ -380,7 +317,7 @@ PHP_METHOD(Vii_Request, isweixin) {
 
 	ZEPHIR_INIT_VAR(&_1);
 	ZVAL_STRING(&_1, "HTTP_USER_AGENT");
-	ZEPHIR_CALL_METHOD(&_0, this_ptr, "server", NULL, 138, &_1);
+	ZEPHIR_CALL_METHOD(&_0, this_ptr, "server", NULL, 135, &_1);
 	zephir_check_call_status();
 	ZEPHIR_INIT_NVAR(&_1);
 	ZVAL_STRING(&_1, "MicroMessenger");
@@ -393,21 +330,16 @@ PHP_METHOD(Vii_Request, isweixin) {
 PHP_METHOD(Vii_Request, pathinfo) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
 
 	ZEPHIR_INIT_VAR(&_0);
 	ZVAL_STRING(&_0, "PATH_INFO");
-	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "server", NULL, 138, &_0);
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "server", NULL, 135, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -415,15 +347,10 @@ PHP_METHOD(Vii_Request, pathinfo) {
 
 PHP_METHOD(Vii_Request, getPost) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *key = NULL, key_sub, *def = NULL, def_sub, *filter = NULL, filter_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&key_sub);
 	ZVAL_UNDEF(&def_sub);
 	ZVAL_UNDEF(&filter_sub);
@@ -458,15 +385,10 @@ PHP_METHOD(Vii_Request, getPost) {
 
 PHP_METHOD(Vii_Request, get) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *key = NULL, key_sub, *def = NULL, def_sub, *filter = NULL, filter_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&key_sub);
 	ZVAL_UNDEF(&def_sub);
 	ZVAL_UNDEF(&filter_sub);
@@ -501,21 +423,14 @@ PHP_METHOD(Vii_Request, get) {
 
 PHP_METHOD(Vii_Request, _get_post) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
-	zval *key = NULL, key_sub, *def = NULL, def_sub, *filter = NULL, filter_sub, *type, type_sub, _GET, _POST, data, _0$$9, _1$$9, _2$$8, _3$$10;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *key = NULL, key_sub, *def = NULL, def_sub, *filter = NULL, filter_sub, *type, type_sub, *_GET, *_POST, data, _0$$9, _1$$9, _2$$8, _3$$10;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&key_sub);
 	ZVAL_UNDEF(&def_sub);
 	ZVAL_UNDEF(&filter_sub);
 	ZVAL_UNDEF(&type_sub);
-	ZVAL_UNDEF(&_GET);
-	ZVAL_UNDEF(&_POST);
 	ZVAL_UNDEF(&data);
 	ZVAL_UNDEF(&_0$$9);
 	ZVAL_UNDEF(&_1$$9);
@@ -545,12 +460,12 @@ PHP_METHOD(Vii_Request, _get_post) {
 
 
 	if (ZEPHIR_IS_LONG(type, 0)) {
-		ZEPHIR_CPY_WRT(&data, &_GET);
+		ZEPHIR_CPY_WRT(&data, _GET);
 	} else {
-		ZEPHIR_CPY_WRT(&data, &_POST);
+		ZEPHIR_CPY_WRT(&data, _POST);
 	}
 	if (ZEPHIR_IS_EMPTY(key)) {
-		RETURN_CCTOR(data);
+		RETURN_CCTOR(&data);
 	}
 	if (zephir_is_true(key)) {
 		if (zephir_array_isset(&data, key)) {
@@ -560,7 +475,7 @@ PHP_METHOD(Vii_Request, _get_post) {
 					object_init_ex(&_0$$9, vii_exceptions_runtimeexception_ce);
 					ZEPHIR_INIT_VAR(&_1$$9);
 					ZEPHIR_CONCAT_VS(&_1$$9, filter, " can not callable");
-					ZEPHIR_CALL_METHOD(NULL, &_0$$9, "__construct", NULL, 4, &_1$$9);
+					ZEPHIR_CALL_METHOD(NULL, &_0$$9, "__construct", NULL, 3, &_1$$9);
 					zephir_check_call_status();
 					zephir_throw_exception_debug(&_0$$9, "vii/request.zep", 122 TSRMLS_CC);
 					ZEPHIR_MM_RESTORE();
@@ -572,7 +487,7 @@ PHP_METHOD(Vii_Request, _get_post) {
 				RETURN_MM();
 			} else {
 				zephir_array_fetch(&_3$$10, &data, key, PH_NOISY | PH_READONLY, "vii/request.zep", 126 TSRMLS_CC);
-				RETURN_CTOR(_3$$10);
+				RETURN_CTOR(&_3$$10);
 			}
 		} else {
 			RETVAL_ZVAL(def, 1, 0);
@@ -587,13 +502,8 @@ PHP_METHOD(Vii_Request, hasFiles) {
 
 	zend_bool _1;
 	zval _0, _2;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_2);
 
@@ -602,7 +512,7 @@ PHP_METHOD(Vii_Request, hasFiles) {
 	_1 = zephir_is_true(&_0);
 	if (_1) {
 		zephir_read_property(&_2, this_ptr, SL("file"), PH_NOISY_CC | PH_READONLY);
-		_1 = (zephir_fast_count_int(&_2 TSRMLS_CC)) ? 1 : 0;
+		_1 = ((zephir_fast_count_int(&_2 TSRMLS_CC)) ? 1 : 0);
 	}
 	if (_1) {
 		RETURN_BOOL(1);
@@ -615,15 +525,10 @@ PHP_METHOD(Vii_Request, getUploadedFiles) {
 
 	zend_bool _2$$3;
 	zephir_fcall_cache_entry *_5 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *only_success = NULL, only_success_sub, __$false, files, v, _0, *_1, _3$$3, _4$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&only_success_sub);
 	ZVAL_BOOL(&__$false, 0);
 	ZVAL_UNDEF(&files);
@@ -659,12 +564,12 @@ PHP_METHOD(Vii_Request, getUploadedFiles) {
 		}
 		ZEPHIR_INIT_NVAR(&_4$$3);
 		object_init_ex(&_4$$3, vii_uploadfileinfo_ce);
-		ZEPHIR_CALL_METHOD(NULL, &_4$$3, "__construct", &_5, 140, &v);
+		ZEPHIR_CALL_METHOD(NULL, &_4$$3, "__construct", &_5, 137, &v);
 		zephir_check_call_status();
 		zephir_array_append(&files, &_4$$3, PH_SEPARATE, "vii/request.zep", 149);
 	} ZEND_HASH_FOREACH_END();
 	ZEPHIR_INIT_NVAR(&v);
-	RETURN_CCTOR(files);
+	RETURN_CCTOR(&files);
 
 }
 
@@ -677,7 +582,7 @@ void zephir_init_static_properties_Vii_Request(TSRMLS_D) {
 
 	ZEPHIR_INIT_VAR(&_0);
 	array_init(&_0);
-	zephir_update_static_property_ce(vii_request_ce, SL("server"), &_0);
+	zend_update_static_property(vii_request_ce, ZEND_STRL("server"), &_0);
 	ZEPHIR_MM_RESTORE();
 
 }

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+
+<script src="../../asset/static/prettify.js"></script>
+<script src="../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../asset/static/prettify.js"></script>
+                                    <script src="../../asset/api_definition.js"></script>
+                    <script src="../../asset/static/jquery.min.js"></script>
+                    <script src="../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../index.html">Home</a></li>
+        
+                <li><a href="../../classes.html">Classes</a></li>
+                <li><a href="../../class/Vii/Db.html">Vii\Db</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../class/Vii/Db.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../namespace/Vii.html">Vii</a>
+        </span>
+                <h1 class="class-name">Db</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii;
+
+use Vii\Db\Pdo;
+use Vii\DbInterface;
+use Vii\Db\QueryBuilder;
+class Db
+{
+    protected _queryBuilder = null;
+    protected driver { get, set };
+    public function __construct(var driver,host=null,port=null,name=null,user=null,password=null,array! options= []){
+            if typeof driver == "object" && driver instanceof DbInterface {
+                let this->driver = driver;
+            }else{
+                let this->driver = new Pdo(driver . ":host=" . host . ";port=" . port . ";dbname=" . name, user, password,options);
+            }
+    }
+    /**
+     * 创建构造器
+     */
+    public function createBuilder(){
+        if !this->_queryBuilder{
+            let this->_queryBuilder = new QueryBuilder();
+        }
+        return this->_queryBuilder;
+    }
+    /**
+     * 开启数据库事务
+     */
+    public function begin(){
+        this->driver->beginTransaction();
+    }
+    /**
+     * 回滚事务
+     */
+    public function rollback(){
+        this->driver->rollBack();
+    }
+    /**
+     * 提交事务
+     */
+    public function commit(){
+        this->driver->commit();
+    }
+  
+    public function __call(string method, arguments = null) {
+       return call_user_func_array([this->driver, method], arguments);
+    }
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

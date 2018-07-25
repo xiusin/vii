@@ -21,7 +21,6 @@
 #include "kernel/exception.h"
 #include "kernel/string.h"
 #include "kernel/concat.h"
-#include "kernel/hash.h"
 #include "kernel/file.h"
 #include "kernel/require.h"
 
@@ -55,15 +54,10 @@ ZEPHIR_INIT_CLASS(Vii_Loader) {
  */
 PHP_METHOD(Vii_Loader, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *classFileName = NULL, classFileName_sub, __$null;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&classFileName_sub);
 	ZVAL_NULL(&__$null);
 
@@ -88,13 +82,8 @@ PHP_METHOD(Vii_Loader, __construct) {
 PHP_METHOD(Vii_Loader, setIoc) {
 
 	zval *_ioc, _ioc_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_ioc_sub);
 
 	zephir_fetch_params(0, 1, 0, &_ioc);
@@ -111,15 +100,10 @@ PHP_METHOD(Vii_Loader, setIoc) {
 PHP_METHOD(Vii_Loader, getIoc) {
 
 	zval _0, _1$$3;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_2 = NULL;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1$$3);
 
@@ -127,12 +111,12 @@ PHP_METHOD(Vii_Loader, getIoc) {
 
 	zephir_read_property(&_0, this_ptr, SL("ioc"), PH_NOISY_CC | PH_READONLY);
 	if (!(zephir_is_true(&_0))) {
-		ZEPHIR_CALL_CE_STATIC(&_1$$3, vii_ioc_ce, "getdefault", &_2, 32);
+		ZEPHIR_CALL_CE_STATIC(&_1$$3, vii_ioc_ce, "getdefault", &_2, 0);
 		zephir_check_call_status();
 		ZEPHIR_CALL_METHOD(NULL, this_ptr, "setioc", NULL, 0, &_1$$3);
 		zephir_check_call_status();
 	}
-	RETURN_MM_MEMBER(this_ptr, "ioc");
+	RETURN_MM_MEMBER(getThis(), "ioc");
 
 }
 
@@ -142,13 +126,8 @@ PHP_METHOD(Vii_Loader, getIoc) {
 PHP_METHOD(Vii_Loader, setClassMapFile) {
 
 	zval *classFileName = NULL, classFileName_sub, __$null, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&classFileName_sub);
 	ZVAL_NULL(&__$null);
 	ZVAL_UNDEF(&_0);
@@ -186,13 +165,8 @@ PHP_METHOD(Vii_Loader, registerNamespaces) {
 
 	zval *namespaceName_param = NULL, _0, _1;
 	zval namespaceName;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&namespaceName);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -200,7 +174,7 @@ PHP_METHOD(Vii_Loader, registerNamespaces) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &namespaceName_param);
 
-	ZVAL_COPY_VALUE(&namespaceName, namespaceName_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&namespaceName, namespaceName_param);
 
 
 	ZEPHIR_INIT_VAR(&_0);
@@ -220,13 +194,8 @@ PHP_METHOD(Vii_Loader, registerClass) {
 
 	zval *classArr_param = NULL, _0, _1;
 	zval classArr;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&classArr);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -234,7 +203,7 @@ PHP_METHOD(Vii_Loader, registerClass) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &classArr_param);
 
-	ZVAL_COPY_VALUE(&classArr, classArr_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&classArr, classArr_param);
 
 
 	ZEPHIR_INIT_VAR(&_0);
@@ -253,14 +222,9 @@ PHP_METHOD(Vii_Loader, register) {
 
 	zval _1;
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 
@@ -272,7 +236,7 @@ PHP_METHOD(Vii_Loader, register) {
 	ZEPHIR_INIT_VAR(&_1);
 	ZVAL_STRING(&_1, "registerAutoload");
 	zephir_array_fast_append(&_0, &_1);
-	ZEPHIR_CALL_FUNCTION(NULL, "spl_autoload_register", NULL, 94, &_0);
+	ZEPHIR_CALL_FUNCTION(NULL, "spl_autoload_register", NULL, 91, &_0);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -285,16 +249,11 @@ PHP_METHOD(Vii_Loader, registerAutoload) {
 
 	zend_bool noNamespaceName;
 	zephir_fcall_cache_entry *_2 = NULL;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *className_param = NULL, fileName, info, controller_name, onlyClassName, classNamespace, dirkeys, _0, _3, _1$$3, _4$$5, _5$$5, _6$$5, _7$$5, _8$$6, *_9$$6, _10$$7, _11$$7;
 	zval className;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&className);
 	ZVAL_UNDEF(&fileName);
 	ZVAL_UNDEF(&info);
@@ -316,11 +275,11 @@ PHP_METHOD(Vii_Loader, registerAutoload) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &className_param);
 
-	if (unlikely(Z_TYPE_P(className_param) != IS_STRING && Z_TYPE_P(className_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(className_param) != IS_STRING && Z_TYPE_P(className_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'className' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(className_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(className_param) == IS_STRING)) {
 		zephir_get_strval(&className, className_param);
 	} else {
 		ZEPHIR_INIT_VAR(&className);
@@ -346,11 +305,11 @@ PHP_METHOD(Vii_Loader, registerAutoload) {
 	ZEPHIR_INIT_VAR(&info);
 	zephir_fast_explode_str(&info, SL("\\"), &className, LONG_MAX TSRMLS_CC);
 	ZEPHIR_MAKE_REF(&info);
-	ZEPHIR_CALL_FUNCTION(&controller_name, "end", NULL, 59, &info);
+	ZEPHIR_CALL_FUNCTION(&controller_name, "end", NULL, 56, &info);
 	ZEPHIR_UNREF(&info);
 	zephir_check_call_status();
 	ZEPHIR_MAKE_REF(&info);
-	ZEPHIR_CALL_FUNCTION(NULL, "array_pop", NULL, 95, &info);
+	ZEPHIR_CALL_FUNCTION(NULL, "array_pop", NULL, 92, &info);
 	ZEPHIR_UNREF(&info);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&classNamespace);
@@ -402,16 +361,11 @@ PHP_METHOD(Vii_Loader, registerAutoload) {
 PHP_METHOD(Vii_Loader, loadFile) {
 
 	zend_bool _7;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *filename_param = NULL, *className = NULL, className_sub, result, _0, _1, _2, _3, _6, _4$$3;
 	zval filename, _5$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&filename);
 	ZVAL_UNDEF(&_5$$3);
 	ZVAL_UNDEF(&className_sub);
@@ -426,11 +380,11 @@ PHP_METHOD(Vii_Loader, loadFile) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 1, &filename_param, &className);
 
-	if (unlikely(Z_TYPE_P(filename_param) != IS_STRING && Z_TYPE_P(filename_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(filename_param) != IS_STRING && Z_TYPE_P(filename_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'filename' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(filename_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(filename_param) == IS_STRING)) {
 		zephir_get_strval(&filename, filename_param);
 	} else {
 		ZEPHIR_INIT_VAR(&filename);
@@ -457,7 +411,7 @@ PHP_METHOD(Vii_Loader, loadFile) {
 		object_init_ex(&_4$$3, vii_exceptions_filenotexistsexception_ce);
 		ZEPHIR_INIT_VAR(&_5$$3);
 		ZEPHIR_CONCAT_SVS(&_5$$3, "file [", &filename, "] not exists");
-		ZEPHIR_CALL_METHOD(NULL, &_4$$3, "__construct", NULL, 4, &_5$$3);
+		ZEPHIR_CALL_METHOD(NULL, &_4$$3, "__construct", NULL, 3, &_5$$3);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(&_4$$3, "vii/loader.zep", 135 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
@@ -476,7 +430,7 @@ PHP_METHOD(Vii_Loader, loadFile) {
 		ZEPHIR_CALL_METHOD(NULL, this_ptr, "savemap", NULL, 0, className, &filename);
 		zephir_check_call_status();
 	}
-	RETURN_CCTOR(result);
+	RETURN_CCTOR(&result);
 
 }
 
@@ -489,13 +443,8 @@ PHP_METHOD(Vii_Loader, loadFile) {
 PHP_METHOD(Vii_Loader, registerDirs) {
 
 	zval *dir_str = NULL, dir_str_sub, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&dir_str_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -524,15 +473,10 @@ PHP_METHOD(Vii_Loader, registerDirs) {
  */
 PHP_METHOD(Vii_Loader, getNamespaces) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "registerNamespaces");
+
+	RETURN_MEMBER(getThis(), "registerNamespaces");
 
 }
 
@@ -543,34 +487,29 @@ PHP_METHOD(Vii_Loader, saveMap) {
 
 	zval *className_param = NULL, *filePath_param = NULL;
 	zval className, filePath;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&className);
 	ZVAL_UNDEF(&filePath);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &className_param, &filePath_param);
 
-	if (unlikely(Z_TYPE_P(className_param) != IS_STRING && Z_TYPE_P(className_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(className_param) != IS_STRING && Z_TYPE_P(className_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'className' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(className_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(className_param) == IS_STRING)) {
 		zephir_get_strval(&className, className_param);
 	} else {
 		ZEPHIR_INIT_VAR(&className);
 		ZVAL_EMPTY_STRING(&className);
 	}
-	if (unlikely(Z_TYPE_P(filePath_param) != IS_STRING && Z_TYPE_P(filePath_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(filePath_param) != IS_STRING && Z_TYPE_P(filePath_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'filePath' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(filePath_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(filePath_param) == IS_STRING)) {
 		zephir_get_strval(&filePath, filePath_param);
 	} else {
 		ZEPHIR_INIT_VAR(&filePath);
@@ -589,13 +528,8 @@ PHP_METHOD(Vii_Loader, saveMap) {
 PHP_METHOD(Vii_Loader, getMap) {
 
 	zval _0, _1$$3, _2$$3, _3$$3, _4$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1$$3);
 	ZVAL_UNDEF(&_2$$3);
@@ -616,11 +550,11 @@ PHP_METHOD(Vii_Loader, getMap) {
 		zephir_fast_array_merge(&_1$$3, &_2$$3, &_4$$3 TSRMLS_CC);
 		zephir_update_property_zval(this_ptr, SL("classmap"), &_1$$3);
 	}
-	RETURN_MM_MEMBER(this_ptr, "classmap");
+	RETURN_MM_MEMBER(getThis(), "classmap");
 
 }
 
-static zend_object *zephir_init_properties_Vii_Loader(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_Loader(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _0, _2, _4, _6, _1$$3, _3$$4, _5$$5, _7$$6;
 		ZVAL_UNDEF(&_0);

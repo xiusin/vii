@@ -13,7 +13,7 @@ PHP_METHOD(Vii_EventManager, getResponses);
 PHP_METHOD(Vii_EventManager, hasListener);
 PHP_METHOD(Vii_EventManager, getListener);
 PHP_METHOD(Vii_EventManager, fire);
-static zend_object *zephir_init_properties_Vii_EventManager(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Vii_EventManager(zend_class_entry *class_type TSRMLS_DC);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_eventmanager___construct, 0, 0, 0)
 	ZEND_ARG_OBJ_INFO(0, ioc, Vii\\Interfaces\\IocInterface, 1)

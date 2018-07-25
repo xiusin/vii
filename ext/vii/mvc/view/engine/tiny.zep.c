@@ -46,28 +46,18 @@ ZEPHIR_INIT_CLASS(Vii_Mvc_View_Engine_Tiny) {
 
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny, getCompileDir) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "compileDir");
+
+	RETURN_MEMBER(getThis(), "compileDir");
 
 }
 
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny, setOptions) {
 
 	zval *options, options_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&options_sub);
 
 	zephir_fetch_params(0, 1, 0, &options);
@@ -75,35 +65,26 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny, setOptions) {
 
 
 	zephir_update_property_zval(this_ptr, SL("options"), options);
+	RETURN_THISW();
 
 }
 
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny, getOptions) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "options");
+
+	RETURN_MEMBER(getThis(), "options");
 
 }
 
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_1 = NULL;
 	zval *view, view_sub, *ioc = NULL, ioc_sub, __$null, _0$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&view_sub);
 	ZVAL_UNDEF(&ioc_sub);
 	ZVAL_NULL(&__$null);
@@ -120,7 +101,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny, __construct) {
 
 	zephir_update_property_zval(this_ptr, SL("view"), view);
 	if (!(zephir_is_true(ioc))) {
-		ZEPHIR_CALL_CE_STATIC(&_0$$3, vii_ioc_ce, "getdefault", &_1, 32);
+		ZEPHIR_CALL_CE_STATIC(&_0$$3, vii_ioc_ce, "getdefault", &_1, 0);
 		zephir_check_call_status();
 		zephir_update_property_zval(this_ptr, SL("di"), &_0$$3);
 	}
@@ -135,14 +116,9 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny, __construct) {
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny, getComiler) {
 
 	zval _0, _1$$3;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1$$3);
 
@@ -152,11 +128,11 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny, getComiler) {
 	if (!(zephir_is_true(&_0))) {
 		ZEPHIR_INIT_VAR(&_1$$3);
 		object_init_ex(&_1$$3, vii_mvc_view_engine_tiny_compiler_ce);
-		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 135, this_ptr);
+		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 132, this_ptr);
 		zephir_check_call_status();
 		zephir_update_property_zval(this_ptr, SL("compiler"), &_1$$3);
 	}
-	RETURN_MM_MEMBER(this_ptr, "compiler");
+	RETURN_MM_MEMBER(getThis(), "compiler");
 
 }
 
@@ -166,18 +142,13 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny, getComiler) {
  */
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny, render) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_4 = NULL;
 	zval data;
 	zval *path_param = NULL, *data_param = NULL, __$true, compiled, compile_file, _0, _6, _7, _8, _9, _10, _1$$3, _2$$3, _3$$4, _5$$4, _11$$5;
 	zval path;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path);
 	ZVAL_BOOL(&__$true, 1);
 	ZVAL_UNDEF(&compiled);
@@ -198,11 +169,11 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny, render) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 1, &path_param, &data_param);
 
-	if (unlikely(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(path_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(path_param) == IS_STRING)) {
 		zephir_get_strval(&path, path_param);
 	} else {
 		ZEPHIR_INIT_VAR(&path);
@@ -212,7 +183,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny, render) {
 		ZEPHIR_INIT_VAR(&data);
 		array_init(&data);
 	} else {
-	ZVAL_COPY_VALUE(&data, data_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&data, data_param);
 	}
 
 
@@ -221,20 +192,20 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny, render) {
 	if (zephir_is_true(&_0)) {
 		zephir_read_property(&_1$$3, this_ptr, SL("compileDir"), PH_NOISY_CC | PH_READONLY);
 		ZEPHIR_INIT_VAR(&_2$$3);
-		zephir_basename(_2$$3, &path TSRMLS_CC);
+		zephir_basename(&_2$$3, &path TSRMLS_CC);
 		ZEPHIR_CONCAT_VSVS(&compile_file, &_1$$3, "/", &_2$$3, ".phtml");
 	} else {
-		ZEPHIR_CALL_FUNCTION(&_3$$4, "dirname", &_4, 97, &path);
+		ZEPHIR_CALL_FUNCTION(&_3$$4, "dirname", &_4, 94, &path);
 		zephir_check_call_status();
 		ZEPHIR_INIT_VAR(&_5$$4);
-		zephir_basename(_5$$4, &path TSRMLS_CC);
+		zephir_basename(&_5$$4, &path TSRMLS_CC);
 		ZEPHIR_CONCAT_VSVS(&compile_file, &_3$$4, "/", &_5$$4, ".phtml");
 	}
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 51);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 49);
 	zephir_check_call_status();
 	ZVAL_LONG(&_6, 0);
 	ZEPHIR_MAKE_REF(&data);
-	ZEPHIR_CALL_FUNCTION(NULL, "extract", NULL, 115, &data, &_6);
+	ZEPHIR_CALL_FUNCTION(NULL, "extract", NULL, 112, &data, &_6);
 	ZEPHIR_UNREF(&data);
 	zephir_check_call_status();
 	ZEPHIR_CALL_METHOD(&_7, this_ptr, "getcomiler", NULL, 0);
@@ -243,42 +214,37 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny, render) {
 	zephir_file_get_contents(&_8, &path TSRMLS_CC);
 	ZEPHIR_CALL_METHOD(&compiled, &_7, "compile", NULL, 0, &_8);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&_9, "dirname", &_4, 97, &compile_file);
+	ZEPHIR_CALL_FUNCTION(&_9, "dirname", &_4, 94, &compile_file);
 	zephir_check_call_status();
-	ZEPHIR_CALL_FUNCTION(&_10, "is_dir", NULL, 76, &_9);
+	ZEPHIR_CALL_FUNCTION(&_10, "is_dir", NULL, 73, &_9);
 	zephir_check_call_status();
 	if (!(zephir_is_true(&_10))) {
-		ZEPHIR_CALL_FUNCTION(&_11$$5, "dirname", &_4, 97, &compile_file);
+		ZEPHIR_CALL_FUNCTION(&_11$$5, "dirname", &_4, 94, &compile_file);
 		zephir_check_call_status();
-		ZEPHIR_CALL_FUNCTION(NULL, "mkdir", NULL, 81, &_11$$5, &__$true);
+		ZEPHIR_CALL_FUNCTION(NULL, "mkdir", NULL, 78, &_11$$5, &__$true);
 		zephir_check_call_status();
 	}
 	zephir_file_put_contents(NULL, &compile_file, &compiled TSRMLS_CC);
 	if (zephir_require_zval(&compile_file TSRMLS_CC) == FAILURE) {
 		RETURN_MM_NULL();
 	}
-	ZEPHIR_CALL_FUNCTION(&compiled, "ob_get_clean", NULL, 50);
+	ZEPHIR_CALL_FUNCTION(&compiled, "ob_get_clean", NULL, 48);
 	zephir_check_call_status();
 	zephir_read_property(&_6, this_ptr, SL("view"), PH_NOISY_CC | PH_READONLY);
 	ZEPHIR_CALL_METHOD(NULL, &_6, "setcontent", NULL, 0, &compiled);
 	zephir_check_call_status();
-	RETURN_CCTOR(compiled);
+	RETURN_CCTOR(&compiled);
 
 }
 
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny, partial) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval data;
 	zval *path_param = NULL, *data_param = NULL, _0;
 	zval path;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&data);
@@ -286,11 +252,11 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny, partial) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 1, &path_param, &data_param);
 
-	if (unlikely(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(path_param) != IS_STRING && Z_TYPE_P(path_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'path' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(path_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(path_param) == IS_STRING)) {
 		zephir_get_strval(&path, path_param);
 	} else {
 		ZEPHIR_INIT_VAR(&path);
@@ -314,14 +280,9 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny, partial) {
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny, getContent) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();

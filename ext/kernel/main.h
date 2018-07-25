@@ -3,7 +3,7 @@
   +------------------------------------------------------------------------+
   | Zephir Language                                                        |
   +------------------------------------------------------------------------+
-  | Copyright (c) 2011-2015 Zephir Team (http://www.zephir-lang.com)       |
+  | Copyright (c) 2011-2017 Zephir Team (http://www.zephir-lang.com)       |
   +------------------------------------------------------------------------+
   | This source file is subject to the New BSD License that is bundled     |
   | with this package in the file docs/LICENSE.txt.                        |
@@ -23,6 +23,11 @@
 #include <Zend/zend_interfaces.h>
 #include <ext/spl/spl_exceptions.h>
 #include <ext/spl/spl_iterators.h>
+#include <Zend/zend_string.h>
+
+extern zend_string* i_parent;
+extern zend_string* i_static;
+extern zend_string* i_self;
 
 /** Main macros */
 #define PH_DEBUG 0
@@ -109,38 +114,42 @@
 	}
 
 /** Return zval with always ctor */
-#define RETURN_CTOR(var) { \
-		RETVAL_ZVAL(&var, 1, 0); \
-	} \
-	ZEPHIR_MM_RESTORE(); \
-	return;
+#define RETURN_CTOR(var)        \
+	do {                        \
+		RETVAL_ZVAL(var, 1, 0); \
+		ZEPHIR_MM_RESTORE();    \
+		return;                 \
+	} while (0)
 
 /** Return zval with always ctor, without restoring the memory stack */
-#define RETURN_CTORW(var) { \
-		RETVAL_ZVAL(&var, 1, 0); \
-	} \
-	return;
+#define RETURN_CTORW(var)       \
+	do {                        \
+		RETVAL_ZVAL(var, 1, 0); \
+		return;                 \
+	} while (0)
 
 /** Return zval checking if it's needed to ctor */
-#define RETURN_CCTOR(var) { \
-	ZVAL_DUP(return_value, &var); \
-	ZEPHIR_MM_RESTORE(); \
-	return; \
-}
+#define RETURN_CCTOR(v)            \
+	do {                           \
+		ZVAL_DUP(return_value, v); \
+		ZEPHIR_MM_RESTORE();       \
+		return;                    \
+	} while (0)
 
 /** Return zval checking if it's needed to ctor, without restoring the memory stack  */
-#define RETURN_CCTORW(var) { \
-		ZVAL_DUP(return_value, &var); \
-		return; \
-}
+#define RETURN_CCTORW(v)           \
+	do {                           \
+		ZVAL_DUP(return_value, v); \
+		return;                    \
+	} while (0)
 
 /** Return zval with always ctor, without restoring the memory stack */
 #define RETURN_THISW() \
-	RETURN_ZVAL(this_ptr, 1, 0);
+	RETURN_ZVAL(getThis(), 1, 0);
 
 /** Return this pointer */
 #define RETURN_THIS() { \
-		RETVAL_ZVAL(this_ptr, 1, 0); \
+		RETVAL_ZVAL(getThis(), 1, 0); \
 	} \
 	ZEPHIR_MM_RESTORE(); \
 	return;
@@ -198,7 +207,7 @@
 #define RETURN_MM_NULL()            { RETVAL_NULL(); ZEPHIR_MM_RESTORE(); return; }
 
 /* Globals functions */
-int zephir_get_global(zval *arr, const char *global, unsigned int global_length);
+int zephir_get_global(zval **arr, const char *global, unsigned int global_length);
 
 /* Count */
 void zephir_fast_count(zval *result, zval *array);
@@ -207,7 +216,10 @@ int zephir_fast_count_int(zval *value);
 
 int zephir_is_callable(zval *var);
 int zephir_is_scalar(zval *var);
+
+int zephir_function_exists(const zval *function_name);
 int zephir_function_exists_ex(const char *func_name, unsigned int func_len);
+
 zend_class_entry* zephir_get_internal_ce(const char *class_name, unsigned int class_name_len);
 
 /* types */
@@ -217,7 +229,7 @@ void zephir_gettype(zval *return_value, zval *arg);
 static inline int zephir_maybe_separate_zval(zval* z)
 {
 	if (!Z_REFCOUNTED_P(z) || (Z_REFCOUNT_P(z) > 1 && !Z_ISREF_P(z))) {
-		if (!Z_IMMUTABLE_P(z)) {
+		if (!(Z_COPYABLE_P(z) && !Z_REFCOUNTED_P(z))) {
 			Z_DELREF_P(z);
 		}
 		zval_copy_ctor_func(z);
@@ -236,7 +248,7 @@ int zephir_is_iterable_ex(zval *arr, int duplicate);
 
 /** Check if an array is iterable or not */
 #define zephir_is_iterable(var, duplicate, file, line) \
-	if (!var || !zephir_is_iterable_ex(var, duplicate)) { \
+	if (!zephir_is_iterable_ex(var, duplicate)) { \
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STRW(zend_exception_get_default(), "The argument is not initialized or iterable()", file, line); \
 		ZEPHIR_MM_RESTORE(); \
 		return; \
@@ -275,6 +287,8 @@ int zephir_fetch_parameters(int num_args, int required_args, int optional_args, 
 	ZVAL_COPY(return_value, _constant_ptr); \
 } while(0)
 
+#define ZEPHIR_GET_IMKEY(var, it) it->funcs->get_current_key(it, &var);
+
 /* Declare class constants */
 int zephir_declare_class_constant_null(zend_class_entry *ce, const char *name, size_t name_length);
 int zephir_declare_class_constant_long(zend_class_entry *ce, const char *name, size_t name_length, zend_long value);
@@ -283,6 +297,13 @@ int zephir_declare_class_constant_double(zend_class_entry *ce, const char *name,
 int zephir_declare_class_constant_stringl(zend_class_entry *ce, const char *name, size_t name_length, const char *value, size_t value_length);
 int zephir_declare_class_constant_string(zend_class_entry *ce, const char *name, size_t name_length, const char *value);
 
+#define ZEPHIR_CHECK_POINTER(v)
+
+int zephir_is_php_version(unsigned int id);
+
+/** Method declaration for API generation */
+#define ZEPHIR_DOC_METHOD(class_name, method)
+
 #ifndef ZEPHIR_RELEASE
 #define ZEPHIR_DEBUG_PARAMS , const char *file, int line
 #define ZEPHIR_DEBUG_PARAMS_DUMMY , "", 0
@@ -290,5 +311,10 @@ int zephir_declare_class_constant_string(zend_class_entry *ce, const char *name,
 #define ZEPHIR_DEBUG_PARAMS , const char *file, int line
 #define ZEPHIR_DEBUG_PARAMS_DUMMY , "", 0
 #endif
+
+void zephir_get_args(zval* return_value);
+void zephir_get_arg(zval* return_value, zend_long idx);
+
+void zephir_module_init();
 
 #endif /* ZEPHIR_KERNEL_MAIN_H */

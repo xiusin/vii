@@ -9,6 +9,7 @@ PHP_METHOD(Vii_Helper, getHttpMethod);
 PHP_METHOD(Vii_Helper, getFileExtension);
 PHP_METHOD(Vii_Helper, start_with);
 PHP_METHOD(Vii_Helper, _t);
+PHP_METHOD(Vii_Helper, dump);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_vii_helper_obj2arr, 0, 0, 1)
 	ZEND_ARG_INFO(0, obj)
@@ -35,5 +36,6 @@ ZEPHIR_INIT_FUNCS(vii_helper_method_entry) {
 	PHP_ME(Vii_Helper, getFileExtension, arginfo_vii_helper_getfileextension, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	PHP_ME(Vii_Helper, start_with, arginfo_vii_helper_start_with, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	PHP_ME(Vii_Helper, _t, arginfo_vii_helper__t, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
+	PHP_ME(Vii_Helper, dump, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_STATIC)
 	PHP_FE_END
 };

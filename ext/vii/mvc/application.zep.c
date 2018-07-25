@@ -23,7 +23,6 @@
 #include "Zend/zend_closures.h"
 #include "kernel/concat.h"
 #include "kernel/array.h"
-#include "kernel/hash.h"
 #include "kernel/string.h"
 
 
@@ -52,16 +51,11 @@ ZEPHIR_INIT_CLASS(Vii_Mvc_Application) {
  */
 PHP_METHOD(Vii_Mvc_Application, __construct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval composerAutoLoadFile;
 	zval *ioc, ioc_sub, *composerAutoLoadFile_param = NULL, _0, _1, _2;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&ioc_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -105,19 +99,14 @@ PHP_METHOD(Vii_Mvc_Application, debug) {
 
 	zval *debug_param = NULL, __$true, __$false;
 	zend_bool debug;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_BOOL(&__$true, 1);
 	ZVAL_BOOL(&__$false, 0);
 
 	zephir_fetch_params(0, 1, 0, &debug_param);
 
-	if (unlikely(Z_TYPE_P(debug_param) != IS_TRUE && Z_TYPE_P(debug_param) != IS_FALSE)) {
+	if (UNEXPECTED(Z_TYPE_P(debug_param) != IS_TRUE && Z_TYPE_P(debug_param) != IS_FALSE)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'debug' must be a bool") TSRMLS_CC);
 		RETURN_NULL();
 	}
@@ -139,35 +128,31 @@ PHP_METHOD(Vii_Mvc_Application, debug) {
  */
 PHP_METHOD(Vii_Mvc_Application, handle) {
 
-	zval e, notFound, _0$$3, _1$$3, _2$$3, _3$$3, _4$$4, _5$$5, _6$$5, _7$$6, _8$$6, _9$$6, _10$$7, _11$$7, _12$$10, _13$$10;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zval e, notFound, _4, _0$$3, _1$$3, _2$$3, _3$$3, _5$$4, _6$$5, _7$$5, _8$$6, _9$$6, _10$$6, _11$$7, _12$$7, _13$$10, _14$$10;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&e);
 	ZVAL_UNDEF(&notFound);
+	ZVAL_UNDEF(&_4);
 	ZVAL_UNDEF(&_0$$3);
 	ZVAL_UNDEF(&_1$$3);
 	ZVAL_UNDEF(&_2$$3);
 	ZVAL_UNDEF(&_3$$3);
-	ZVAL_UNDEF(&_4$$4);
-	ZVAL_UNDEF(&_5$$5);
+	ZVAL_UNDEF(&_5$$4);
 	ZVAL_UNDEF(&_6$$5);
-	ZVAL_UNDEF(&_7$$6);
+	ZVAL_UNDEF(&_7$$5);
 	ZVAL_UNDEF(&_8$$6);
 	ZVAL_UNDEF(&_9$$6);
-	ZVAL_UNDEF(&_10$$7);
+	ZVAL_UNDEF(&_10$$6);
 	ZVAL_UNDEF(&_11$$7);
-	ZVAL_UNDEF(&_12$$10);
+	ZVAL_UNDEF(&_12$$7);
 	ZVAL_UNDEF(&_13$$10);
+	ZVAL_UNDEF(&_14$$10);
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 51);
+	ZEPHIR_CALL_FUNCTION(NULL, "ob_start", NULL, 49);
 	zephir_check_call_status();
 
 	/* try_start_1: */
@@ -186,37 +171,39 @@ PHP_METHOD(Vii_Mvc_Application, handle) {
 	try_end_1:
 
 	if (EG(exception)) {
-		ZVAL_OBJ(&e, EG(exception));
-		Z_ADDREF_P(&e);
-		if (zephir_instance_of_ev(&e, zend_exception_get_default(TSRMLS_C) TSRMLS_CC)) {
+		ZEPHIR_INIT_VAR(&_4);
+		ZVAL_OBJ(&_4, EG(exception));
+		Z_ADDREF_P(&_4);
+		if (zephir_instance_of_ev(&_4, zend_exception_get_default(TSRMLS_C) TSRMLS_CC)) {
 			zend_clear_exception(TSRMLS_C);
-			zephir_read_property(&_4$$4, this_ptr, SL("debug"), PH_NOISY_CC | PH_READONLY);
-			if (zephir_is_true(&_4$$4)) {
-				ZEPHIR_INIT_VAR(&_5$$5);
-				object_init_ex(&_5$$5, spl_ce_RuntimeException);
-				ZEPHIR_CALL_METHOD(&_6$$5, &e, "getmessage", NULL, 0);
+			ZEPHIR_CPY_WRT(&e, &_4);
+			zephir_read_property(&_5$$4, this_ptr, SL("debug"), PH_NOISY_CC | PH_READONLY);
+			if (zephir_is_true(&_5$$4)) {
+				ZEPHIR_INIT_VAR(&_6$$5);
+				object_init_ex(&_6$$5, spl_ce_RuntimeException);
+				ZEPHIR_CALL_METHOD(&_7$$5, &e, "getmessage", NULL, 0);
 				zephir_check_call_status();
-				ZEPHIR_CALL_METHOD(NULL, &_5$$5, "__construct", NULL, 101, &_6$$5);
+				ZEPHIR_CALL_METHOD(NULL, &_6$$5, "__construct", NULL, 98, &_7$$5);
 				zephir_check_call_status();
-				zephir_throw_exception_debug(&_5$$5, "vii/mvc/application.zep", 50 TSRMLS_CC);
+				zephir_throw_exception_debug(&_6$$5, "vii/mvc/application.zep", 50 TSRMLS_CC);
 				ZEPHIR_MM_RESTORE();
 				return;
 			} else {
-				zephir_read_property(&_7$$6, this_ptr, SL("ioc"), PH_NOISY_CC | PH_READONLY);
-				ZEPHIR_INIT_VAR(&_9$$6);
-				ZVAL_STRING(&_9$$6, "router");
-				ZEPHIR_CALL_METHOD(&_8$$6, &_7$$6, "get", NULL, 0, &_9$$6);
+				zephir_read_property(&_8$$6, this_ptr, SL("ioc"), PH_NOISY_CC | PH_READONLY);
+				ZEPHIR_INIT_VAR(&_10$$6);
+				ZVAL_STRING(&_10$$6, "router");
+				ZEPHIR_CALL_METHOD(&_9$$6, &_8$$6, "get", NULL, 0, &_10$$6);
 				zephir_check_call_status();
-				ZEPHIR_CALL_METHOD(&notFound, &_8$$6, "getnotfound", NULL, 0);
+				ZEPHIR_CALL_METHOD(&notFound, &_9$$6, "getnotfound", NULL, 0);
 				zephir_check_call_status();
 				if (Z_TYPE_P(&notFound) == IS_NULL) {
-					ZEPHIR_INIT_VAR(&_10$$7);
-					object_init_ex(&_10$$7, spl_ce_RuntimeException);
-					ZEPHIR_CALL_METHOD(&_11$$7, &e, "getmessage", NULL, 0);
+					ZEPHIR_INIT_VAR(&_11$$7);
+					object_init_ex(&_11$$7, spl_ce_RuntimeException);
+					ZEPHIR_CALL_METHOD(&_12$$7, &e, "getmessage", NULL, 0);
 					zephir_check_call_status();
-					ZEPHIR_CALL_METHOD(NULL, &_10$$7, "__construct", NULL, 101, &_11$$7);
+					ZEPHIR_CALL_METHOD(NULL, &_11$$7, "__construct", NULL, 98, &_12$$7);
 					zephir_check_call_status();
-					zephir_throw_exception_debug(&_10$$7, "vii/mvc/application.zep", 54 TSRMLS_CC);
+					zephir_throw_exception_debug(&_11$$7, "vii/mvc/application.zep", 54 TSRMLS_CC);
 					ZEPHIR_MM_RESTORE();
 					return;
 				} else {
@@ -224,13 +211,13 @@ PHP_METHOD(Vii_Mvc_Application, handle) {
 						ZEPHIR_CALL_ZVAL_FUNCTION(NULL, &notFound, NULL, 0);
 						zephir_check_call_status();
 					} else {
-						ZEPHIR_INIT_VAR(&_12$$10);
-						object_init_ex(&_12$$10, spl_ce_RuntimeException);
-						ZEPHIR_CALL_METHOD(&_13$$10, &e, "getmessage", NULL, 0);
+						ZEPHIR_INIT_VAR(&_13$$10);
+						object_init_ex(&_13$$10, spl_ce_RuntimeException);
+						ZEPHIR_CALL_METHOD(&_14$$10, &e, "getmessage", NULL, 0);
 						zephir_check_call_status();
-						ZEPHIR_CALL_METHOD(NULL, &_12$$10, "__construct", NULL, 101, &_13$$10);
+						ZEPHIR_CALL_METHOD(NULL, &_13$$10, "__construct", NULL, 98, &_14$$10);
 						zephir_check_call_status();
-						zephir_throw_exception_debug(&_12$$10, "vii/mvc/application.zep", 59 TSRMLS_CC);
+						zephir_throw_exception_debug(&_13$$10, "vii/mvc/application.zep", 59 TSRMLS_CC);
 						ZEPHIR_MM_RESTORE();
 						return;
 					}
@@ -249,16 +236,11 @@ PHP_METHOD(Vii_Mvc_Application, handle) {
 PHP_METHOD(Vii_Mvc_Application, bootstrap) {
 
 	zval _8, _11;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *filename_param = NULL, bootstrap, methods, bootstrapClass, method, methodName, _0, _1, _2, _3, _6, _7, _9, _10, *_12, _4$$3;
 	zval filename, _5$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&filename);
 	ZVAL_UNDEF(&_5$$3);
 	ZVAL_UNDEF(&bootstrap);
@@ -281,11 +263,11 @@ PHP_METHOD(Vii_Mvc_Application, bootstrap) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &filename_param);
 
-	if (unlikely(Z_TYPE_P(filename_param) != IS_STRING && Z_TYPE_P(filename_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(filename_param) != IS_STRING && Z_TYPE_P(filename_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'filename' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(filename_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(filename_param) == IS_STRING)) {
 		zephir_get_strval(&filename, filename_param);
 	} else {
 		ZEPHIR_INIT_VAR(&filename);
@@ -306,7 +288,7 @@ PHP_METHOD(Vii_Mvc_Application, bootstrap) {
 		object_init_ex(&_4$$3, vii_exceptions_filenotexistsexception_ce);
 		ZEPHIR_INIT_VAR(&_5$$3);
 		ZEPHIR_CONCAT_SVS(&_5$$3, "the bootstrap:", &filename, " file is not exists!");
-		ZEPHIR_CALL_METHOD(NULL, &_4$$3, "__construct", NULL, 4, &_5$$3);
+		ZEPHIR_CALL_METHOD(NULL, &_4$$3, "__construct", NULL, 3, &_5$$3);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(&_4$$3, "vii/mvc/application.zep", 76 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
@@ -326,14 +308,14 @@ PHP_METHOD(Vii_Mvc_Application, bootstrap) {
 	object_init_ex(&bootstrap, zephir_get_internal_ce(SL("reflectionclass")));
 	ZEPHIR_INIT_NVAR(&_2);
 	ZVAL_STRING(&_2, "Bootstrap");
-	ZEPHIR_CALL_METHOD(NULL, &bootstrap, "__construct", NULL, 14, &_2);
+	ZEPHIR_CALL_METHOD(NULL, &bootstrap, "__construct", NULL, 13, &_2);
 	zephir_check_call_status();
 	ZVAL_LONG(&_9, 256);
-	ZEPHIR_CALL_METHOD(&methods, &bootstrap, "getmethods", NULL, 102, &_9);
+	ZEPHIR_CALL_METHOD(&methods, &bootstrap, "getmethods", NULL, 99, &_9);
 	zephir_check_call_status();
 	ZEPHIR_INIT_NVAR(&_2);
 	ZVAL_STRING(&_2, "Vii\\Interfaces\\BootstrapInterface");
-	ZEPHIR_CALL_METHOD(&_10, &bootstrap, "implementsinterface", NULL, 103, &_2);
+	ZEPHIR_CALL_METHOD(&_10, &bootstrap, "implementsinterface", NULL, 100, &_2);
 	zephir_check_call_status();
 	if (!(zephir_is_true(&_10))) {
 		ZEPHIR_THROW_EXCEPTION_DEBUG_STR(vii_exceptions_runtimeexception_ce, "bootstrapClass must implements Vii\\Interfaces\\BootstrapInterface", "vii/mvc/application.zep", 83);
@@ -343,7 +325,7 @@ PHP_METHOD(Vii_Mvc_Application, bootstrap) {
 	zephir_create_array(&_11, 1, 0 TSRMLS_CC);
 	zephir_read_property(&_9, this_ptr, SL("ioc"), PH_NOISY_CC | PH_READONLY);
 	zephir_array_fast_append(&_11, &_9);
-	ZEPHIR_CALL_METHOD(&bootstrapClass, &bootstrap, "newinstanceargs", NULL, 15, &_11);
+	ZEPHIR_CALL_METHOD(&bootstrapClass, &bootstrap, "newinstanceargs", NULL, 14, &_11);
 	zephir_check_call_status();
 	zephir_is_iterable(&methods, 0, "vii/mvc/application.zep", 93);
 	ZEND_HASH_FOREACH_VAL(Z_ARRVAL_P(&methods), _12)
@@ -370,17 +352,12 @@ PHP_METHOD(Vii_Mvc_Application, bootstrap) {
  */
 PHP_METHOD(Vii_Mvc_Application, bulidBaseStruct) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_7 = NULL, *_9 = NULL;
 	zval *applicationDirName_param = NULL, *moduleName_param = NULL, __$true, value, moduleDir, _0, _1, new_app, _3, *_5, _6$$4, _8$$5;
 	zval applicationDirName, moduleName, _4, _2$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&applicationDirName);
 	ZVAL_UNDEF(&moduleName);
 	ZVAL_UNDEF(&_4);
@@ -399,11 +376,11 @@ PHP_METHOD(Vii_Mvc_Application, bulidBaseStruct) {
 	zephir_fetch_params(1, 2, 0, &applicationDirName_param, &moduleName_param);
 
 	zephir_get_strval(&applicationDirName, applicationDirName_param);
-	if (unlikely(Z_TYPE_P(moduleName_param) != IS_STRING && Z_TYPE_P(moduleName_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(moduleName_param) != IS_STRING && Z_TYPE_P(moduleName_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'moduleName' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(moduleName_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(moduleName_param) == IS_STRING)) {
 		zephir_get_strval(&moduleName, moduleName_param);
 	} else {
 		ZEPHIR_INIT_VAR(&moduleName);
@@ -441,11 +418,11 @@ PHP_METHOD(Vii_Mvc_Application, bulidBaseStruct) {
 	{
 		ZEPHIR_INIT_NVAR(&value);
 		ZVAL_COPY(&value, _5);
-		ZEPHIR_CALL_FUNCTION(&_6$$4, "is_dir", &_7, 76, &value);
+		ZEPHIR_CALL_FUNCTION(&_6$$4, "is_dir", &_7, 73, &value);
 		zephir_check_call_status();
 		if (!zephir_is_true(&_6$$4)) {
 			ZVAL_LONG(&_8$$5, 0777);
-			ZEPHIR_CALL_FUNCTION(NULL, "mkdir", &_9, 81, &value, &_8$$5, &__$true);
+			ZEPHIR_CALL_FUNCTION(NULL, "mkdir", &_9, 78, &value, &_8$$5, &__$true);
 			zephir_check_call_status();
 		}
 	} ZEND_HASH_FOREACH_END();
@@ -462,13 +439,8 @@ PHP_METHOD(Vii_Mvc_Application, registerModules) {
 
 	zval *modules_param = NULL;
 	zval modules;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&modules);
 
 	ZEPHIR_MM_GROW();
@@ -489,16 +461,11 @@ PHP_METHOD(Vii_Mvc_Application, registerModules) {
  */
 PHP_METHOD(Vii_Mvc_Application, getRegisterModuleByModuleName) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *name_param = NULL, _0, _3, _4, _1$$3;
 	zval name, _2$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&name);
 	ZVAL_UNDEF(&_2$$3);
 	ZVAL_UNDEF(&_0);
@@ -509,11 +476,11 @@ PHP_METHOD(Vii_Mvc_Application, getRegisterModuleByModuleName) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &name_param);
 
-	if (unlikely(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(name_param) != IS_STRING && Z_TYPE_P(name_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'name' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(name_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(name_param) == IS_STRING)) {
 		zephir_get_strval(&name, name_param);
 	} else {
 		ZEPHIR_INIT_VAR(&name);
@@ -527,7 +494,7 @@ PHP_METHOD(Vii_Mvc_Application, getRegisterModuleByModuleName) {
 		object_init_ex(&_1$$3, vii_exceptions_runtimeexception_ce);
 		ZEPHIR_INIT_VAR(&_2$$3);
 		ZEPHIR_CONCAT_VS(&_2$$3, &name, "模块没有被注册");
-		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 4, &_2$$3);
+		ZEPHIR_CALL_METHOD(NULL, &_1$$3, "__construct", NULL, 3, &_2$$3);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(&_1$$3, "vii/mvc/application.zep", 139 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
@@ -535,7 +502,7 @@ PHP_METHOD(Vii_Mvc_Application, getRegisterModuleByModuleName) {
 	}
 	zephir_read_property(&_3, this_ptr, SL("_module"), PH_NOISY_CC | PH_READONLY);
 	zephir_array_fetch(&_4, &_3, &name, PH_NOISY | PH_READONLY, "vii/mvc/application.zep", 141 TSRMLS_CC);
-	RETURN_CTOR(_4);
+	RETURN_CTOR(&_4);
 
 }
 
@@ -544,28 +511,18 @@ PHP_METHOD(Vii_Mvc_Application, getRegisterModuleByModuleName) {
  */
 PHP_METHOD(Vii_Mvc_Application, getRegisterModules) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_module");
+
+	RETURN_MEMBER(getThis(), "_module");
 
 }
 
 PHP_METHOD(Vii_Mvc_Application, setIoc) {
 
 	zval *_ioc, _ioc_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_ioc_sub);
 
 	zephir_fetch_params(0, 1, 0, &_ioc);
@@ -578,19 +535,14 @@ PHP_METHOD(Vii_Mvc_Application, setIoc) {
 
 PHP_METHOD(Vii_Mvc_Application, getIoc) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "ioc");
+
+	RETURN_MEMBER(getThis(), "ioc");
 
 }
 
-static zend_object *zephir_init_properties_Vii_Mvc_Application(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_Mvc_Application(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _0, _1$$3;
 		ZVAL_UNDEF(&_0);

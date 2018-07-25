@@ -39,13 +39,8 @@ ZEPHIR_INIT_CLASS(Vii_Registry) {
 PHP_METHOD(Vii_Registry, __construct) {
 
 	zval _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -60,13 +55,8 @@ PHP_METHOD(Vii_Registry, __construct) {
 PHP_METHOD(Vii_Registry, offsetExists) {
 
 	zval *offset, offset_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&offset_sub);
 	ZVAL_UNDEF(&_0);
 
@@ -82,13 +72,8 @@ PHP_METHOD(Vii_Registry, offsetExists) {
 PHP_METHOD(Vii_Registry, offsetGet) {
 
 	zval *offset, offset_sub, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&offset_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -99,20 +84,15 @@ PHP_METHOD(Vii_Registry, offsetGet) {
 
 	zephir_read_property(&_0, this_ptr, SL("_data"), PH_NOISY_CC | PH_READONLY);
 	zephir_array_fetch(&_1, &_0, offset, PH_NOISY | PH_READONLY, "vii/registry.zep", 18 TSRMLS_CC);
-	RETURN_CTORW(_1);
+	RETURN_CTORW(&_1);
 
 }
 
 PHP_METHOD(Vii_Registry, offsetSet) {
 
 	zval *offset, offset_sub, *value, value_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&offset_sub);
 	ZVAL_UNDEF(&value_sub);
 
@@ -127,13 +107,8 @@ PHP_METHOD(Vii_Registry, offsetSet) {
 PHP_METHOD(Vii_Registry, offsetUnset) {
 
 	zval *offset, offset_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&offset_sub);
 	ZVAL_UNDEF(&_0);
 
@@ -149,13 +124,8 @@ PHP_METHOD(Vii_Registry, offsetUnset) {
 PHP_METHOD(Vii_Registry, count) {
 
 	zval _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 
@@ -167,20 +137,15 @@ PHP_METHOD(Vii_Registry, count) {
 PHP_METHOD(Vii_Registry, current) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
 
 	zephir_read_property(&_0, this_ptr, SL("_data"), PH_NOISY_CC | PH_READONLY);
-	ZEPHIR_RETURN_CALL_FUNCTION("current", NULL, 38, &_0);
+	ZEPHIR_RETURN_CALL_FUNCTION("current", NULL, 36, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -189,20 +154,15 @@ PHP_METHOD(Vii_Registry, current) {
 PHP_METHOD(Vii_Registry, key) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
 
 	zephir_read_property(&_0, this_ptr, SL("_data"), PH_NOISY_CC | PH_READONLY);
-	ZEPHIR_RETURN_CALL_FUNCTION("key", NULL, 37, &_0);
+	ZEPHIR_RETURN_CALL_FUNCTION("key", NULL, 35, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -211,21 +171,16 @@ PHP_METHOD(Vii_Registry, key) {
 PHP_METHOD(Vii_Registry, next) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
 
 	zephir_read_property(&_0, this_ptr, SL("_data"), PH_NOISY_CC | PH_READONLY);
 	ZEPHIR_MAKE_REF(&_0);
-	ZEPHIR_RETURN_CALL_FUNCTION("next", NULL, 136, &_0);
+	ZEPHIR_RETURN_CALL_FUNCTION("next", NULL, 133, &_0);
 	ZEPHIR_UNREF(&_0);
 	zephir_check_call_status();
 	RETURN_MM();
@@ -235,21 +190,16 @@ PHP_METHOD(Vii_Registry, next) {
 PHP_METHOD(Vii_Registry, rewind) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
 
 	zephir_read_property(&_0, this_ptr, SL("_data"), PH_NOISY_CC | PH_READONLY);
 	ZEPHIR_MAKE_REF(&_0);
-	ZEPHIR_RETURN_CALL_FUNCTION("reset", NULL, 137, &_0);
+	ZEPHIR_RETURN_CALL_FUNCTION("reset", NULL, 134, &_0);
 	ZEPHIR_UNREF(&_0);
 	zephir_check_call_status();
 	RETURN_MM();
@@ -259,21 +209,16 @@ PHP_METHOD(Vii_Registry, rewind) {
 PHP_METHOD(Vii_Registry, valid) {
 
 	zval _0, _1;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
 
 	ZEPHIR_MM_GROW();
 
 	zephir_read_property(&_0, this_ptr, SL("_data"), PH_NOISY_CC | PH_READONLY);
-	ZEPHIR_CALL_FUNCTION(&_1, "key", NULL, 37, &_0);
+	ZEPHIR_CALL_FUNCTION(&_1, "key", NULL, 35, &_0);
 	zephir_check_call_status();
 	RETURN_MM_BOOL(Z_TYPE_P(&_1) != IS_NULL);
 

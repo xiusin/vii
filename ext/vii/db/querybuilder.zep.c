@@ -15,7 +15,6 @@
 #include "kernel/memory.h"
 #include "kernel/fcall.h"
 #include "kernel/object.h"
-#include "kernel/hash.h"
 #include "kernel/operators.h"
 #include "ext/spl/spl_exceptions.h"
 #include "kernel/exception.h"
@@ -61,22 +60,17 @@ ZEPHIR_INIT_CLASS(Vii_Db_QueryBuilder) {
 PHP_METHOD(Vii_Db_QueryBuilder, __construct) {
 
 	zval _0, _2, _3;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_1 = NULL;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_2);
 	ZVAL_UNDEF(&_3);
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_CALL_CE_STATIC(&_0, vii_ioc_ce, "getdefault", &_1, 32);
+	ZEPHIR_CALL_CE_STATIC(&_0, vii_ioc_ce, "getdefault", &_1, 0);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_3);
 	ZVAL_STRING(&_3, "db");
@@ -90,13 +84,8 @@ PHP_METHOD(Vii_Db_QueryBuilder, __construct) {
 PHP_METHOD(Vii_Db_QueryBuilder, columns) {
 
 	zval *columns, columns_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&columns_sub);
 
 	zephir_fetch_params(0, 1, 0, &columns);
@@ -110,15 +99,10 @@ PHP_METHOD(Vii_Db_QueryBuilder, columns) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, getColumns) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_columns");
+
+	RETURN_MEMBER(getThis(), "_columns");
 
 }
 
@@ -127,13 +111,8 @@ PHP_METHOD(Vii_Db_QueryBuilder, from) {
 	zend_string *_2$$3;
 	zend_ulong _1$$3;
 	zval *tablenames, tablenames_sub, *aliasName = NULL, aliasName_sub, __$null, alias$$3, tablename$$3, *_0$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&tablenames_sub);
 	ZVAL_UNDEF(&aliasName_sub);
 	ZVAL_NULL(&__$null);
@@ -184,24 +163,19 @@ PHP_METHOD(Vii_Db_QueryBuilder, addFrom) {
 
 	zval *tablename_param = NULL, *alias_param = NULL;
 	zval tablename, alias;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&tablename);
 	ZVAL_UNDEF(&alias);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 1, &tablename_param, &alias_param);
 
-	if (unlikely(Z_TYPE_P(tablename_param) != IS_STRING && Z_TYPE_P(tablename_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(tablename_param) != IS_STRING && Z_TYPE_P(tablename_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'tablename' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(tablename_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(tablename_param) == IS_STRING)) {
 		zephir_get_strval(&tablename, tablename_param);
 	} else {
 		ZEPHIR_INIT_VAR(&tablename);
@@ -211,11 +185,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, addFrom) {
 		ZEPHIR_INIT_VAR(&alias);
 		ZVAL_STRING(&alias, "");
 	} else {
-	if (unlikely(Z_TYPE_P(alias_param) != IS_STRING && Z_TYPE_P(alias_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(alias_param) != IS_STRING && Z_TYPE_P(alias_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'alias' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(alias_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(alias_param) == IS_STRING)) {
 		zephir_get_strval(&alias, alias_param);
 	} else {
 		ZEPHIR_INIT_VAR(&alias);
@@ -235,25 +209,20 @@ PHP_METHOD(Vii_Db_QueryBuilder, addFrom) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, addParams) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *params_param = NULL;
 	zval params;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&params);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &params_param);
 
-	ZVAL_COPY_VALUE(&params, params_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&params, params_param);
 
 
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_mergebindparams", NULL, 33, &params);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_mergebindparams", NULL, 31, &params);
 	zephir_check_call_status();
 	RETURN_THIS();
 
@@ -261,28 +230,18 @@ PHP_METHOD(Vii_Db_QueryBuilder, addParams) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, getFrom) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_froms");
+
+	RETURN_MEMBER(getThis(), "_froms");
 
 }
 
 PHP_METHOD(Vii_Db_QueryBuilder, orderBy) {
 
 	zval *order, order_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&order_sub);
 
 	zephir_fetch_params(0, 1, 0, &order);
@@ -296,15 +255,10 @@ PHP_METHOD(Vii_Db_QueryBuilder, orderBy) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, getDb) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "db");
+
+	RETURN_MEMBER(getThis(), "db");
 
 }
 
@@ -312,13 +266,8 @@ PHP_METHOD(Vii_Db_QueryBuilder, join) {
 
 	zval *joinTable_param = NULL, *joinCondition_param = NULL, *joinTableAlias_param = NULL, _1$$4, _2$$4, _3, _4;
 	zval joinTable, joinCondition, joinTableAlias, _0$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&joinTable);
 	ZVAL_UNDEF(&joinCondition);
 	ZVAL_UNDEF(&joinTableAlias);
@@ -331,11 +280,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, join) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 2, &joinTable_param, &joinCondition_param, &joinTableAlias_param);
 
-	if (unlikely(Z_TYPE_P(joinTable_param) != IS_STRING && Z_TYPE_P(joinTable_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinTable_param) != IS_STRING && Z_TYPE_P(joinTable_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinTable' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinTable_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinTable_param) == IS_STRING)) {
 		zephir_get_strval(&joinTable, joinTable_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinTable);
@@ -345,11 +294,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, join) {
 		ZEPHIR_INIT_VAR(&joinCondition);
 		ZVAL_STRING(&joinCondition, "");
 	} else {
-	if (unlikely(Z_TYPE_P(joinCondition_param) != IS_STRING && Z_TYPE_P(joinCondition_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinCondition_param) != IS_STRING && Z_TYPE_P(joinCondition_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinCondition' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinCondition_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinCondition_param) == IS_STRING)) {
 		zephir_get_strval(&joinCondition, joinCondition_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinCondition);
@@ -360,11 +309,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, join) {
 		ZEPHIR_INIT_VAR(&joinTableAlias);
 		ZVAL_STRING(&joinTableAlias, "");
 	} else {
-	if (unlikely(Z_TYPE_P(joinTableAlias_param) != IS_STRING && Z_TYPE_P(joinTableAlias_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinTableAlias_param) != IS_STRING && Z_TYPE_P(joinTableAlias_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinTableAlias' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinTableAlias_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinTableAlias_param) == IS_STRING)) {
 		zephir_get_strval(&joinTableAlias, joinTableAlias_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinTableAlias);
@@ -398,13 +347,8 @@ PHP_METHOD(Vii_Db_QueryBuilder, innerJoin) {
 
 	zval *joinTable_param = NULL, *joinCondition_param = NULL, *joinTableAlias_param = NULL, _1$$4, _2$$4, _3, _4;
 	zval joinTable, joinCondition, joinTableAlias, _0$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&joinTable);
 	ZVAL_UNDEF(&joinCondition);
 	ZVAL_UNDEF(&joinTableAlias);
@@ -417,11 +361,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, innerJoin) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 2, &joinTable_param, &joinCondition_param, &joinTableAlias_param);
 
-	if (unlikely(Z_TYPE_P(joinTable_param) != IS_STRING && Z_TYPE_P(joinTable_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinTable_param) != IS_STRING && Z_TYPE_P(joinTable_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinTable' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinTable_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinTable_param) == IS_STRING)) {
 		zephir_get_strval(&joinTable, joinTable_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinTable);
@@ -431,11 +375,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, innerJoin) {
 		ZEPHIR_INIT_VAR(&joinCondition);
 		ZVAL_STRING(&joinCondition, "");
 	} else {
-	if (unlikely(Z_TYPE_P(joinCondition_param) != IS_STRING && Z_TYPE_P(joinCondition_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinCondition_param) != IS_STRING && Z_TYPE_P(joinCondition_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinCondition' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinCondition_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinCondition_param) == IS_STRING)) {
 		zephir_get_strval(&joinCondition, joinCondition_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinCondition);
@@ -446,11 +390,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, innerJoin) {
 		ZEPHIR_INIT_VAR(&joinTableAlias);
 		ZVAL_STRING(&joinTableAlias, "");
 	} else {
-	if (unlikely(Z_TYPE_P(joinTableAlias_param) != IS_STRING && Z_TYPE_P(joinTableAlias_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinTableAlias_param) != IS_STRING && Z_TYPE_P(joinTableAlias_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinTableAlias' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinTableAlias_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinTableAlias_param) == IS_STRING)) {
 		zephir_get_strval(&joinTableAlias, joinTableAlias_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinTableAlias);
@@ -484,13 +428,8 @@ PHP_METHOD(Vii_Db_QueryBuilder, leftJoin) {
 
 	zval *joinTable_param = NULL, *joinCondition_param = NULL, *joinTableAlias_param = NULL, _1$$4, _2$$4, _3, _4;
 	zval joinTable, joinCondition, joinTableAlias, _0$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&joinTable);
 	ZVAL_UNDEF(&joinCondition);
 	ZVAL_UNDEF(&joinTableAlias);
@@ -503,11 +442,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, leftJoin) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 2, &joinTable_param, &joinCondition_param, &joinTableAlias_param);
 
-	if (unlikely(Z_TYPE_P(joinTable_param) != IS_STRING && Z_TYPE_P(joinTable_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinTable_param) != IS_STRING && Z_TYPE_P(joinTable_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinTable' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinTable_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinTable_param) == IS_STRING)) {
 		zephir_get_strval(&joinTable, joinTable_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinTable);
@@ -517,11 +456,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, leftJoin) {
 		ZEPHIR_INIT_VAR(&joinCondition);
 		ZVAL_STRING(&joinCondition, "");
 	} else {
-	if (unlikely(Z_TYPE_P(joinCondition_param) != IS_STRING && Z_TYPE_P(joinCondition_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinCondition_param) != IS_STRING && Z_TYPE_P(joinCondition_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinCondition' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinCondition_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinCondition_param) == IS_STRING)) {
 		zephir_get_strval(&joinCondition, joinCondition_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinCondition);
@@ -532,11 +471,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, leftJoin) {
 		ZEPHIR_INIT_VAR(&joinTableAlias);
 		ZVAL_STRING(&joinTableAlias, "");
 	} else {
-	if (unlikely(Z_TYPE_P(joinTableAlias_param) != IS_STRING && Z_TYPE_P(joinTableAlias_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinTableAlias_param) != IS_STRING && Z_TYPE_P(joinTableAlias_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinTableAlias' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinTableAlias_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinTableAlias_param) == IS_STRING)) {
 		zephir_get_strval(&joinTableAlias, joinTableAlias_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinTableAlias);
@@ -570,13 +509,8 @@ PHP_METHOD(Vii_Db_QueryBuilder, rightJoin) {
 
 	zval *joinTable_param = NULL, *joinCondition_param = NULL, *joinTableAlias_param = NULL, _1$$4, _2$$4, _3, _4;
 	zval joinTable, joinCondition, joinTableAlias, _0$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&joinTable);
 	ZVAL_UNDEF(&joinCondition);
 	ZVAL_UNDEF(&joinTableAlias);
@@ -589,11 +523,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, rightJoin) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 2, &joinTable_param, &joinCondition_param, &joinTableAlias_param);
 
-	if (unlikely(Z_TYPE_P(joinTable_param) != IS_STRING && Z_TYPE_P(joinTable_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinTable_param) != IS_STRING && Z_TYPE_P(joinTable_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinTable' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinTable_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinTable_param) == IS_STRING)) {
 		zephir_get_strval(&joinTable, joinTable_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinTable);
@@ -603,11 +537,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, rightJoin) {
 		ZEPHIR_INIT_VAR(&joinCondition);
 		ZVAL_STRING(&joinCondition, "");
 	} else {
-	if (unlikely(Z_TYPE_P(joinCondition_param) != IS_STRING && Z_TYPE_P(joinCondition_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinCondition_param) != IS_STRING && Z_TYPE_P(joinCondition_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinCondition' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinCondition_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinCondition_param) == IS_STRING)) {
 		zephir_get_strval(&joinCondition, joinCondition_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinCondition);
@@ -618,11 +552,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, rightJoin) {
 		ZEPHIR_INIT_VAR(&joinTableAlias);
 		ZVAL_STRING(&joinTableAlias, "");
 	} else {
-	if (unlikely(Z_TYPE_P(joinTableAlias_param) != IS_STRING && Z_TYPE_P(joinTableAlias_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(joinTableAlias_param) != IS_STRING && Z_TYPE_P(joinTableAlias_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'joinTableAlias' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(joinTableAlias_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(joinTableAlias_param) == IS_STRING)) {
 		zephir_get_strval(&joinTableAlias, joinTableAlias_param);
 	} else {
 		ZEPHIR_INIT_VAR(&joinTableAlias);
@@ -658,13 +592,8 @@ PHP_METHOD(Vii_Db_QueryBuilder, _mergeBindParams) {
 	zend_ulong _1$$3;
 	zval *bindParams_param = NULL, k$$3, v$$3, *_0$$3, _3$$4;
 	zval bindParams;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&bindParams);
 	ZVAL_UNDEF(&k$$3);
 	ZVAL_UNDEF(&v$$3);
@@ -677,7 +606,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, _mergeBindParams) {
 		ZEPHIR_INIT_VAR(&bindParams);
 		array_init(&bindParams);
 	} else {
-	ZVAL_COPY_VALUE(&bindParams, bindParams_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&bindParams, bindParams_param);
 	}
 
 
@@ -706,17 +635,12 @@ PHP_METHOD(Vii_Db_QueryBuilder, _mergeBindParams) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, where) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval bindParams;
 	zval *conditions_param = NULL, *bindParams_param = NULL, _0, _1;
 	zval conditions;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&conditions);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -730,7 +654,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, where) {
 		ZEPHIR_INIT_VAR(&bindParams);
 		array_init(&bindParams);
 	} else {
-	ZVAL_COPY_VALUE(&bindParams, bindParams_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&bindParams, bindParams_param);
 	}
 
 
@@ -738,7 +662,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, where) {
 	ZEPHIR_INIT_VAR(&_1);
 	ZEPHIR_CONCAT_VV(&_1, &_0, &conditions);
 	zephir_update_property_zval(this_ptr, SL("_where"), &_1);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_mergebindparams", NULL, 33, &bindParams);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_mergebindparams", NULL, 31, &bindParams);
 	zephir_check_call_status();
 	RETURN_THIS();
 
@@ -746,17 +670,12 @@ PHP_METHOD(Vii_Db_QueryBuilder, where) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, andWhere) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval bindParams;
 	zval *conditions_param = NULL, *bindParams_param = NULL;
 	zval conditions, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&conditions);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&bindParams);
@@ -769,7 +688,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, andWhere) {
 		ZEPHIR_INIT_VAR(&bindParams);
 		array_init(&bindParams);
 	} else {
-	ZVAL_COPY_VALUE(&bindParams, bindParams_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&bindParams, bindParams_param);
 	}
 
 
@@ -783,17 +702,12 @@ PHP_METHOD(Vii_Db_QueryBuilder, andWhere) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, orWhere) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval bindParams;
 	zval *conditions_param = NULL, *bindParams_param = NULL;
 	zval conditions, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&conditions);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&bindParams);
@@ -806,7 +720,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, orWhere) {
 		ZEPHIR_INIT_VAR(&bindParams);
 		array_init(&bindParams);
 	} else {
-	ZVAL_COPY_VALUE(&bindParams, bindParams_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&bindParams, bindParams_param);
 	}
 
 
@@ -820,16 +734,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, orWhere) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, betweenWhere) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *expr_param = NULL, *minimum, minimum_sub, *maximum, maximum_sub, _0;
 	zval expr;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&expr);
 	ZVAL_UNDEF(&minimum_sub);
 	ZVAL_UNDEF(&maximum_sub);
@@ -851,16 +760,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, betweenWhere) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, notBetweenWhere) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *expr_param = NULL, *minimum, minimum_sub, *maximum, maximum_sub, _0;
 	zval expr;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&expr);
 	ZVAL_UNDEF(&minimum_sub);
 	ZVAL_UNDEF(&maximum_sub);
@@ -882,17 +786,12 @@ PHP_METHOD(Vii_Db_QueryBuilder, notBetweenWhere) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, inWhere) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval columns, _3;
 	zval *expr_param = NULL, *columns_param = NULL, param, _0, _1, _2;
 	zval expr;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&expr);
 	ZVAL_UNDEF(&param);
 	ZVAL_UNDEF(&_0);
@@ -905,14 +804,14 @@ PHP_METHOD(Vii_Db_QueryBuilder, inWhere) {
 	zephir_fetch_params(1, 2, 0, &expr_param, &columns_param);
 
 	zephir_get_strval(&expr, expr_param);
-	ZVAL_COPY_VALUE(&columns, columns_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&columns, columns_param);
 
 
 	ZEPHIR_INIT_VAR(&_0);
 	ZVAL_STRING(&_0, ".");
 	ZEPHIR_INIT_VAR(&_1);
 	ZVAL_STRING(&_1, "_");
-	ZEPHIR_CALL_FUNCTION(&param, "strtr", NULL, 21, &expr, &_0, &_1);
+	ZEPHIR_CALL_FUNCTION(&param, "strtr", NULL, 20, &expr, &_0, &_1);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_2);
 	ZEPHIR_CONCAT_SVSVS(&_2, " AND ", &expr, " IN (:", &param, ")");
@@ -929,17 +828,12 @@ PHP_METHOD(Vii_Db_QueryBuilder, inWhere) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, notInWhere) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval columns, _3;
 	zval *expr_param = NULL, *columns_param = NULL, param, _0, _1, _2;
 	zval expr;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&expr);
 	ZVAL_UNDEF(&param);
 	ZVAL_UNDEF(&_0);
@@ -952,14 +846,14 @@ PHP_METHOD(Vii_Db_QueryBuilder, notInWhere) {
 	zephir_fetch_params(1, 2, 0, &expr_param, &columns_param);
 
 	zephir_get_strval(&expr, expr_param);
-	ZVAL_COPY_VALUE(&columns, columns_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&columns, columns_param);
 
 
 	ZEPHIR_INIT_VAR(&_0);
 	ZVAL_STRING(&_0, ".");
 	ZEPHIR_INIT_VAR(&_1);
 	ZVAL_STRING(&_1, "_");
-	ZEPHIR_CALL_FUNCTION(&param, "strtr", NULL, 21, &expr, &_0, &_1);
+	ZEPHIR_CALL_FUNCTION(&param, "strtr", NULL, 20, &expr, &_0, &_1);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_2);
 	ZEPHIR_CONCAT_SVSVS(&_2, " AND ", &expr, " NOT IN (:", &param, ")");
@@ -976,15 +870,10 @@ PHP_METHOD(Vii_Db_QueryBuilder, notInWhere) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, getWhere) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_where");
+
+	RETURN_MEMBER(getThis(), "_where");
 
 }
 
@@ -992,14 +881,9 @@ PHP_METHOD(Vii_Db_QueryBuilder, limit) {
 
 	zval _2$$3;
 	zval *limit_param = NULL, *offset_param = NULL, _0$$3, _1$$3, _3$$4;
-	int limit, offset;
-		zval this_zv;
+	zend_long limit, offset;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0$$3);
 	ZVAL_UNDEF(&_1$$3);
 	ZVAL_UNDEF(&_3$$4);
@@ -1037,23 +921,18 @@ PHP_METHOD(Vii_Db_QueryBuilder, groupBy) {
 
 	zval *groupByColumn_param = NULL;
 	zval groupByColumn;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&groupByColumn);
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &groupByColumn_param);
 
-	if (unlikely(Z_TYPE_P(groupByColumn_param) != IS_STRING && Z_TYPE_P(groupByColumn_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(groupByColumn_param) != IS_STRING && Z_TYPE_P(groupByColumn_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'groupByColumn' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(groupByColumn_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(groupByColumn_param) == IS_STRING)) {
 		zephir_get_strval(&groupByColumn, groupByColumn_param);
 	} else {
 		ZEPHIR_INIT_VAR(&groupByColumn);
@@ -1069,13 +948,8 @@ PHP_METHOD(Vii_Db_QueryBuilder, groupBy) {
 PHP_METHOD(Vii_Db_QueryBuilder, _buildColumns) {
 
 	zval _0, _1$$3, _2$$4;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1$$3);
 	ZVAL_UNDEF(&_2$$4);
@@ -1093,7 +967,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, _buildColumns) {
 		if (!(zephir_is_true(&_2$$4))) {
 			RETURN_MM_STRING("*");
 		} else {
-			RETURN_MM_MEMBER(this_ptr, "_columns");
+			RETURN_MM_MEMBER(getThis(), "_columns");
 		}
 	}
 
@@ -1104,13 +978,8 @@ PHP_METHOD(Vii_Db_QueryBuilder, _buildFroms) {
 	zend_string *_3;
 	zend_ulong _2;
 	zval k, v, froms, _0, *_1, _4$$3;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&k);
 	ZVAL_UNDEF(&v);
 	ZVAL_UNDEF(&froms);
@@ -1147,14 +1016,9 @@ PHP_METHOD(Vii_Db_QueryBuilder, _buildFroms) {
 PHP_METHOD(Vii_Db_QueryBuilder, select) {
 
 	zval condition, pdostate, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&condition);
 	ZVAL_UNDEF(&pdostate);
 	ZVAL_UNDEF(&_0);
@@ -1175,14 +1039,14 @@ PHP_METHOD(Vii_Db_QueryBuilder, select) {
 	zephir_read_property(&_0, this_ptr, SL("_where"), PH_NOISY_CC | PH_READONLY);
 	if (ZEPHIR_IS_EMPTY(&_0)) {
 		ZEPHIR_INIT_VAR(&condition);
-		ZVAL_LONG(&condition, 1);
+		ZVAL_STRING(&condition, "1");
 	} else {
 		ZEPHIR_OBS_NVAR(&condition);
 		zephir_read_property(&condition, this_ptr, SL("_where"), PH_NOISY_CC);
 	}
-	ZEPHIR_CALL_METHOD(&_1, this_ptr, "_buildcolumns", NULL, 34);
+	ZEPHIR_CALL_METHOD(&_1, this_ptr, "_buildcolumns", NULL, 32);
 	zephir_check_call_status();
-	ZEPHIR_CALL_METHOD(&_2, this_ptr, "_buildfroms", NULL, 35);
+	ZEPHIR_CALL_METHOD(&_2, this_ptr, "_buildfroms", NULL, 33);
 	zephir_check_call_status();
 	zephir_read_property(&_3, this_ptr, SL("_join"), PH_NOISY_CC | PH_READONLY);
 	zephir_read_property(&_4, this_ptr, SL("_order"), PH_NOISY_CC | PH_READONLY);
@@ -1211,17 +1075,12 @@ PHP_METHOD(Vii_Db_QueryBuilder, update) {
 
 	zend_string *_2;
 	zend_ulong _1;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval fields;
 	zval *from_param = NULL, *filters = NULL, filters_sub, *fields_param = NULL, key, value, columns, values, filtered, query, status, *_0, _5, _6, _7, _8, _9, _10, _11, _12, _13, _3$$3, _4$$3;
 	zval from;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&from);
 	ZVAL_UNDEF(&filters_sub);
 	ZVAL_UNDEF(&key);
@@ -1247,11 +1106,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, update) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 2, &from_param, &filters, &fields_param);
 
-	if (unlikely(Z_TYPE_P(from_param) != IS_STRING && Z_TYPE_P(from_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(from_param) != IS_STRING && Z_TYPE_P(from_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'from' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(from_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(from_param) == IS_STRING)) {
 		zephir_get_strval(&from, from_param);
 	} else {
 		ZEPHIR_INIT_VAR(&from);
@@ -1316,7 +1175,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, update) {
 	ZEPHIR_CALL_METHOD(&_13, &query, "errorinfo", NULL, 0);
 	zephir_check_call_status();
 	zephir_update_property_zval(this_ptr, SL("error"), &_13);
-	RETURN_CCTOR(status);
+	RETURN_CCTOR(&status);
 
 }
 
@@ -1324,17 +1183,12 @@ PHP_METHOD(Vii_Db_QueryBuilder, insert) {
 
 	zend_string *_2;
 	zend_ulong _1;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval columns;
 	zval *tablename_param = NULL, *columns_param = NULL, k, v, ks, vs, pdostate, status, *_0, _5, _6, _7, _8, _9, _10, _11, _12, _13, _3$$3, _4$$3;
 	zval tablename;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&tablename);
 	ZVAL_UNDEF(&k);
 	ZVAL_UNDEF(&v);
@@ -1358,17 +1212,17 @@ PHP_METHOD(Vii_Db_QueryBuilder, insert) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &tablename_param, &columns_param);
 
-	if (unlikely(Z_TYPE_P(tablename_param) != IS_STRING && Z_TYPE_P(tablename_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(tablename_param) != IS_STRING && Z_TYPE_P(tablename_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'tablename' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(tablename_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(tablename_param) == IS_STRING)) {
 		zephir_get_strval(&tablename, tablename_param);
 	} else {
 		ZEPHIR_INIT_VAR(&tablename);
 		ZVAL_EMPTY_STRING(&tablename);
 	}
-	ZVAL_COPY_VALUE(&columns, columns_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&columns, columns_param);
 
 
 	ZEPHIR_INIT_VAR(&ks);
@@ -1395,14 +1249,14 @@ PHP_METHOD(Vii_Db_QueryBuilder, insert) {
 	} ZEND_HASH_FOREACH_END();
 	ZEPHIR_INIT_NVAR(&v);
 	ZEPHIR_INIT_NVAR(&k);
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_mergebindparams", NULL, 33, &vs);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "_mergebindparams", NULL, 31, &vs);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&_5);
 	ZEPHIR_INIT_VAR(&_6);
 	zephir_array_keys(&_6, &ks TSRMLS_CC);
 	zephir_fast_join_str(&_5, SL(","), &_6 TSRMLS_CC);
 	ZEPHIR_INIT_VAR(&_7);
-	ZEPHIR_CALL_FUNCTION(&_8, "array_values", NULL, 36, &ks);
+	ZEPHIR_CALL_FUNCTION(&_8, "array_values", NULL, 34, &ks);
 	zephir_check_call_status();
 	zephir_fast_join_str(&_7, SL(","), &_8 TSRMLS_CC);
 	ZEPHIR_INIT_VAR(&_9);
@@ -1418,21 +1272,16 @@ PHP_METHOD(Vii_Db_QueryBuilder, insert) {
 	ZEPHIR_CALL_METHOD(&_13, &pdostate, "errorinfo", NULL, 0);
 	zephir_check_call_status();
 	zephir_update_property_zval(this_ptr, SL("error"), &_13);
-	RETURN_CCTOR(status);
+	RETURN_CCTOR(&status);
 
 }
 
 PHP_METHOD(Vii_Db_QueryBuilder, getLastInsertId) {
 
 	zval _0;
-	int ZEPHIR_LAST_CALL_STATUS;
-		zval this_zv;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&_0);
 
 	ZEPHIR_MM_GROW();
@@ -1446,15 +1295,10 @@ PHP_METHOD(Vii_Db_QueryBuilder, getLastInsertId) {
 
 PHP_METHOD(Vii_Db_QueryBuilder, getLastQuery) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "_lastQuery");
+
+	RETURN_MEMBER(getThis(), "_lastQuery");
 
 }
 
@@ -1471,17 +1315,12 @@ PHP_METHOD(Vii_Db_QueryBuilder, getLastQuery) {
  */
 PHP_METHOD(Vii_Db_QueryBuilder, delete) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval values;
 	zval *from_param = NULL, *filters = NULL, filters_sub, *values_param = NULL, result, pdostate, status, _0, _1, _2, _3, _4, _5, _6, _7;
 	zval from;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&from);
 	ZVAL_UNDEF(&filters_sub);
 	ZVAL_UNDEF(&result);
@@ -1500,11 +1339,11 @@ PHP_METHOD(Vii_Db_QueryBuilder, delete) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 2, &from_param, &filters, &values_param);
 
-	if (unlikely(Z_TYPE_P(from_param) != IS_STRING && Z_TYPE_P(from_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(from_param) != IS_STRING && Z_TYPE_P(from_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'from' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(from_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(from_param) == IS_STRING)) {
 		zephir_get_strval(&from, from_param);
 	} else {
 		ZEPHIR_INIT_VAR(&from);
@@ -1519,7 +1358,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, delete) {
 		ZEPHIR_INIT_VAR(&values);
 		array_init(&values);
 	} else {
-	ZVAL_COPY_VALUE(&values, values_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&values, values_param);
 	}
 
 
@@ -1545,7 +1384,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, delete) {
 	ZEPHIR_CALL_METHOD(&_7, &pdostate, "errorinfo", NULL, 0);
 	zephir_check_call_status();
 	zephir_update_property_zval(this_ptr, SL("error"), &_7);
-	RETURN_CCTOR(status);
+	RETURN_CCTOR(&status);
 
 }
 
@@ -1553,17 +1392,12 @@ PHP_METHOD(Vii_Db_QueryBuilder, parseWhereArr) {
 
 	zend_string *_4$$4, *_13$$14;
 	zend_ulong _3$$4, _12$$14;
-	int ZEPHIR_LAST_CALL_STATUS, _0$$3;
+	zend_long ZEPHIR_LAST_CALL_STATUS, _0$$3;
 	zephir_fcall_cache_entry *_7 = NULL, *_8 = NULL;
 	zval values, _5$$8;
 	zval *filters = NULL, filters_sub, *values_param = NULL, and, data, operator, key, item, value, or, is, index, i, sql, condition, _1, *_2$$4, _19$$4, tmp$$8, *_6$$5, _9$$10, _10$$12, j$$14, id$$14, ids$$14, *_11$$14, _16$$14, _14$$15, _15$$15, _17$$20, _18$$20, _20$$21;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&filters_sub);
 	ZVAL_UNDEF(&and);
 	ZVAL_UNDEF(&data);
@@ -1608,7 +1442,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, parseWhereArr) {
 		ZEPHIR_INIT_VAR(&values);
 		array_init(&values);
 	} else {
-	ZVAL_COPY_VALUE(&values, values_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&values, values_param);
 	}
 
 
@@ -1668,14 +1502,14 @@ PHP_METHOD(Vii_Db_QueryBuilder, parseWhereArr) {
 				{
 					ZEPHIR_INIT_NVAR(&item);
 					ZVAL_COPY(&item, _6$$5);
-					ZEPHIR_CALL_FUNCTION(&key, "key", &_7, 37, &item);
+					ZEPHIR_CALL_FUNCTION(&key, "key", &_7, 35, &item);
 					zephir_check_call_status();
-					ZEPHIR_CALL_FUNCTION(&value, "current", &_8, 38, &item);
+					ZEPHIR_CALL_FUNCTION(&value, "current", &_8, 36, &item);
 					zephir_check_call_status();
 					if (Z_TYPE_P(&value) == IS_ARRAY) {
-						ZEPHIR_CALL_FUNCTION(&is, "key", &_7, 37, &value);
+						ZEPHIR_CALL_FUNCTION(&is, "key", &_7, 35, &value);
 						zephir_check_call_status();
-						ZEPHIR_CALL_FUNCTION(&_9$$10, "current", &_8, 38, &value);
+						ZEPHIR_CALL_FUNCTION(&_9$$10, "current", &_8, 36, &value);
 						zephir_check_call_status();
 						ZEPHIR_CPY_WRT(&value, &_9$$10);
 					} else {
@@ -1783,7 +1617,7 @@ PHP_METHOD(Vii_Db_QueryBuilder, parseWhereArr) {
 
 }
 
-static zend_object *zephir_init_properties_Vii_Db_QueryBuilder(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_Db_QueryBuilder(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _0, _2, _1$$3, _3$$4;
 		ZVAL_UNDEF(&_0);

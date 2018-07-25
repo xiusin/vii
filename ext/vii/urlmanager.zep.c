@@ -40,13 +40,8 @@ ZEPHIR_INIT_CLASS(Vii_UrlManager) {
 PHP_METHOD(Vii_UrlManager, setBaseUri) {
 
 	zval *baseUri, baseUri_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&baseUri_sub);
 
 	zephir_fetch_params(0, 1, 0, &baseUri);
@@ -64,13 +59,8 @@ PHP_METHOD(Vii_UrlManager, setBaseUri) {
 PHP_METHOD(Vii_UrlManager, setStaticBaseUri) {
 
 	zval *staticBaseUri, staticBaseUri_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&staticBaseUri_sub);
 
 	zephir_fetch_params(0, 1, 0, &staticBaseUri);
@@ -84,29 +74,19 @@ PHP_METHOD(Vii_UrlManager, setStaticBaseUri) {
 
 PHP_METHOD(Vii_UrlManager, getBaseUri) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "baseUri");
+
+	RETURN_MEMBER(getThis(), "baseUri");
 
 }
 
 PHP_METHOD(Vii_UrlManager, getStaticBaseUri) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "staticBaseUri");
+
+	RETURN_MEMBER(getThis(), "staticBaseUri");
 
 }
 
@@ -118,13 +98,8 @@ PHP_METHOD(Vii_UrlManager, getStaticBaseUri) {
 PHP_METHOD(Vii_UrlManager, setBasePath) {
 
 	zval *basePath, basePath_sub;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&basePath_sub);
 
 	zephir_fetch_params(0, 1, 0, &basePath);
@@ -138,15 +113,10 @@ PHP_METHOD(Vii_UrlManager, setBasePath) {
 
 PHP_METHOD(Vii_UrlManager, getBasePath) {
 
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
 
-	RETURN_MEMBER(this_ptr, "basePath");
+
+	RETURN_MEMBER(getThis(), "basePath");
 
 }
 
@@ -157,13 +127,8 @@ PHP_METHOD(Vii_UrlManager, getBasePath) {
 PHP_METHOD(Vii_UrlManager, path) {
 
 	zval *path, path_sub, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&path_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -188,13 +153,8 @@ PHP_METHOD(Vii_UrlManager, path) {
 PHP_METHOD(Vii_UrlManager, getStatic) {
 
 	zval *uri, uri_sub, _0;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&uri_sub);
 	ZVAL_UNDEF(&_0);
 
@@ -216,16 +176,11 @@ PHP_METHOD(Vii_UrlManager, getStatic) {
  */
 PHP_METHOD(Vii_UrlManager, get) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval params;
 	zval *uri, uri_sub, *params_param = NULL, _0, _1;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&uri_sub);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_1);
@@ -257,16 +212,11 @@ PHP_METHOD(Vii_UrlManager, get) {
  */
 PHP_METHOD(Vii_UrlManager, buildParams) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *params_param = NULL, _0;
 	zval params;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&params);
 	ZVAL_UNDEF(&_0);
 
@@ -279,7 +229,7 @@ PHP_METHOD(Vii_UrlManager, buildParams) {
 	if (ZEPHIR_IS_EMPTY(&params)) {
 		RETURN_MM_STRING("");
 	}
-	ZEPHIR_CALL_FUNCTION(&_0, "http_build_query", NULL, 146, &params);
+	ZEPHIR_CALL_FUNCTION(&_0, "http_build_query", NULL, 142, &params);
 	zephir_check_call_status();
 	ZEPHIR_CONCAT_SV(return_value, "?", &_0);
 	RETURN_MM();

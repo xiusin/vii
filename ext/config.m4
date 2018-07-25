@@ -9,7 +9,7 @@ if test "$PHP_VII" = "yes"; then
 	fi
 
 	AC_DEFINE(HAVE_VII, 1, [Whether you have Vii])
-	vii_sources="vii.c kernel/main.c kernel/memory.c kernel/exception.c kernel/hash.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/extended/array.c kernel/string.c kernel/fcall.c kernel/extended/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/math.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/time.c kernel/exit.c vii/interfaces/iocinterface.zep.c
+	vii_sources="vii.c kernel/main.c kernel/memory.c kernel/exception.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/math.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/time.c kernel/exit.c vii/interfaces/iocinterface.zep.c
 	vii/interfaces/configinterface.zep.c
 	vii/interfaces/sessionadapterinterface.zep.c
 	vii/config.zep.c

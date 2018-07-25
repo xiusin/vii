@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="vii API doc" name="description">
+    <title>
+                    vii API Documentation
+            </title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/prettify.css" />
+
+<script src="../../../../../../asset/static/prettify.js"></script>
+<script src="../../../../../../asset/api_definition.js"></script>
+
+
+                        <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/prettify.css" />
+                    <link rel="stylesheet" type="text/css" href="../../../../../../asset/static/zephir-theme.css" />
+            
+    
+
+                        <script src="../../../../../../asset/static/prettify.js"></script>
+                                    <script src="../../../../../../asset/api_definition.js"></script>
+                    <script src="../../../../../../asset/static/jquery.min.js"></script>
+                    <script src="../../../../../../asset/static/zephir-doc.js"></script>
+                <script>var ZepCurrentPath = '../../../../../../'</script>
+    </head>
+ <body onload="prettyPrint()">
+        <div id="top-bar">
+            <div id="top-left">
+                                    vii Documentation <span class="version">v0.0.1</span>
+                            </div>
+            <div id="top-right">
+            </div>
+        </div>
+        <div id="body">
+            <div id="body-left">
+                <div class="header-search">
+                    <input class="search-box" placeholder="Search for a class or namespace " type="text" />
+                    <div id="menu-wrapper">
+                    </div>
+                </div>
+            </div>
+            <div id="body-right">
+                <div class="content">
+                    
+<div class="breadcrumb">
+    
+    <ul>
+        
+        <li><a href="../../../../../../index.html">Home</a></li>
+        
+                <li><a href="../../../../../../classes.html">Classes</a></li>
+                <li><a href="../../../../../../class/Vii/Mvc/View/Engine/Tiny/Taglibarys.html">Vii\Mvc\View\Engine\Tiny\Taglibarys</a></li>
+                <li><a >Source</a></li>
+                
+    </ul>
+    
+</div>
+<div class="class-header source clearfix">
+    
+    <div class="access-buttons">
+        <a class="zep-button" href="../../../../../../class/Vii/Mvc/View/Engine/Tiny/Taglibarys.html">Class</a>
+
+            </div>
+    
+    <div class="class-full-name">
+        
+        <span class="class-type">Class</span>
+        
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Vii.html">Vii</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Vii/Mvc.html">Mvc</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Vii/Mvc/View.html">View</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Vii/Mvc/View/Engine.html">Engine</a>
+        </span>
+                <span class="namespace-piece">
+            <a href="../../../../../../namespace/Vii/Mvc/View/Engine/Tiny.html">Tiny</a>
+        </span>
+                <h1 class="class-name">Taglibarys</h1>
+    </div>
+    
+</div>
+
+
+<pre class="zephir-source-file prettyprint linenums">namespace Vii\Mvc\View\Engine\Tiny;
+
+class Taglibarys
+{
+    public static left_delimiter = "{";
+    public static right_delimiter = "}";
+    private tags = [];
+    private current_tag = "";
+    private tpl = null;
+    public function checkAttr(attr, currtag)
+    {
+        var tagAttr,v;
+        if !isset this->tags[currtag] || !isset this->tags[currtag]["attr"]{
+            throw new \Exception("tag ".currtag." is not fully defined");
+        }
+        let tagAttr = explode(",", this->tags[currtag]["attr"]);
+        for _,v in tagAttr {
+            if !in_array(v,attr) {
+                throw new \Exception("tag ".currtag." is not support attr:".v);
+            }
+        }
+        return this;
+    }
+
+    public function parse(string! content)->string
+    {
+        var tags = [];
+        var key,value,_function,param_attr,arr,attrs,attr_str,preg,content,level;
+        let tags = this->tags;
+        for key,value in tags {
+            let _function = "_" . key;
+            let param_attr = "";
+            let arr = [];
+            let attrs = [];
+            let attr_str = "[^\\".Taglibarys::right_delimiter."]*";
+            if isset value["block"] && !value["block"] {
+                let this->current_tag = key;
+                let preg = "/\\" . Taglibarys::left_delimiter . key . "\s+(" . attr_str . ")\s*\/\\".Taglibarys::right_delimiter."/isU";
+                if (!preg_match(preg, content, arr)) {
+                    continue;
+                }
+                let content = preg_replace_callback(preg, [this, "callback"], content);
+            }elseif !isset value["block"] || (isset value["block"] && value["block"]) {
+                let level = isset(value["level"]) ? value["level"] : 1;
+                let preg = "/\\" . Taglibarys::left_delimiter . key . "\s+(" . attr_str . ")\\".Taglibarys::right_delimiter."(.*?)\\".Taglibarys::left_delimiter."\/" . key . "\\".Taglibarys::right_delimiter."/is";
+                let this->current_tag = key;
+                var i;
+                for i in range(0,level) {
+                   let content = preg_replace_callback(preg, [this, "callback"], content);
+                }
+            }
+        }
+        return content;
+    }
+
+    private function _attr(string! param_attr)->array
+    {
+        var xml,_array;
+        if (param_attr == "") {
+            return [];
+        }
+        let xml = simplexml_load_string("<tpl><tag " . param_attr . "/></tpl>");
+        if typeof xml != "object" ||  typeof xml->tag!="object"  {
+            throw new \Exception("XML标签属性错误," . param_attr);
+        }
+        let xml = (array)(xml->tag->attributes());
+        let _array = array_change_key_case(xml["@attributes"]);
+        return _array;
+    }
+
+    public function callback(array! arr)
+    {
+        var _function,param_attr,param_content,attrs,attr_key;
+        if (count(arr) === 0) {
+            return "";
+        }
+        let _function = "_" . this->current_tag;
+        let param_attr = arr[1];
+        let param_content = !isset arr[2] ? "" : arr[2];
+        let attrs = this->_attr(param_attr);
+        let attr_key = array_keys(attrs);
+        if(!method_exists(this,_function)){
+            throw new \Exception("tag function "._function . "not exists");
+        }
+        return this->checkAttr(attr_key, this->current_tag)->{_function}(attrs, param_content);
+    }
+}
+</pre>                </div>
+            </div>
+        </div>
+    </body>
+</html>

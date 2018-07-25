@@ -19,7 +19,6 @@
 #include "kernel/fcall.h"
 #include "kernel/concat.h"
 #include "kernel/string.h"
-#include "kernel/hash.h"
 #include "kernel/operators.h"
 #include "ext/spl/spl_exceptions.h"
 
@@ -48,15 +47,10 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, checkAttr) {
 	zend_string *_12;
 	zend_ulong _11;
 	zend_bool _1;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *attr, attr_sub, *currtag, currtag_sub, tagAttr, v, _0, _2, _3, _6, _7, _8, _9, *_10, _4$$3, _5$$3, _13$$5, _14$$5;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&attr_sub);
 	ZVAL_UNDEF(&currtag_sub);
 	ZVAL_UNDEF(&tagAttr);
@@ -90,7 +84,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, checkAttr) {
 		object_init_ex(&_4$$3, zend_exception_get_default(TSRMLS_C));
 		ZEPHIR_INIT_VAR(&_5$$3);
 		ZEPHIR_CONCAT_SVS(&_5$$3, "tag ", currtag, " is not fully defined");
-		ZEPHIR_CALL_METHOD(NULL, &_4$$3, "__construct", NULL, 4, &_5$$3);
+		ZEPHIR_CALL_METHOD(NULL, &_4$$3, "__construct", NULL, 3, &_5$$3);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(&_4$$3, "vii/mvc/view/engine/tiny/taglibarys.zep", 14 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
@@ -118,7 +112,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, checkAttr) {
 			object_init_ex(&_13$$5, zend_exception_get_default(TSRMLS_C));
 			ZEPHIR_INIT_LNVAR(_14$$5);
 			ZEPHIR_CONCAT_SVSV(&_14$$5, "tag ", currtag, " is not support attr:", &v);
-			ZEPHIR_CALL_METHOD(NULL, &_13$$5, "__construct", NULL, 4, &_14$$5);
+			ZEPHIR_CALL_METHOD(NULL, &_13$$5, "__construct", NULL, 3, &_14$$5);
 			zephir_check_call_status();
 			zephir_throw_exception_debug(&_13$$5, "vii/mvc/view/engine/tiny/taglibarys.zep", 19 TSRMLS_CC);
 			ZEPHIR_MM_RESTORE();
@@ -137,16 +131,11 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, parse) {
 	zend_bool _5$$3, _7$$3, _8$$3, _21$$6;
 	zend_string *_3;
 	zend_ulong _2;
-	int ZEPHIR_LAST_CALL_STATUS, _22$$6;
+	zend_long ZEPHIR_LAST_CALL_STATUS, _22$$6;
 	zephir_fcall_cache_entry *_16 = NULL;
 	zval content, *content_param = NULL, tags, key, value, _function, param_attr, arr, attrs, attr_str, preg, level, _0, *_1, _4$$3, _6$$3, _9$$3, _10$$4, _11$$4, _12$$4, _14$$4, _15$$4, _17$$6, _18$$6, _19$$6, _20$$6, i$$6, _23$$6, _25$$7, _26$$7;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&content);
 	ZVAL_UNDEF(&tags);
 	ZVAL_UNDEF(&key);
@@ -181,11 +170,11 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, parse) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &content_param);
 
-	if (unlikely(Z_TYPE_P(content_param) != IS_STRING && Z_TYPE_P(content_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(content_param) != IS_STRING && Z_TYPE_P(content_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'content' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(content_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(content_param) == IS_STRING)) {
 		zephir_get_strval(&content, content_param);
 	} else {
 		ZEPHIR_INIT_VAR(&content);
@@ -254,7 +243,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, parse) {
 			ZEPHIR_INIT_NVAR(&_14$$4);
 			ZVAL_STRING(&_14$$4, "callback");
 			zephir_array_fast_append(&_13$$4, &_14$$4);
-			ZEPHIR_CALL_FUNCTION(&_15$$4, "preg_replace_callback", &_16, 16, &preg, &_13$$4, &content);
+			ZEPHIR_CALL_FUNCTION(&_15$$4, "preg_replace_callback", &_16, 15, &preg, &_13$$4, &content);
 			zephir_check_call_status();
 			ZEPHIR_CPY_WRT(&content, &_15$$4);
 		} else if (_7$$3) {
@@ -297,7 +286,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, parse) {
 					ZEPHIR_INIT_NVAR(&_25$$7);
 					ZVAL_STRING(&_25$$7, "callback");
 					zephir_array_fast_append(&_24$$7, &_25$$7);
-					ZEPHIR_CALL_FUNCTION(&_26$$7, "preg_replace_callback", &_16, 16, &preg, &_24$$7, &content);
+					ZEPHIR_CALL_FUNCTION(&_26$$7, "preg_replace_callback", &_16, 15, &preg, &_24$$7, &content);
 					zephir_check_call_status();
 					ZEPHIR_CPY_WRT(&content, &_26$$7);
 				}
@@ -306,7 +295,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, parse) {
 	} ZEND_HASH_FOREACH_END();
 	ZEPHIR_INIT_NVAR(&value);
 	ZEPHIR_INIT_NVAR(&key);
-	RETURN_CCTOR(content);
+	RETURN_CCTOR(&content);
 
 }
 
@@ -314,16 +303,11 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, _attr) {
 
 	zval _7;
 	zend_bool _1;
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *param_attr_param = NULL, xml, _array, _2, _5, _6, _8, _3$$4;
 	zval param_attr, _0, _4$$4;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&param_attr);
 	ZVAL_UNDEF(&_0);
 	ZVAL_UNDEF(&_4$$4);
@@ -339,11 +323,11 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, _attr) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &param_attr_param);
 
-	if (unlikely(Z_TYPE_P(param_attr_param) != IS_STRING && Z_TYPE_P(param_attr_param) != IS_NULL)) {
+	if (UNEXPECTED(Z_TYPE_P(param_attr_param) != IS_STRING && Z_TYPE_P(param_attr_param) != IS_NULL)) {
 		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'param_attr' must be a string") TSRMLS_CC);
 		RETURN_MM_NULL();
 	}
-	if (likely(Z_TYPE_P(param_attr_param) == IS_STRING)) {
+	if (EXPECTED(Z_TYPE_P(param_attr_param) == IS_STRING)) {
 		zephir_get_strval(&param_attr, param_attr_param);
 	} else {
 		ZEPHIR_INIT_VAR(&param_attr);
@@ -357,7 +341,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, _attr) {
 	}
 	ZEPHIR_INIT_VAR(&_0);
 	ZEPHIR_CONCAT_SVS(&_0, "<tpl><tag ", &param_attr, "/></tpl>");
-	ZEPHIR_CALL_FUNCTION(&xml, "simplexml_load_string", NULL, 17, &_0);
+	ZEPHIR_CALL_FUNCTION(&xml, "simplexml_load_string", NULL, 16, &_0);
 	zephir_check_call_status();
 	_1 = Z_TYPE_P(&xml) != IS_OBJECT;
 	if (!(_1)) {
@@ -370,7 +354,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, _attr) {
 		object_init_ex(&_3$$4, zend_exception_get_default(TSRMLS_C));
 		ZEPHIR_INIT_VAR(&_4$$4);
 		ZEPHIR_CONCAT_SV(&_4$$4, "XML标签属性错误,", &param_attr);
-		ZEPHIR_CALL_METHOD(NULL, &_3$$4, "__construct", NULL, 4, &_4$$4);
+		ZEPHIR_CALL_METHOD(NULL, &_3$$4, "__construct", NULL, 3, &_4$$4);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(&_3$$4, "vii/mvc/view/engine/tiny/taglibarys.zep", 64 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
@@ -382,24 +366,19 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, _attr) {
 	zephir_get_arrval(&_7, &_6);
 	ZEPHIR_CPY_WRT(&xml, &_7);
 	zephir_array_fetch_string(&_8, &xml, SL("@attributes"), PH_NOISY | PH_READONLY, "vii/mvc/view/engine/tiny/taglibarys.zep", 67 TSRMLS_CC);
-	ZEPHIR_CALL_FUNCTION(&_array, "array_change_key_case", NULL, 18, &_8);
+	ZEPHIR_CALL_FUNCTION(&_array, "array_change_key_case", NULL, 17, &_8);
 	zephir_check_call_status();
-	RETURN_CCTOR(_array);
+	RETURN_CCTOR(&_array);
 
 }
 
 PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, callback) {
 
-	int ZEPHIR_LAST_CALL_STATUS;
+	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *arr_param = NULL, _function, param_attr, param_content, attrs, attr_key, _0, _3, _4, _1$$4, _2$$4;
 	zval arr;
-		zval this_zv;
 	zval *this_ptr = getThis();
-	if (EXPECTED(this_ptr)) {
-		ZVAL_OBJ(&this_zv, Z_OBJ_P(this_ptr));
-		this_ptr = &this_zv;
-	} else this_ptr = NULL;
-	
+
 	ZVAL_UNDEF(&arr);
 	ZVAL_UNDEF(&_function);
 	ZVAL_UNDEF(&param_attr);
@@ -415,7 +394,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, callback) {
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &arr_param);
 
-	ZVAL_COPY_VALUE(&arr, arr_param);
+	ZEPHIR_OBS_COPY_OR_DUP(&arr, arr_param);
 
 
 	if (zephir_fast_count_int(&arr TSRMLS_CC) == 0) {
@@ -433,7 +412,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, callback) {
 		ZEPHIR_OBS_NVAR(&param_content);
 		zephir_array_fetch_long(&param_content, &arr, 2, PH_NOISY, "vii/mvc/view/engine/tiny/taglibarys.zep", 79 TSRMLS_CC);
 	}
-	ZEPHIR_CALL_METHOD(&attrs, this_ptr, "_attr", NULL, 19, &param_attr);
+	ZEPHIR_CALL_METHOD(&attrs, this_ptr, "_attr", NULL, 18, &param_attr);
 	zephir_check_call_status();
 	ZEPHIR_INIT_VAR(&attr_key);
 	zephir_array_keys(&attr_key, &attrs TSRMLS_CC);
@@ -442,7 +421,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, callback) {
 		object_init_ex(&_1$$4, zend_exception_get_default(TSRMLS_C));
 		ZEPHIR_INIT_VAR(&_2$$4);
 		ZEPHIR_CONCAT_SVS(&_2$$4, "tag function ", &_function, "not exists");
-		ZEPHIR_CALL_METHOD(NULL, &_1$$4, "__construct", NULL, 4, &_2$$4);
+		ZEPHIR_CALL_METHOD(NULL, &_1$$4, "__construct", NULL, 3, &_2$$4);
 		zephir_check_call_status();
 		zephir_throw_exception_debug(&_1$$4, "vii/mvc/view/engine/tiny/taglibarys.zep", 83 TSRMLS_CC);
 		ZEPHIR_MM_RESTORE();
@@ -457,7 +436,7 @@ PHP_METHOD(Vii_Mvc_View_Engine_Tiny_Taglibarys, callback) {
 
 }
 
-static zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Taglibarys(zend_class_entry *class_type TSRMLS_DC) {
+zend_object *zephir_init_properties_Vii_Mvc_View_Engine_Tiny_Taglibarys(zend_class_entry *class_type TSRMLS_DC) {
 
 		zval _0, _1$$3;
 		ZVAL_UNDEF(&_0);
