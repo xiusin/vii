@@ -1,0 +1,7 @@
+composer.lock
+compile.log
+compile-errors.log
+.temp/
+vendor/
+ext/.libs/vii.la
+tests/_output/*

@@ -1,0 +1,30 @@
+ARG_ENABLE("vii", "enable vii", "no");
+
+if (PHP_VII != "no") {
+  EXTENSION("vii", "vii.c", null, "-I"+configure_module_dirname);
+  ADD_SOURCES(configure_module_dirname + "/kernel", "main.c memory.c exception.c hash.c debug.c backtrace.c object.c array.c string.c fcall.c require.c file.c operators.c math.c concat.c variables.c filter.c iterator.c exit.c time.c", "vii");
+  ADD_SOURCES(configure_module_dirname + "/kernel/extended", "array.c fcall.c", "vii");
+  /* PCRE is always included on WIN32 */
+  AC_DEFINE("ZEPHIR_USE_PHP_PCRE", 1, "Whether PHP pcre extension is present at compile time");
+  if (PHP_JSON != "no") {
+    ADD_EXTENSION_DEP("vii", "json");
+    AC_DEFINE("ZEPHIR_USE_PHP_JSON", 1, "Whether PHP json extension is present at compile time");
+  }
+  
+  ADD_SOURCES(configure_module_dirname + "/vii/interfaces", "iocinterface.zep.c configinterface.zep.c sessionadapterinterface.zep.c engineinterface.zep.c applicationinterface.zep.c eventmanagerinterface.zep.c loaderinterface.zep.c loginterface.zep.c viewinterface.zep.c bootstrapinterface.zep.c cacheinterface.zep.c dbinterface.zep.c moduleinterface.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii", "config.zep.c ioc.zep.c alias.zep.c cookie.zep.c db.zep.c dispatcher.zep.c dump.zep.c event.zep.c eventmanager.zep.c filesystem.zep.c helper.zep.c i18n.zep.c iocdefault.zep.c loader.zep.c log.zep.c registry.zep.c request.zep.c response.zep.c uploadfileinfo.zep.c urlmanager.zep.c 0__closure.zep.c 1__closure.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/session", "nativesession.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/log", "driver.zep.c file.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/mvc/view/engine/tiny", "taglibarys.zep.c compiler.zep.c tag.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/assets", "collection.zep.c inlines.zep.c manager.zep.c resources.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/config", "json.zep.c php.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/db", "pdo.zep.c querybuilder.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/exceptions", "assetsexception.zep.c configexception.zep.c databaseexception.zep.c eventexception.zep.c filenotexistsexception.zep.c httpexception.zep.c iocexception.zep.c loaderexception.zep.c logexception.zep.c routerexception.zep.c runtimeexception.zep.c templateexception.zep.c uploadfileexception.zep.c viewexception.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/mvc", "application.zep.c controller.zep.c model.zep.c router.zep.c view.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/mvc/model", "resultset.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/mvc/router", "route.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/mvc/view/engine", "sleet.zep.c tiny.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/mvc/view/engine/sleet", "compiler.zep.c parser.zep.c", "vii");
+	ADD_SOURCES(configure_module_dirname + "/vii/session/adapter", "file.zep.c memcache.zep.c", "vii");
+  ADD_FLAG("CFLAGS_VII", "/D ZEPHIR_RELEASE");
+}

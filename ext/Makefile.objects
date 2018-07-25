@@ -1,0 +1,204 @@
+vii.lo: /Users/Macx/www/zephir/ext/vii.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii.c -o vii.lo 
+kernel/main.lo: /Users/Macx/www/zephir/ext/kernel/main.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/main.c -o kernel/main.lo 
+kernel/memory.lo: /Users/Macx/www/zephir/ext/kernel/memory.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/memory.c -o kernel/memory.lo 
+kernel/exception.lo: /Users/Macx/www/zephir/ext/kernel/exception.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/exception.c -o kernel/exception.lo 
+kernel/hash.lo: /Users/Macx/www/zephir/ext/kernel/hash.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/hash.c -o kernel/hash.lo 
+kernel/debug.lo: /Users/Macx/www/zephir/ext/kernel/debug.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/debug.c -o kernel/debug.lo 
+kernel/backtrace.lo: /Users/Macx/www/zephir/ext/kernel/backtrace.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/backtrace.c -o kernel/backtrace.lo 
+kernel/object.lo: /Users/Macx/www/zephir/ext/kernel/object.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/object.c -o kernel/object.lo 
+kernel/array.lo: /Users/Macx/www/zephir/ext/kernel/array.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/array.c -o kernel/array.lo 
+kernel/extended/array.lo: /Users/Macx/www/zephir/ext/kernel/extended/array.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/extended/array.c -o kernel/extended/array.lo 
+kernel/string.lo: /Users/Macx/www/zephir/ext/kernel/string.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/string.c -o kernel/string.lo 
+kernel/fcall.lo: /Users/Macx/www/zephir/ext/kernel/fcall.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/fcall.c -o kernel/fcall.lo 
+kernel/extended/fcall.lo: /Users/Macx/www/zephir/ext/kernel/extended/fcall.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/extended/fcall.c -o kernel/extended/fcall.lo 
+kernel/require.lo: /Users/Macx/www/zephir/ext/kernel/require.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/require.c -o kernel/require.lo 
+kernel/file.lo: /Users/Macx/www/zephir/ext/kernel/file.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/file.c -o kernel/file.lo 
+kernel/operators.lo: /Users/Macx/www/zephir/ext/kernel/operators.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/operators.c -o kernel/operators.lo 
+kernel/math.lo: /Users/Macx/www/zephir/ext/kernel/math.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/math.c -o kernel/math.lo 
+kernel/concat.lo: /Users/Macx/www/zephir/ext/kernel/concat.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/concat.c -o kernel/concat.lo 
+kernel/variables.lo: /Users/Macx/www/zephir/ext/kernel/variables.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/variables.c -o kernel/variables.lo 
+kernel/filter.lo: /Users/Macx/www/zephir/ext/kernel/filter.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/filter.c -o kernel/filter.lo 
+kernel/iterator.lo: /Users/Macx/www/zephir/ext/kernel/iterator.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/iterator.c -o kernel/iterator.lo 
+kernel/time.lo: /Users/Macx/www/zephir/ext/kernel/time.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/time.c -o kernel/time.lo 
+kernel/exit.lo: /Users/Macx/www/zephir/ext/kernel/exit.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/kernel/exit.c -o kernel/exit.lo 
+vii/interfaces/iocinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/iocinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/iocinterface.zep.c -o vii/interfaces/iocinterface.lo 
+vii/interfaces/configinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/configinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/configinterface.zep.c -o vii/interfaces/configinterface.lo 
+vii/interfaces/sessionadapterinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/sessionadapterinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/sessionadapterinterface.zep.c -o vii/interfaces/sessionadapterinterface.lo 
+vii/config.lo: /Users/Macx/www/zephir/ext/vii/config.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/config.zep.c -o vii/config.lo 
+vii/interfaces/engineinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/engineinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/engineinterface.zep.c -o vii/interfaces/engineinterface.lo 
+vii/session/nativesession.lo: /Users/Macx/www/zephir/ext/vii/session/nativesession.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/session/nativesession.zep.c -o vii/session/nativesession.lo 
+vii/interfaces/applicationinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/applicationinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/applicationinterface.zep.c -o vii/interfaces/applicationinterface.lo 
+vii/interfaces/eventmanagerinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/eventmanagerinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/eventmanagerinterface.zep.c -o vii/interfaces/eventmanagerinterface.lo 
+vii/interfaces/loaderinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/loaderinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/loaderinterface.zep.c -o vii/interfaces/loaderinterface.lo 
+vii/interfaces/loginterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/loginterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/loginterface.zep.c -o vii/interfaces/loginterface.lo 
+vii/interfaces/viewinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/viewinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/viewinterface.zep.c -o vii/interfaces/viewinterface.lo 
+vii/ioc.lo: /Users/Macx/www/zephir/ext/vii/ioc.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/ioc.zep.c -o vii/ioc.lo 
+vii/log/driver.lo: /Users/Macx/www/zephir/ext/vii/log/driver.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/log/driver.zep.c -o vii/log/driver.lo 
+vii/mvc/view/engine/tiny/taglibarys.lo: /Users/Macx/www/zephir/ext/vii/mvc/view/engine/tiny/taglibarys.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/view/engine/tiny/taglibarys.zep.c -o vii/mvc/view/engine/tiny/taglibarys.lo 
+vii/alias.lo: /Users/Macx/www/zephir/ext/vii/alias.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/alias.zep.c -o vii/alias.lo 
+vii/assets/collection.lo: /Users/Macx/www/zephir/ext/vii/assets/collection.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/assets/collection.zep.c -o vii/assets/collection.lo 
+vii/assets/inlines.lo: /Users/Macx/www/zephir/ext/vii/assets/inlines.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/assets/inlines.zep.c -o vii/assets/inlines.lo 
+vii/assets/manager.lo: /Users/Macx/www/zephir/ext/vii/assets/manager.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/assets/manager.zep.c -o vii/assets/manager.lo 
+vii/assets/resources.lo: /Users/Macx/www/zephir/ext/vii/assets/resources.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/assets/resources.zep.c -o vii/assets/resources.lo 
+vii/config/json.lo: /Users/Macx/www/zephir/ext/vii/config/json.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/config/json.zep.c -o vii/config/json.lo 
+vii/config/php.lo: /Users/Macx/www/zephir/ext/vii/config/php.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/config/php.zep.c -o vii/config/php.lo 
+vii/cookie.lo: /Users/Macx/www/zephir/ext/vii/cookie.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/cookie.zep.c -o vii/cookie.lo 
+vii/db.lo: /Users/Macx/www/zephir/ext/vii/db.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/db.zep.c -o vii/db.lo 
+vii/db/pdo.lo: /Users/Macx/www/zephir/ext/vii/db/pdo.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/db/pdo.zep.c -o vii/db/pdo.lo 
+vii/db/querybuilder.lo: /Users/Macx/www/zephir/ext/vii/db/querybuilder.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/db/querybuilder.zep.c -o vii/db/querybuilder.lo 
+vii/dispatcher.lo: /Users/Macx/www/zephir/ext/vii/dispatcher.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/dispatcher.zep.c -o vii/dispatcher.lo 
+vii/dump.lo: /Users/Macx/www/zephir/ext/vii/dump.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/dump.zep.c -o vii/dump.lo 
+vii/event.lo: /Users/Macx/www/zephir/ext/vii/event.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/event.zep.c -o vii/event.lo 
+vii/eventmanager.lo: /Users/Macx/www/zephir/ext/vii/eventmanager.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/eventmanager.zep.c -o vii/eventmanager.lo 
+vii/exceptions/assetsexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/assetsexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/assetsexception.zep.c -o vii/exceptions/assetsexception.lo 
+vii/exceptions/configexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/configexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/configexception.zep.c -o vii/exceptions/configexception.lo 
+vii/exceptions/databaseexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/databaseexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/databaseexception.zep.c -o vii/exceptions/databaseexception.lo 
+vii/exceptions/eventexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/eventexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/eventexception.zep.c -o vii/exceptions/eventexception.lo 
+vii/exceptions/filenotexistsexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/filenotexistsexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/filenotexistsexception.zep.c -o vii/exceptions/filenotexistsexception.lo 
+vii/exceptions/httpexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/httpexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/httpexception.zep.c -o vii/exceptions/httpexception.lo 
+vii/exceptions/iocexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/iocexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/iocexception.zep.c -o vii/exceptions/iocexception.lo 
+vii/exceptions/loaderexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/loaderexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/loaderexception.zep.c -o vii/exceptions/loaderexception.lo 
+vii/exceptions/logexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/logexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/logexception.zep.c -o vii/exceptions/logexception.lo 
+vii/exceptions/routerexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/routerexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/routerexception.zep.c -o vii/exceptions/routerexception.lo 
+vii/exceptions/runtimeexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/runtimeexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/runtimeexception.zep.c -o vii/exceptions/runtimeexception.lo 
+vii/exceptions/templateexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/templateexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/templateexception.zep.c -o vii/exceptions/templateexception.lo 
+vii/exceptions/uploadfileexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/uploadfileexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/uploadfileexception.zep.c -o vii/exceptions/uploadfileexception.lo 
+vii/exceptions/viewexception.lo: /Users/Macx/www/zephir/ext/vii/exceptions/viewexception.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/exceptions/viewexception.zep.c -o vii/exceptions/viewexception.lo 
+vii/filesystem.lo: /Users/Macx/www/zephir/ext/vii/filesystem.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/filesystem.zep.c -o vii/filesystem.lo 
+vii/helper.lo: /Users/Macx/www/zephir/ext/vii/helper.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/helper.zep.c -o vii/helper.lo 
+vii/i18n.lo: /Users/Macx/www/zephir/ext/vii/i18n.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/i18n.zep.c -o vii/i18n.lo 
+vii/interfaces/bootstrapinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/bootstrapinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/bootstrapinterface.zep.c -o vii/interfaces/bootstrapinterface.lo 
+vii/interfaces/cacheinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/cacheinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/cacheinterface.zep.c -o vii/interfaces/cacheinterface.lo 
+vii/interfaces/dbinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/dbinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/dbinterface.zep.c -o vii/interfaces/dbinterface.lo 
+vii/interfaces/moduleinterface.lo: /Users/Macx/www/zephir/ext/vii/interfaces/moduleinterface.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/interfaces/moduleinterface.zep.c -o vii/interfaces/moduleinterface.lo 
+vii/iocdefault.lo: /Users/Macx/www/zephir/ext/vii/iocdefault.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/iocdefault.zep.c -o vii/iocdefault.lo 
+vii/loader.lo: /Users/Macx/www/zephir/ext/vii/loader.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/loader.zep.c -o vii/loader.lo 
+vii/log.lo: /Users/Macx/www/zephir/ext/vii/log.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/log.zep.c -o vii/log.lo 
+vii/log/file.lo: /Users/Macx/www/zephir/ext/vii/log/file.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/log/file.zep.c -o vii/log/file.lo 
+vii/mvc/application.lo: /Users/Macx/www/zephir/ext/vii/mvc/application.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/application.zep.c -o vii/mvc/application.lo 
+vii/mvc/controller.lo: /Users/Macx/www/zephir/ext/vii/mvc/controller.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/controller.zep.c -o vii/mvc/controller.lo 
+vii/mvc/model.lo: /Users/Macx/www/zephir/ext/vii/mvc/model.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/model.zep.c -o vii/mvc/model.lo 
+vii/mvc/model/resultset.lo: /Users/Macx/www/zephir/ext/vii/mvc/model/resultset.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/model/resultset.zep.c -o vii/mvc/model/resultset.lo 
+vii/mvc/router.lo: /Users/Macx/www/zephir/ext/vii/mvc/router.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/router.zep.c -o vii/mvc/router.lo 
+vii/mvc/router/route.lo: /Users/Macx/www/zephir/ext/vii/mvc/router/route.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/router/route.zep.c -o vii/mvc/router/route.lo 
+vii/mvc/view.lo: /Users/Macx/www/zephir/ext/vii/mvc/view.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/view.zep.c -o vii/mvc/view.lo 
+vii/mvc/view/engine/sleet.lo: /Users/Macx/www/zephir/ext/vii/mvc/view/engine/sleet.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/view/engine/sleet.zep.c -o vii/mvc/view/engine/sleet.lo 
+vii/mvc/view/engine/sleet/compiler.lo: /Users/Macx/www/zephir/ext/vii/mvc/view/engine/sleet/compiler.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/view/engine/sleet/compiler.zep.c -o vii/mvc/view/engine/sleet/compiler.lo 
+vii/mvc/view/engine/sleet/parser.lo: /Users/Macx/www/zephir/ext/vii/mvc/view/engine/sleet/parser.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/view/engine/sleet/parser.zep.c -o vii/mvc/view/engine/sleet/parser.lo 
+vii/mvc/view/engine/tiny.lo: /Users/Macx/www/zephir/ext/vii/mvc/view/engine/tiny.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/view/engine/tiny.zep.c -o vii/mvc/view/engine/tiny.lo 
+vii/mvc/view/engine/tiny/compiler.lo: /Users/Macx/www/zephir/ext/vii/mvc/view/engine/tiny/compiler.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/view/engine/tiny/compiler.zep.c -o vii/mvc/view/engine/tiny/compiler.lo 
+vii/mvc/view/engine/tiny/tag.lo: /Users/Macx/www/zephir/ext/vii/mvc/view/engine/tiny/tag.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/mvc/view/engine/tiny/tag.zep.c -o vii/mvc/view/engine/tiny/tag.lo 
+vii/registry.lo: /Users/Macx/www/zephir/ext/vii/registry.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/registry.zep.c -o vii/registry.lo 
+vii/request.lo: /Users/Macx/www/zephir/ext/vii/request.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/request.zep.c -o vii/request.lo 
+vii/response.lo: /Users/Macx/www/zephir/ext/vii/response.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/response.zep.c -o vii/response.lo 
+vii/session/adapter/file.lo: /Users/Macx/www/zephir/ext/vii/session/adapter/file.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/session/adapter/file.zep.c -o vii/session/adapter/file.lo 
+vii/session/adapter/memcache.lo: /Users/Macx/www/zephir/ext/vii/session/adapter/memcache.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/session/adapter/memcache.zep.c -o vii/session/adapter/memcache.lo 
+vii/uploadfileinfo.lo: /Users/Macx/www/zephir/ext/vii/uploadfileinfo.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/uploadfileinfo.zep.c -o vii/uploadfileinfo.lo 
+vii/urlmanager.lo: /Users/Macx/www/zephir/ext/vii/urlmanager.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/urlmanager.zep.c -o vii/urlmanager.lo 
+vii/0__closure.lo: /Users/Macx/www/zephir/ext/vii/0__closure.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/0__closure.zep.c -o vii/0__closure.lo 
+vii/1__closure.lo: /Users/Macx/www/zephir/ext/vii/1__closure.zep.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/Macx/www/zephir/ext $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/Macx/www/zephir/ext/vii/1__closure.zep.c -o vii/1__closure.lo 
+$(phplibdir)/vii.la: ./vii.la
+	$(LIBTOOL) --mode=install cp ./vii.la $(phplibdir)
+
+./vii.la: $(shared_objects_vii) $(VII_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_vii) $(VII_SHARED_LIBADD)
+
